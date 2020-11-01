@@ -13,10 +13,10 @@ module.exports = {
   output: {
     path: path.join(__dirname, 'src/webpack'),
     filename: '[name].js',
-    publicPath: "/"
+    publicPath: '/',
   },
   devServer: {
-    historyApiFallback: true
+    historyApiFallback: true,
   },
   resolve: {
     extensions: ['.js', '.jsx'],
@@ -29,22 +29,22 @@ module.exports = {
         exclude: /node_modules/,
         include: path.join(__dirname, 'src'),
         use: {
-          loader: 'babel-loader'
-        }
+          loader: 'babel-loader',
+        },
       },
       {
         test: /\.scss$/,
         use: [
           {
-            loader: "style-loader" // creates style nodes from JS strings
+            loader: 'style-loader', // creates style nodes from JS strings
           },
           {
-            loader: "css-loader" // translates CSS into CommonJS
+            loader: 'css-loader', // translates CSS into CommonJS
           },
           {
-            loader: "sass-loader" // compiles Sass to CSS
-          }
-        ]
+            loader: 'sass-loader', // compiles Sass to CSS
+          },
+        ],
       },
     ],
   },

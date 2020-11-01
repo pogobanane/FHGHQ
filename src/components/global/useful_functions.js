@@ -152,7 +152,7 @@ function SplitTime(time) {
 ////////////////////////////////////////////////////////////////////
 function GetTownName(regionid, town, staticdata) {
   let labellist = [];
-  for (var i = 0; i < 23; i++) {
+  for (var i = 0; i < 13; i++) {
     if (regionid == staticdata[i].regionId) {
       labellist = staticdata[i].data.mapTextItems;
     }

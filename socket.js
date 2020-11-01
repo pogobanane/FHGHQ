@@ -358,8 +358,8 @@ db.offlinecheck(steamidlist,io)
      var dynamic = db.getdynamic();
      var events = db.getevents();
      let packet = {dynamic:dynamic,events:events}
-    io.emit('updatedynmap', packet);
-      console.log("Map updated.");  
+     io.emit('updatedynmap', packet);
+      console.log("Map updated.");
       var now = new Date()
     }
 

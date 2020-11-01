@@ -24,7 +24,7 @@
     "bootstrap": "^4.3.1",
     "browserify": "^16.5.0",
     "clone": "^2.1.2",
-    "create-react-class": "^15.6.3",
+    "create-react-class": "^15.7.0",
     "css-loader": "^3.2.0",
     "d3-delaunay": "^5.1.2",
     "discord.js": "^11.5.1",
@@ -42,7 +42,7 @@
     "leaflet.control.layers.tree": "^0.1.1",
     "nivo": "^0.31.0",
     "node": "^12.11.1",
-    "node-sass": "^4.13.0",
+    "node-sass": "^4.14.1",
     "passport": "^0.4.0",
     "passport-openid": "^0.4.0",
     "passport-steam": "^1.0.11",
@@ -75,7 +75,7 @@
     "steam-web": "^0.7.0",
     "style-loader": "^1.0.0",
     "webpack": "^4.35.0",
-    "webpack-dev-server": "^3.3.1",
+    "webpack-dev-server": "^3.11.0",
     "xhr2": "^0.2.0"
   },
   "devDependencies": {

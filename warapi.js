@@ -55,7 +55,7 @@ exports.updateMap= function (){
   //sql.setAPIData = sql.prepare("INSERT OR REPLACE INTO apidata_dynamic_temp (regionId, teamId, iconType, x, y, flags) VALUES (@regionId, @teamId, @iconType, @x, @y, @flags);");
   const insertMap = sql.prepare("INSERT OR REPLACE INTO apidata_dynamic (regionName, regionId, data, etag) VALUES (@regionName, @regionId, @data, @etag);");
   const getMap = sql.prepare("SELECT * FROM apidata_dynamic WHERE regionId = ?;")
-  //Dynamic Data
+  //  Dynamic Data
   var dynamicCounter = 0;
   let oldCounter = 0;
   let startLoadDate = new Date();

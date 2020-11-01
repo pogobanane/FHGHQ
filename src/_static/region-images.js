@@ -20,7 +20,7 @@ var regionNames = [,//0
   "Tempest Island"//16
 ]
 */
-const regionCounter = 23;
+const regionCounter = 13;
 const regionNames = [
   ,
   ,
@@ -118,5 +118,5 @@ export default {
   k: k,
   w: w,
   ratio: ratio,
-  GetRegionIndex: GetRegionIndex
+  GetRegionIndex: GetRegionIndex,
 };

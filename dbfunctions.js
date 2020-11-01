@@ -3,7 +3,7 @@ const SQLite = require('better-sqlite3');
 
 const sql = SQLite('./.data/global-data.db');
 const XMLHttpRequest = require('xhr2');
-const discordbot = require('./discordbot.js');
+// const discordbot = require('./discordbot.js');
 const socket = require('./socket.js');
 
 let regionNames = ['DeadLandsHex', // 3
@@ -467,7 +467,7 @@ exports.submitEvent = function (packet) {
   const global = sql.prepare('SELECT * FROM global WHERE id = ?').get(packet.globalid);
   switch (packet.type) {
     case 0:// TECH EVENT
-      discordbot.techEvent(global, packet.packet);
+      // discordbot.techEvent(global, packet.packet);
       break;
   }
   let events = [];
@@ -488,7 +488,7 @@ exports.submitOpTimer = function (packet) {
   let settings = JSON.parse(global.settings);
   settings.optimer = packet.date;
   global.settings = settings;
-  discordbot.startOpTimer(global);
+  // discordbot.startOpTimer(global);
   settings = JSON.stringify(settings);
   sql.prepare('UPDATE global SET settings = ? WHERE id = ?').run(settings, packet.globalid);
 };
@@ -543,9 +543,9 @@ exports.changeSettings = function (globalid, type, data) {
 exports.deleteSettings = function (globalid, type) {
   const global = sql.prepare('SELECT * FROM global WHERE id = ?').get(globalid);
   let settings = JSON.parse(global.settings);
-  if (type == 'link') {
-    discordbot.disconnectDiscord(globalid, settings);
-  }
+  // if (type == 'link') {
+  //   discordbot.disconnectDiscord(globalid, settings);
+  // }
   delete settings[type];
   settings = JSON.stringify(settings);
   // console.log("Deleting optimer")
@@ -623,7 +623,7 @@ function CheckOpTimers() {
   if (globallist.length > 0) {
     for (let i = 0; i < globallist.length; i++) {
       const settings = JSON.parse(globallist[i].settings);
-      discordbot.emitNotifyOp(settings);
+      // discordbot.emitNotifyOp(settings);
     }
   }
 // console.log("Op check global list")

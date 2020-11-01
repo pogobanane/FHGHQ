@@ -8,7 +8,7 @@ module.exports = {
     global: './src/entries/global',
     request: './src/entries/request',
     auth: './src/entries/auth',
-    about: './src/entries/about'
+    about: './src/entries/about',
   },
   output: {
     path: path.join(__dirname, 'src/webpack'),

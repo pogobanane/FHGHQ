@@ -52,27 +52,31 @@ class ModalContainer extends React.Component{
       </div>
        <div className="modal-body">
         <div id="wrapper">        
-          {this.state.noauth ? <React.Fragment><h5 className="name_input">Name:  <input type="text" value={this.state.name} onChange={this.handleChangeName} /></h5>
-            <button type="button" className="btn" onClick={()=>this.SubmitNoAuth()} >Submit</button>
-            <button type="button" className="btn" onClick={()=>this.ToggleNoAuth()} >Cancel</button></React.Fragment> : <React.Fragment>
+          {true || this.state.noauth
+              ? <React.Fragment>
+              <h5 className="name_input">Name:  <input type="text" value={this.state.name} onChange={this.handleChangeName} /></h5>
+              <button type="button" className="btn" onClick={()=>this.SubmitNoAuth()} >Submit</button>
+              {/*<button type="button" className="btn" onClick={()=>this.ToggleNoAuth()} >Cancel</button>*/}
+          </React.Fragment>
+              : <React.Fragment>
           <button type="button" className="btn" id="stm" onClick={()=>window.location.href='/auth/steam'} ></button>
           <button type="button" className="btn" onClick={()=>this.ToggleNoAuth()} >Without Steam</button>
           </React.Fragment>}
           </div>
          <div id="inf">
        <h5>
-        <br /> <p id="crdt">The Steam Authentication process will not gain access to any private Steam data and will use public Steam information and cookies to keep you logged in.</p>
-           </h5>
+        {/*<br /> <p id="crdt">The Steam Authentication process will not gain access to any private Steam data and will use public Steam information and cookies to keep you logged in.</p>*/}
+       <p>This is a test setup and work in progess of the original Foxhole GlobalHQ by [3SP] If you want to help us visit our Discord. Everything is done in free time so please be patient.</p>
+       </h5>
        <br />   <h5>
-          <p id="crdt"> Lead Developer: Kastow</p>
-          <p id="crdt"> Project Manager & Design: Mulon</p>
+          <p id="crdt"> Original Developer: Kastow</p>
+          <p id="crdt"> Original Project Manager & Design: Mulon</p>
            <p id="crdt"> Voiced by: CaptainInArms PressCorps</p>
            </h5>
     
          <h5>
-           <br />  Feedback and Suggestions: <a href="https://discord.gg/NzkxyhK"><img src="https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2Fdisc.png?v=1560206167061" />https://discord.gg/NzkxyhK</a>
+           <br />  Feedback and Suggestions: <a href="https://discord.gg/sZs5UZf"><img src="https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2Fdisc.png?v=1560206167061" />https://discord.gg/sZs5UZf</a>
           </h5>
-            <h5>Patrons: Matthew Bryant, Игорь (Aniki)</h5>
           <h5> <br />
            Foxhole is a registered trademark of Clapfoot Inc, used on this website with their permission.
          </h5>

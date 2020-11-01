@@ -2,8 +2,8 @@
 // where your node app starts
 require('dotenv').config()
 
-//OTHER SERVER MODULES MADE BY US
-const discordbot = require('./discordbot.js'); //SHUTDOWN UNTIL FURTHER NOTICE
+// OTHER SERVER MODULES MADE BY US
+const discordbot = require('./discordbot.js'); // SHUTDOWN UNTIL FURTHER NOTICE
 const onetimers = require('./onetimers.js');
 const db = require('./dbfunctions.js');
 const warapi = require('./warapi.js');
@@ -13,13 +13,13 @@ const socket = require('./socket.js');
 const express = require('express');
 const app = express();
 var http = require('http').Server(app);
-var session = require('express-session')
+var session = require('express-session');
 
 var passport = require('passport');
 const shortid = require('shortid');
 
 var SteamStrategy = require('passport-steam').Strategy;
-const apikey = process.env.KEY
+const apikey = process.env.KEY;
 
 //warapi.updateMap();
 //warapi.pullStatic();

@@ -1,7 +1,7 @@
 const db = require('./dbfunctions.js');
 const warapi = require('./warapi.js');
 var XMLHttpRequest = require('xhr2');
-const discordbot = require('./discordbot.js');
+// const discordbot = require('./discordbot.js');
 const SQLite = require("better-sqlite3");
 const sql = SQLite('./.data/global-data.db'); 
 var http;
@@ -450,5 +450,5 @@ function emitOnlineCount(){
       ids.push(steamidlist[i])
     }
   }
-  discordbot.emitOnlineCount(ids.length,db.GetCounts())
+  // discordbot.emitOnlineCount(ids.length,db.GetCounts())
 }

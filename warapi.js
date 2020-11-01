@@ -3,7 +3,7 @@ const SQLite = require("better-sqlite3");
 const sql = SQLite('./.data/global-data.db'); 
 const db = require('./dbfunctions.js');
 const socket = require('./socket.js');
-const discordbot = require('./discordbot.js'); 
+// const discordbot = require('./discordbot.js');
 var XMLHttpRequest = require('xhr2');
 const regionNames = ["DeadLandsHex",//3 
                      "CallahansPassageHex",//4
@@ -47,7 +47,7 @@ exports.updateMap= function (){
     //sql.prepare("ALTER TABLE apidata_dynamic_temp RENAME TO apidata_dynamic;").run();    
     socket.UpdateDynMap();
   }
-  
+
   try{sql.prepare("DROP TABLE apidata_dynamic_temp;").run();} //K - if there is no table to drop, just ignore the error and create a new one, meh.
   catch(err){}
   try{sql.prepare("CREATE TABLE apidata_dynamic (regionName TEXT PRIMARY KEY, regionId INT, data TEXT, etag TEXT);").run();}catch(err){}
@@ -136,7 +136,7 @@ exports.updateMap= function (){
                 let globallist = sql.prepare('SELECT * FROM global WHERE settings LIKE ? AND settings LIKE "%channelid%" ;').all('%'+signature+'%');
                 if(globallist.length>0){
                   for(let j =0;j<globallist.length;j++){
-                    discordbot.emitNotify({global:globallist[j],region:data.regionId,date:new Date(),prevItem:prevObj,newItem:obj})
+                    // discordbot.emitNotify({global:globallist[j],region:data.regionId,date:new Date(),prevItem:prevObj,newItem:obj})
                   }
                 }
                 //console.log("Global list",globallist)

@@ -71,7 +71,7 @@ $(() => {
             <a href={`https://steamcommunity.com/profiles/${this.props.info.adminid}`}>{this.props.info.admin}</a>
           </h5>
         );
-        if (this.props.info.secure === 0) {
+        if (this.props.info.secure == 0) {
           body = (
             <div>
               <h5>
@@ -82,7 +82,7 @@ $(() => {
               <button type="button" className="btn" onClick={() => window.location.replace('/')}>Return to profile</button>
             </div>
           );
-        } else if (steamid === 'anonymous') {
+        } else if (steamid == 'anonymous') {
           body = (
             <>
               <h5>This room is secure. Only Steam-logged users can access this room.</h5>

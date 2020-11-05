@@ -53,7 +53,7 @@ class ModalContainer extends React.Component {
               </div>
               <div className="modal-body">
                 <div id="wrapper">
-                  {true || this.state.noauth
+                  {this.state.noauth
                     ? (
                       <div>
                         <h5 className="name_input">
@@ -73,8 +73,9 @@ class ModalContainer extends React.Component {
                 </div>
                 <div id="inf">
                   <h5>
-                      This is a test setup and work in progess of the original
-                      Foxhole GlobalHQ by [3SP], If you want to help us visit our Discord.
+                      This is a work in progess setup of the original GlobalHQ
+                      by [3SP]AfrOwner hosted by [3SP]Illmaren.
+                      If you want to help us or have a Question, visit our Discord.
                       Everything is done in free time so please be patient.
                   </h5>
                   <br />

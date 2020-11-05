@@ -20,7 +20,7 @@ var regionNames = [,//0
   "Tempest Island"//16
 ]
 */
-const regionCounter = 25;
+const regionCounter = 22;
 const regionNames = [
   ,
   ,

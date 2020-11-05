@@ -319,10 +319,11 @@ db.cunt('loaded');
 warapi.cunt('loaded');
 socket.cunt('loaded');
 
-// patch();
 
 function patch() {
   warapi.updateMap();
   warapi.pullStatic();
   warapi.updateStaticTowns();
 }
+
+patch();

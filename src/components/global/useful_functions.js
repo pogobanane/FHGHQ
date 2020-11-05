@@ -151,7 +151,7 @@ function SplitTime(time) {
 // //////////////////////////////////////////////////////////////////
 function GetTownName(regionid, town, staticdata) {
   let labellist = [];
-  for (var i = 0; i < 13; i++) {
+  for (var i = 0; i <= RegionImages.regionCounter; i++) {
     if (regionid == staticdata[i].regionId) {
       labellist = staticdata[i].data.mapTextItems;
     }
@@ -175,6 +175,11 @@ function GetTownName(regionid, town, staticdata) {
   try {
     return labellist[0].text;
   } catch (err) {
+    console.log(err);
+    console.log('regionid', regionid);
+    console.log('staticdata', staticdata);
+    console.log('labellist', labellist);
+
     return 'undefined';
   }
 }

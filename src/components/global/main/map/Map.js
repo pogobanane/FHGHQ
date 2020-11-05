@@ -45,9 +45,9 @@ class MapCore extends React.Component {
     const labels = [];
     const regionlabels = [];
     const active = [];
+    console.log('MapsCount:', this.props.roominfo.dynamic.length);
+    console.log('InternalMaoCount:', RegionImages.regionCounter);
     for (let i = 0; i < RegionImages.regionCounter; i++) {
-              console.log(i);
-              console.log(this.props.roominfo.dynamic[i]);
       const region = this.props.roominfo.dynamic[i].regionId;
       if (this.props.roominfo.dynamic[i].active) {
         active.push({ regionId: region, active: true });

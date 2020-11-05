@@ -326,4 +326,4 @@ function patch() {
   warapi.updateStaticTowns();
 }
 
-patch();
+//patch();

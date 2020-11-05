@@ -5,18 +5,14 @@ const SQLite = require("better-sqlite3");
 const sql = SQLite('./.data/global-data.db'); 
 const warapi = require('./warapi.js');
 
-
-//warapi.updateStaticTowns();
-//warapi.updateMap();
 ////SQL MANAGEMENT
-// sql.prepare("CREATE TABLE global (id TEXT PRIMARY KEY, admin TEXT, settings TEXT, techtree TEXT, fobs TEXT, requests TEXT, misc TEXT, arty TEXT, squads TEXT, refinery TEXT, production TEXT, storage TEXT, stockpiles TEXT, logi TEXT, events TEXT);").run();
-//SETTINGS: name, side, channel, secure, password
-// sql.prepare("CREATE TABLE userglobal (id TEXT PRIMARY KEY, userid TEXT, globalid TEXT, rank INT, role INT, FOREIGN KEY (userid) REFERENCES users(id), FOREIGN KEY (globalid) REFERENCES global(id));").run();
-// sql.prepare("CREATE TABLE events (region INT, date TEXT, prevItem TEXT, newItem TEXT);")
-// sql.prepare("CREATE TABLE users (id TEXT PRIMARY KEY, salt TEXT, name TEXT, avatar TEXT);").run();
-//sql.prepare("INSERT INTO users (id, salt, name, avatar) VALUES ("anonymous","anonymous","anonymous","anonymous").run();
+// sql.prepare('CREATE TABLE global (id TEXT PRIMARY KEY, admin TEXT, settings TEXT, techtree TEXT, fobs TEXT, requests TEXT, misc TEXT, arty TEXT, squads TEXT, refinery TEXT, production TEXT, storage TEXT, stockpiles TEXT, logi TEXT, events TEXT);').run();
+// sql.prepare('CREATE TABLE userglobal (id TEXT PRIMARY KEY, userid TEXT, globalid TEXT, rank INT, role INT, FOREIGN KEY (userid) REFERENCES users(id), FOREIGN KEY (globalid) REFERENCES global(id));').run();
+// sql.prepare('CREATE TABLE events (region INT, date TEXT, prevItem TEXT, newItem TEXT);').run();
+// sql.prepare('CREATE TABLE users (id TEXT PRIMARY KEY, salt TEXT, name TEXT, avatar TEXT);').run();
+// sql.prepare('INSERT INTO users (id, salt, name, avatar) VALUES ("anonymous","anonymous","anonymous","anonymous");').run();
 // warapi.pullStatic();
-
+// warapi.updateMap();
 
 //You should have gone for the HEAD
 //NO

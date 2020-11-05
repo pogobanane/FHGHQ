@@ -1,25 +1,6 @@
 // K - this file loads the HD region maps on top of the world map
 const L = require('leaflet');
-/*
-var regionNames = [,//0
-  "Deadlands", //1
-  "Endless", //2
-  "Heartlands", //3
-  "Umbral", //4
-  "Callahans", //5
-  "Weathered", //6
-  "Farranac", //7
-  "Westgate",//8
-  "Mooring",//9
-                   ,//10
-                   ,//11
-  "Fishermans",//12
-  "Great March", //13
-  "Oarbreaker",//14
-  "Reaching Trail",//15
-  "Tempest Island"//16
-]
-*/
+
 const regionCounter = 22;
 const regionNames = [
   ,

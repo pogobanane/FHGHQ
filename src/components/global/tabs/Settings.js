@@ -1,13 +1,10 @@
 // /Settings tab will be here
 import React from 'react';
 import { connect } from 'react-redux';
-import shortid from 'shortid';
 import store from '../../../redux/store';
 import U from '../useful_functions';
 import A from '../../../redux/actions';
 import socket from '../../../_static/socket';
-
-const Popover = require('react-tiny-popover');
 
 class Settings_ extends React.Component {
   handleChangeRoomName(e) {
@@ -26,12 +23,6 @@ class Settings_ extends React.Component {
     }
   }
 
-  GenerateToken() {
-    const token = shortid.generate();
-    store.dispatch(A.changeSettings('token', token));
-    socket.emit('changeSettings', 'token', token);
-  }
-
   DisconnectDiscord() {
     store.dispatch(A.deleteSettings('link'));
     socket.emit('deleteSettings', 'link');
@@ -43,19 +34,6 @@ class Settings_ extends React.Component {
   }
 
   render() {
-    // console.log("Rendering Settings");
-    let token = null;
-    if (this.props.settings.token != undefined) {
-      token = <p id="settings_token">{this.props.settings.token}</p>;
-    }
-    let discordbtn = <button className="btn" onClick={this.GenerateToken}>Generate discord token</button>;
-
-    let discordtext = null;
-    if (this.props.settings.link != undefined) {
-      const { link } = this.props.settings;
-      discordtext = `Room linked to channel #${link.channelname} on server ${link.servername}`;
-      discordbtn = <button className="btn" onClick={this.DisconnectDiscord}>Remove link to channel</button>;
-    }
     // console.log(this.props)
     const management = this.props.users.sort(U.compare).map((user) => <ManagementlistUnit key={user.id} HandleRankChange={this.HandleRankChange} user={user} myrank={this.props.myrank} />);
 
@@ -77,10 +55,7 @@ class Settings_ extends React.Component {
                   <th><h5>Change rank</h5></th>
                 </tr>
               </thead>
-              <tbody id="managetablebody">
-
-                {management}
-              </tbody>
+              <tbody id="managetablebody">{management}</tbody>
             </table>
           </div>
           <div className="col">
@@ -121,7 +96,8 @@ class Settings_ extends React.Component {
                     value="1"
                     checked={this.props.settings.secure == 1}
                     onChange={() => window.modalcontainer.ShowModal(3, 'secure')}
-                  />Secure
+                  />
+                  Secure
                 </h5>
               </label>
             </div>
@@ -148,7 +124,6 @@ class Settings_ extends React.Component {
     );
   }
 }
-// ///////////////////////////////////////////////////////////////////
 
 class ManagementlistUnit extends React.Component {
   constructor(props) {
@@ -170,7 +145,7 @@ class ManagementlistUnit extends React.Component {
   }
 
   render() {
-    const canRender = !(this.props.myrank >= this.props.user.rank || window.steamid == this.props.user.id || this.props.user.rank > 4);
+    const canAccept = !(this.props.myrank >= this.props.user.rank || window.steamid == this.props.user.id || this.props.user.rank > 4);
     const selection = [];
     let { avatar } = this.props.user;
     if (this.props.user.id.includes('anonymous')) { avatar = 'https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2Fdasd.jpg?1556805827222'; }
@@ -190,67 +165,24 @@ class ManagementlistUnit extends React.Component {
         </td>
         <td><p>{window.Ranks[this.props.user.rank]}</p></td>
         <td>
-          {canRender
-      && (
-      <select
-        value={this.props.user.rank}
-        onChange={this.ChangeSelect}
-        name="rank"
-      >
-        {selection}
-      </select>
-      )}
-          {this.props.user.rank == 5
-      && (
-      <p>
-Approve
-        <button className="approvebtn" onClick={() => this.HandleRankChange(3)}>
-          <img className="approve_img" src="https://cdn.glitch.com/6393f3fd-16a7-4641-ae3d-994f8e7cea4e%2Fcheckmark.png?1546938883091" />
-        </button>
-        <button className="approvebtn" onClick={() => this.HandleRankChange(4)}>
-          <img className="approve_img" src="https://cdn.glitch.com/6393f3fd-16a7-4641-ae3d-994f8e7cea4e%2FX%20icon%20small.png?1546753641488" />
-        </button>
-      </p>
-      )}
-        </td>
-      </tr>
-    );
-  }
-}
-
-class DiscordPopover extends React.Component { // //PROPS: handleDelete, header
-  constructor(props) {
-    super(props);
-    this.state = {
-      isPopoverOpen: false,
-    };
-  }
-
-  render() {
-    return (
-      <Popover.default
-        isOpen={this.state.isPopoverOpen}
-        position="left" // preferred position
-        onClickOutside={() => this.setState({ isPopoverOpen: false })}
-        content={(
-          <div id="settings_popover">
-            <p>
-1. Invite the bot to your channel using
-              <a href="https://discordapp.com/api/oauth2/authorize?client_id=530789519360917514&permissions=0&scope=bot">this link</a>
-            </p>
-            <p>2. Set up a channel for the bot and give the bot rights to read, write, embed and upload</p>
-            <p>
-3. In the channel, type !linkroom
-              {'<token>, where <token> is your generated token on the right'}
-            </p>
-            <p>4. If you have manage permissions in the channel, the channel will be successfully linked to the room</p>
+          {canAccept && (
+          <select value={this.props.user.rank} onChange={this.ChangeSelect} name="rank">
+            {selection}
+          </select>
+          )}
+          {this.props.user.rank == 5 && (
+          <div>
+            <p>Approve</p>
+            <button className="approvebtn" onClick={() => this.HandleRankChange(3)}>//accept
+              <img className="approve_img" src="https://cdn.glitch.com/6393f3fd-16a7-4641-ae3d-994f8e7cea4e%2Fcheckmark.png?1546938883091"/>
+            </button>
+            <button className="approvebtn" onClick={() => this.HandleRankChange(4)}>//decline
+              <img className="approve_img" src="https://cdn.glitch.com/6393f3fd-16a7-4641-ae3d-994f8e7cea4e%2FX%20icon%20small.png?1546753641488"/>
+            </button>
           </div>
           )}
-      >
-        <button id="settings_discord_explain_btn" onClick={() => this.setState({ isPopoverOpen: !this.state.isPopoverOpen })}>
-          <img id="settings_discord_explain_img" src="https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2Fabout.png?v=1554634446293" />
-        </button>
-      </Popover.default>
+        </td>
+      </tr>
     );
   }
 }

@@ -22,5 +22,7 @@
         "react"
     ],
     "rules": {
+        "react/destructuring-assignment": [1, "always", { "ignoreClassFields": true }],
+        "max-len": [1,120]
     }
 }

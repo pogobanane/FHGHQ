@@ -4,12 +4,11 @@ import { connect } from 'react-redux';
 import { IconPanel } from '../artycalc';
 import { ContextDropdown } from './context-menu';
 import { BaseLayers } from './baselayers';
-import { SelectIcon } from './controls';
 import socket from '../../../../_static/socket';
 import RegionImages from '../../../../_static/region-images';
 import store from '../../../../redux/store';
 import U from '../../useful_functions';
-import A from '../../../../redux/actions.js';
+import A from '../../../../redux/actions';
 import { FilterPanel, MapIcons } from './panel';
 import * as MapControl from './controls';
 import './map.scss';
@@ -19,7 +18,6 @@ const NativeL = require('leaflet');
 const FullscreenControl = require('react-leaflet-fullscreen');
 const LeafletControl = require('react-leaflet-control');
 const L = require('react-leaflet');
-
 
 class MapCore extends React.Component {
   shouldComponentUpdate(nextProps, nextState) {
@@ -46,7 +44,7 @@ class MapCore extends React.Component {
     const regionlabels = [];
     const active = [];
     console.log('MapsCount:', this.props.roominfo.dynamic.length);
-    console.log('InternalMaoCount:', RegionImages.regionCounter);
+    console.log('InternalMapsCount:', RegionImages.regionCounter);
     for (let i = 0; i < RegionImages.regionCounter; i++) {
       const region = this.props.roominfo.dynamic[i].regionId;
       if (this.props.roominfo.dynamic[i].active) {
@@ -170,7 +168,6 @@ class GlobalMap extends React.Component {
 
     return (
       <>
-
         <L.Map
           ref="worldmap"
           onZoomend={(event) => {
@@ -264,8 +261,7 @@ class GlobalMap extends React.Component {
               icon: 'https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2Ffdsag.png?1554889393144',
               callback: (event) => this.CreateMiscIcon(event, 0),
             },
-          ]
-}
+          ]}
         >
 
           <BaseLayers checked={this.state.satmap} />
@@ -284,9 +280,6 @@ class GlobalMap extends React.Component {
             <div id="mapcontainer_toppanel">
               <div id="mapcontainer_toppanel_filters">
                 <FilterPanel />
-                {/* <MapControl.Layers info={this.props.info} icons={this.props.icons} miscicons={miscicons}
-          zoom={this.state.zoom} ToggleSatMap={this.ToggleSatMap} satmapOn={this.state.satmap}
-    ToggleRanges={this.ToggleRanges} renderRanges={this.state.renderRanges}/> */}
               </div>
               <div id="mapcontainer_toppanel_regionpan">
                 <MapControl.RegionPan PanRegion={this.PanRegion} />
@@ -307,7 +300,7 @@ class GlobalMap extends React.Component {
           <MapControl.GridLines zoom={this.state.zoom} />
           <MapIcons zoom={this.state.zoom} />
           <MapControl.RLDComp zoom={this.state.zoom} />
-          <SelectIcon ref={(e) => { window.selecticon = e; }} />
+          <MapControl.SelectIcon ref={(e) => { window.selecticon = e; }} />
         </L.Map>
       </>
     );

@@ -1,27 +1,27 @@
 import React from 'react';
+import { connect } from 'react-redux';
 const ReactDOM = require("react-dom");
-import socket from "../../../_static/socket";
-import store from "../../../redux/store";
-import {connect} from 'react-redux';
-import U from "../useful_functions";
-import A from "../../../redux/actions";
-const rankclasses = [
-  ,
-  "row-admin", //1
-  "row-mod", //2
-  "row-user" //3
+import socket from '../../../_static/socket';
+import store from '../../../redux/store';
+import U from '../useful_functions';
+import A from '../../../redux/actions';
+
+const rankclasses = [,
+  'row-admin', // 1
+  'row-mod', // 2
+  'row-user', // 3
 ];
 
 window.userlist = {
   users: [],
-  onlineusers: []
+  onlineusers: [],
 };
 
-////////////////////////////////////////SOCKET AREA BEGINS//////////////////////////////////////////////////
-socket.on("onlineusers", function(userlist) {
-  //console.log("Online users",userlist)
+// //////////////////////////////////////SOCKET AREA BEGINS//////////////////////////////////////////////////
+socket.on('onlineusers', (userlist) => {
+  // console.log("Online users",userlist)
   window.userlist = userlist;
-  for (var i = 0; i < window.userlist.users.length; i++) {
+  for (let i = 0; i < window.userlist.users.length; i++) {
     if (window.userlist.onlineusers.includes(window.userlist.users[i].id)) {
       window.userlist.users[i].online = true;
     } else {
@@ -31,17 +31,17 @@ socket.on("onlineusers", function(userlist) {
   store.dispatch(A.setOnlineUsers(window.userlist));
 });
 
-//Updates changes of user ranks
-socket.on("updateusers", function(newusers) {
-  //console.log("Socket users",newusers)
-  for (var i = 0; i < newusers.length; i++) {
+// Updates changes of user ranks
+socket.on('updateusers', (newusers) => {
+  // console.log("Socket users",newusers)
+  for (let i = 0; i < newusers.length; i++) {
     if (window.steamid == newusers[i].id) {
-      let rank = newusers[i].rank;
+      const { rank } = newusers[i];
       if (rank > 2) {
-        let tablink = document.getElementById("managetablink");
+        const tablink = document.getElementById('managetablink');
         if (tablink != null) {
-          if (tablink.classList.contains("active")) {
-            let mainlink = document.getElementById("homehref");
+          if (tablink.classList.contains('active')) {
+            const mainlink = document.getElementById('homehref');
             mainlink.click();
           }
         }
@@ -52,28 +52,29 @@ socket.on("updateusers", function(newusers) {
   store.dispatch(A.setUsers(newusers));
 });
 
-//Transfers ownership
-socket.on("hailnewking", function(newadmin) {
+// Transfers ownership
+socket.on('hailnewking', (newadmin) => {
   store.dispatch(A.hailNewKing(newadmin));
 });
-////////////////////////////////////////SOCKET AREA ENDS//////////////////////////////////////////////////
+// //////////////////////////////////////SOCKET AREA ENDS//////////////////////////////////////////////////
 
 class UserList extends React.Component {
-  ////Component generation
+  // //Component generation
   constructor(props) {
     super(props);
   }
+
   shouldComponentUpdate(nextProps, nextState) {
-    //console.log(this.props.tab,nextProps.tab)
+    // console.log(this.props.tab,nextProps.tab)
     if (
-      JSON.stringify(this.props.tab.messagespersonal) !=
-      JSON.stringify(nextProps.tab.messagespersonal)
+      JSON.stringify(this.props.tab.messagespersonal)
+      != JSON.stringify(nextProps.tab.messagespersonal)
     ) {
       return true;
     }
     if (
-      this.props.tab.tab != nextProps.tab.tab &&
-      (this.props.tab.tab == 5 || nextProps.tab.tab == 5)
+      this.props.tab.tab != nextProps.tab.tab
+      && (this.props.tab.tab == 5 || nextProps.tab.tab == 5)
     ) {
       return true;
     }
@@ -90,17 +91,18 @@ class UserList extends React.Component {
     }
     return false;
   }
+
   render() {
     if (this.props.tab.tab == 5) {
       return null;
     }
-    //console.log("Rendering users")
-    let userlist = {
+    // console.log("Rendering users")
+    const userlist = {
       online: [],
-      offline: []
+      offline: [],
     };
-    let users = this.props.users.users;
-    for (let user of users) {
+    const { users } = this.props.users;
+    for (const user of users) {
       if (user.online) {
         userlist.online.push(user);
       } else {
@@ -109,7 +111,7 @@ class UserList extends React.Component {
     }
     userlist.online = userlist.online
       .sort(U.compare)
-      .map(user => (
+      .map((user) => (
         <UserlistUnit
           key={user.id}
           user={user}
@@ -120,7 +122,7 @@ class UserList extends React.Component {
       ));
     userlist.offline = userlist.offline
       .sort(U.compare)
-      .map(user => (
+      .map((user) => (
         <UserlistUnit
           key={user.id}
           user={user}
@@ -129,14 +131,14 @@ class UserList extends React.Component {
           tab={this.props.tab}
         />
       ));
-    //console.log('Rendering Online Users'); do you see me?ya
+    // console.log('Rendering Online Users'); do you see me?ya
     return (
       <div id="usrow" className="col-sm-12 col-lg-2 user_panel">
         <table className="usertable">
           <colgroup>
             <col width="60" />
           </colgroup>
-          <thead></thead>
+          <thead />
           <tbody id="usertablebody">{userlist.online}</tbody>
         </table>
 
@@ -144,48 +146,52 @@ class UserList extends React.Component {
           <colgroup>
             <col width="60" />
           </colgroup>
-          <thead></thead>
+          <thead />
           <tbody id="usertablebodyoffline">{userlist.offline}</tbody>
         </table>
       </div>
     );
   }
 }
-////////////////////////////////////////////////////////////
+// //////////////////////////////////////////////////////////
 class UserlistUnit extends React.Component {
-  ////Component generation
+  // //Component generation
   constructor(props) {
     super(props);
     this.state = {
-      time: 0
+      time: 0,
     };
   }
+
   componentDidMount() {
     this.interval = setInterval(
       () => this.setState({ time: Date.now() }),
-      1000
+      1000,
     );
   }
+
   componentWillUnmount() {
     clearInterval(this.interval);
   }
+
   handleSelect() {
-    //if(this.props.user.id!=window.steamid){
+    // if(this.props.user.id!=window.steamid){
     store.dispatch(A.selectUser(this.props.user.id));
-    //}
+    // }
   }
+
   render() {
-    //console.log("Rendering user",props)
-    if (this.props.user.id == "anonymous") {
+    // console.log("Rendering user",props)
+    if (this.props.user.id == 'anonymous') {
       return null;
     }
-    let statusflags = [false, false, false, false];
+    const statusflags = [false, false, false, false];
     let squadindex = 0;
     if (this.props.user.role != 0) {
       statusflags[0] = true;
     }
-    for (var obj in this.props.private.requests) {
-      let wip = this.props.private.requests[obj].wip;
+    for (const obj in this.props.private.requests) {
+      const { wip } = this.props.private.requests[obj];
       for (var i = 0; i < wip.length; i++) {
         if (wip[i].author == this.props.user.id && wip[i].request.length > 0) {
           statusflags[3] = true;
@@ -195,8 +201,8 @@ class UserlistUnit extends React.Component {
       }
     }
     for (var i = 0; i < this.props.squads.squads.length; i++) {
-      let squad = this.props.squads.squads[i];
-      for (var j = 0; j < squad.users.length; j++) {
+      const squad = this.props.squads.squads[i];
+      for (let j = 0; j < squad.users.length; j++) {
         if (this.props.user.id == squad.users[j]) {
           statusflags[1] = true;
           squadindex = i;
@@ -205,15 +211,15 @@ class UserlistUnit extends React.Component {
         }
       }
     }
-    for (var refinery in this.props.private.refinery) {
-      let ref = this.props.private.refinery[refinery];
+    for (const refinery in this.props.private.refinery) {
+      const ref = this.props.private.refinery[refinery];
       if (ref.orders != undefined) {
         if (ref.orders.length > 0) {
           for (var i = 0; i < ref.orders.length; i++) {
             if (ref.orders[i].author == this.props.user.id) {
-              let now = new Date();
+              const now = new Date();
               if (now < ref.orders[i].finishDate) {
-                //console.log("got refinery",ref)
+                // console.log("got refinery",ref)
                 statusflags[2] = true;
                 break;
                 break;
@@ -225,11 +231,11 @@ class UserlistUnit extends React.Component {
     }
 
     if (this.props.user.rank < 4) {
-      let online = " user-offline";
-      let rowclass = "user-row_offline";
+      let online = ' user-offline';
+      let rowclass = 'user-row_offline';
       if (this.props.user.online) {
-        online = " user-online";
-        rowclass = "user-row_online";
+        online = ' user-online';
+        rowclass = 'user-row_online';
       }
       let messagesicon = null;
       if (this.props.tab.messagespersonal[this.props.user.id]) {
@@ -242,7 +248,7 @@ class UserlistUnit extends React.Component {
       }
       return (
         <tr
-          className={"user-row " + rowclass}
+          className={`user-row ${rowclass}`}
           onClick={() => this.handleSelect()}
         >
           <td className="userlist_icon_cell">
@@ -251,11 +257,12 @@ class UserlistUnit extends React.Component {
                 <img
                   className="profileimg"
                   src={
-                    this.props.user.id.includes("anonymous")
-                      ? "https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2Fdasd.jpg?1556805827222"
+                    this.props.user.id.includes('anonymous')
+                      ? 'https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2Fdasd.jpg?1556805827222'
                       : this.props.user.avatar
                   }
-                ></img>{" "}
+                />
+                {' '}
               </div>
               <div className="userlist_status_container">
                 {statusflags[0] && (
@@ -292,10 +299,10 @@ class UserlistUnit extends React.Component {
               </div>
             </div>
           </td>
-          <td className={"userlist_cell " + rowclass}>
+          <td className={`userlist_cell ${rowclass}`}>
             <h6
               className={
-                "userlist_header " + rankclasses[this.props.user.rank] + online
+                `userlist_header ${rankclasses[this.props.user.rank]}${online}`
               }
             >
               {messagesicon}
@@ -304,35 +311,20 @@ class UserlistUnit extends React.Component {
           </td>
         </tr>
       );
-    } else {
-      return null;
     }
+    return null;
   }
 }
 
-function compareonline(a, b) {
-  if (a.online < b.online) return 1;
-  if (a.online > b.online) return -1;
-  return 0;
-}
-
-const mapStateToProps = store => {
-  //console.log(store)
-  let privateinfo = store.private;
+const mapStateToProps = (store) => {
+  // console.log(store)
+  const privateinfo = store.private;
   return {
     users: store.users,
     private: { requests: privateinfo.requests, refinery: privateinfo.refinery },
     squads: store.squads,
-    tab: store.tab
+    tab: store.tab,
   };
 };
-const mapStateToPropsUser = store => {
-  //console.log(store)
-  let privateinfo = store.private;
-  return {
-    users: store.users,
-    private: { requests: privateinfo.requests, refinery: privateinfo.refinery },
-    squads: store.squads
-  };
-};
+
 export default connect(mapStateToProps)(UserList);

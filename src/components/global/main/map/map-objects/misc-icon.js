@@ -142,7 +142,7 @@ class MiscIcon_ extends React.Component {
           IconText.options.iconAnchor = [-10,10]
     let addon = <L.Marker position={[obj.position.y,obj.position.x]} icon={IconText} opacity={1} zIndexOffset={1000}/>
     let icon = new markers.MiscIcon({iconUrl:markers.MiscIconArray[obj.type].url})
-    if(obj.type === 25 || obj.type === 26 || obj.type === 27 || obj.type === 28 || obj.type === 34){
+    if(obj.type === 25 || obj.type === 26 || obj.type === 27 || obj.type === 28 || obj.type === 35 || obj.type === 34){
       return this.GetArtyIcon(obj)
     }
     if(obj.type==0){

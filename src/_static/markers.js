@@ -189,6 +189,12 @@ const MiscIconArray = [
     shadow: '/_static/assets/arty/shadow_stormcannon.png',
     size: 2000,
   }, // 34
+  {
+    name: 'Big Artillary',
+    url: `${repo2}Structures/StaticArtilleryStructureIcon.png`,
+    shadow: '/_static/assets/arty/shadow_big_artillary.png',
+    size: 660,
+  }, // 35
 ];
 
 const icons = ['', // 0

@@ -49,6 +49,7 @@ export class IconPanel extends React.Component {
             {this.GetIcon(26, 'Vehicles/GunboatColonial.png')}
             {this.GetIcon(27, 'Vehicles/ArtilleryIcon.png')}
             {this.GetIcon(28, 'Structures/StaticArtilleryStructureIcon.png')}
+            {this.GetIcon(35, 'Structures/StaticArtilleryStructureIcon.png')}
             {this.GetIcon(34, 'Structures/LongRangedArtilleryIcon.png')}
           </div>
         </div>

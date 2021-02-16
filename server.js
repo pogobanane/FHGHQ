@@ -26,7 +26,7 @@ const apikey = process.env.KEY;
 // warapi.updateStaticTowns();
 
 
-http.listen(3000, () => {
+http.listen(3000, '0.0.0.0', () => {
   console.log('Your app is listening on port 3000');
 });
 // exports.listener = listener;

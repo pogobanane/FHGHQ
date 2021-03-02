@@ -187,7 +187,7 @@ const MiscIconArray = [
     name: 'Storm Cannon',
     url: `${repo2}Structures/LongRangedArtilleryIcon.png`,
     shadow: '/_static/assets/arty/shadow_stormcannon.png',
-    size: 2000,
+    size: 2500,
   }, // 34
   {
     name: 'Big Artillary',

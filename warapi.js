@@ -35,7 +35,15 @@ const regionNames = [
     "AshFieldsHex",
     "RedRiverHex",
     "ClansheadValleyHex",
-    "HowlCountryHex"
+    "HowlCountyHex",
+  "BasinSionnachHex",
+  "SpeakingWoodsHex",
+  "CallumsCapeHex",
+  "NevishLineHex",
+  "KalokaiHex",
+  "AcrithiaHex",
+  "TerminusHex",
+  "TheFingersHex"
 ] //25
 
 //Pulling dynamic data from the WarAPI

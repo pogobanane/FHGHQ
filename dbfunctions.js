@@ -28,7 +28,22 @@ let regionNames = ['DeadLandsHex', // 3
   'WeatheredExpanseHex', // 22
   'DrownedValeHex', // 23
   'ShackledChasmHex', // 24
-  'ViperPitHex']; // 25
+  'ViperPitHex',
+  "MorgensCrossingHex",
+  "OriginHex",
+    "AshFieldsHex",
+    "RedRiverHex",
+    "ClansheadValleyHex",
+    "HowlCountyHex",
+  "BasinSionnachHex",
+  "SpeakingWoodsHex",
+  "CallumsCapeHex",
+  "NevishLineHex",
+  "KalokaiHex",
+  "AcrithiaHex",
+  "TerminusHex",
+  "TheFingersHex"
+]; // 25
 function UpdateMapList() {
   const request = new XMLHttpRequest();
   request.responseType = 'json';

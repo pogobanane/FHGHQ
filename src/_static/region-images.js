@@ -1,7 +1,7 @@
 // K - this file loads the HD region maps on top of the world map
 const L = require('leaflet');
 
-const regionCounter = 22;
+const regionCounter = 22 + 14; // old + new
 const regionNames = [
   ,
   ,
@@ -29,6 +29,23 @@ const regionNames = [
   'DrownedValeHex', // 23
   'ShackledChasmHex', // 24
   'ViperPitHex', // 25
+  , // 26
+  , // 27
+  , // 28
+  "NevishLineHex", // 29
+  "AcrithiaHex", // 30
+    "RedRiverHex", // 31
+  "CallumsCapeHex",
+  "SpeakingWoodsHex",
+  "BasinSionnachHex",
+    "HowlCountyHex",
+    "ClansheadValleyHex",
+  "MorgensCrossingHex",
+  "TheFingersHex",
+  "TerminusHex",
+  "KalokaiHex",
+    "AshFieldsHex",
+  "OriginHex",
 ];
 const bounds = [[-228, 0], [-28, 256]];
 const o = { y: -128, x: 128 };
@@ -39,6 +56,8 @@ const ratio = (bounds[1][1] - bounds[0][1]) / mapwidth;
 const w = width / 5.5;
 const k = (w * Math.sqrt(3)) / 2;
 
+// the indizes of this list must match the regionId from apidata_dynamic. 
+// Don't ask me why we hardcode them here.
 const regionlist = [
   { name: '', center: [-1000, -1000] }, // 0
   { name: '', center: [-1000, -1000] }, // 1
@@ -66,6 +85,23 @@ const regionlist = [
   { name: /* The */ 'Drowned Vale', center: [o.y - 0.5 * k, o.x + 0.75 * w] }, // 23
   { name: 'Shackled Chasm', center: [o.y - 1.5 * k, o.x + 0.75 * w] }, // 24
   { name: 'Viper Pit', center: [o.y + 1.5 * k, o.x + 0.75 * w] }, // 25
+  { name: '', center: [-1000, -1000] },
+  { name: '', center: [-1000, -1000] },
+  { name: '', center: [-1000, -1000] },
+  { name: 'Nevish Line', center: [o.y + 1.5 * k, o.x - 2.25 * w] }, // 35
+  { name: 'Acrithia', center: [o.y - 2.5 * k, o.x + 0.75 * w] }, // 37
+  { name: 'Red River', center: [o.y - 2.5 * k, o.x - 0.75 * w] }, // 29
+  { name: 'Callums Cape', center: [o.y + 2 * k, o.x - 1.5 * w] }, // 34
+  { name: 'Speaking Woods', center: [o.y + 2.5 * k, o.x - 0.75 * w] }, // 33
+  { name: 'Basin Sionnach', center: [o.y + 3 * k, o.x + 0 * w] }, // 32
+  { name: 'Howl County', center: [o.y + 2.5 * k, o.x + 0.75 * w] }, // 31
+  { name: 'Clanshead Valley', center: [o.y + 2 * k, o.x + 1.5 * w] }, // 30
+  { name: 'Morgens Crossing', center: [o.y + 1.5 * k, o.x + 2.25 * w] }, // 26
+  { name: 'The Fingers', center: [o.y - 1.5 * k, o.x + 2.25 * w] }, // 39
+  { name: 'Terminus', center: [o.y - 2 * k, o.x + 1.5 * w] }, // 38
+  { name: 'Kalokai', center: [o.y - 3 * k, o.x + 0 * w] }, // 36
+  { name: 'Ash Fields', center: [o.y - 2 * k, o.x - 1.5 * w] }, // 28
+  { name: 'Origin', center: [o.y - 1.5 * k, o.x -2.25 * w] }, // 27
 ];
 
 function GetBounds(index) {

@@ -47,14 +47,14 @@ const regionNames = [
     "AshFieldsHex",
   "OriginHex",
 ];
-const bounds = [[-228, 0], [-28, 256]];
+const bounds = [[-256, 0], [0, 256]];
 const o = { y: -128, x: 128 };
 const height = bounds[1][0] - bounds[0][0];
 const width = bounds[1][1] - bounds[0][1];
 const mapwidth = 12012;
 const ratio = (bounds[1][1] - bounds[0][1]) / mapwidth;
-const w = width / 5.5;
-const k = (w * Math.sqrt(3)) / 2;
+const w = width / 6.06;
+const k = height / 7; // (w * Math.sqrt(3)) / 2;
 
 // the indizes of this list must match the regionId from apidata_dynamic. 
 // Don't ask me why we hardcode them here.

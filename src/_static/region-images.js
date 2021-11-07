@@ -34,12 +34,12 @@ const regionNames = [
   , // 28
   "NevishLineHex", // 29
   "AcrithiaHex", // 30
-    "RedRiverHex", // 31
+  "RedRiverHex", // 31
   "CallumsCapeHex",
   "SpeakingWoodsHex",
   "BasinSionnachHex",
-    "HowlCountyHex",
-    "ClansheadValleyHex",
+  "HowlCountyHex",
+  "ClansheadValleyHex",
   "MorgensCrossingHex",
   "TheFingersHex",
   "TerminusHex",

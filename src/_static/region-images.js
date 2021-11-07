@@ -47,14 +47,32 @@ const regionNames = [
     "AshFieldsHex",
   "OriginHex",
 ];
+
+/*
+ * calculus for hexagons with equal sides and angles
+ *
+ *    c
+ *   <-->
+ *   ____
+ *  /    \   ^
+ * /      \  | a
+ * \      /  |
+ *  \____/   v
+ * <------>
+ *    b
+ *
+ * 1.  f_a(c) = a = 2c/sqrt(3)
+ * 2.  f_c(a) = c = sqrt(3)*a/2
+ *
+ */
 const bounds = [[-256, 0], [0, 256]];
 const o = { y: -128, x: 128 };
 const height = bounds[1][0] - bounds[0][0];
 const width = bounds[1][1] - bounds[0][1];
-const mapwidth = 12012;
+const mapwidth = 12012; // does this number relate to a pixel-size of some image?
 const ratio = (bounds[1][1] - bounds[0][1]) / mapwidth;
-const w = width / 6.06;
-const k = height / 7; // (w * Math.sqrt(3)) / 2;
+const k = height / 7; // height of a region is the maps height devided by 7 regions (basin, ..., kalokai)
+const w = 2 * k / Math.sqrt(3); // region width depends on its height: f_c(k)
 
 // the indizes of this list must match the regionId from apidata_dynamic. 
 // Don't ask me why we hardcode them here.

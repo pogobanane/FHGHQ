@@ -32,11 +32,19 @@ const regionNames = [
 
   "MorgensCrossingHex",
   "OriginHex",
-    "AshFieldsHex",
-    "RedRiverHex",
-    "ClansheadValleyHex",
-    "HowlCountryHex"
-] //25
+  "AshFieldsHex",
+  "RedRiverHex",
+  "ClansheadValleyHex",
+  "HowlCountyHex",
+  "BasinSionnachHex",
+  "SpeakingWoodsHex",
+  "CallumsCapeHex",
+  "NevishLineHex",
+  "KalokaiHex",
+  "AcrithiaHex",
+  "TerminusHex",
+  "TheFingersHex"
+]
 
 //Pulling dynamic data from the WarAPI
 exports.updateMap= function (){

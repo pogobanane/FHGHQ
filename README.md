@@ -3,23 +3,29 @@
 The project is currently in a complete disarray, unmaintained and deprecated. Some people still use it.
 _________
 
-## Develop
+## Build
 
-- Build a docker image: `docker build -t oldhq .`
-- Run the image: `docker run -ti --init oldhq`
-
-## Production
-
-Set environment variables i.e. by creating `./mysecretenv` as environmentfile containing:
+You can set environment variables by creating `./mysecretenv` as environmentfile. Example: 
 
 ```
 KEY=90XXXXXXXXXREDACTEDXXXXXXXXXXX47
 LINK=https://example.com:3000/
 ```
 
-And don't forget to mount a `.data` folder to make the database persistent across restarts. 
+For the steam login you need to specify:
 
-Example command: `docker run -ti --init -v ./.data:/usr/src/app/.data -p 3000:3000 -e 3000 --env-file=mysecretenv oldhq`
+ - `LINK`: URL to this website ending on `/`
+ - `KEY`: steam API key (get from [steamcommunity.com/dev/apikey](http://steamcommunity.com/dev/apikey))
+
+Detailed docs for that are at [passportjs.org passport-steam](https://www.passportjs.org/packages/passport-steam/).
+
+There is also some discord bot which takes some `DISCORD_TOKEN`.
+
+Run the server with `docker-compose up`. It...
+
+- mounts the `./.data` folder to save the database at
+- exposes the service on port `1337`
+
 
 ## Shortcuts
 

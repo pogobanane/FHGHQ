@@ -1,0 +1,23 @@
+version: "2"
+services:
+  nginx:
+    image: "nginx"
+    volumes: 
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./.logs:/etc/nginx/logs
+    ports: 
+      - "1337:1337"
+    expose:
+      - "1337"
+
+  node:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    init: true # use proper init process for ordinary teardown via signals
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./.data:/app/.data
+    env_file:
+      - ./mysecretenv

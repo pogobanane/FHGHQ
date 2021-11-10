@@ -2,6 +2,8 @@
 // where your node app starts
 require('dotenv').config();
 
+// init db
+const _touchtables = require('./createtables.js');
 
 // init project
 const express = require('express');

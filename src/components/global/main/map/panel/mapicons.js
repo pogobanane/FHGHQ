@@ -91,7 +91,10 @@ class MapIcons_ extends React.Component {
               case 4:
               case 5:
               case 6:
-              case 7: //TOWNS
+              case 7: //TOWNS (removed in v0.46)
+              case 56:
+              case 57:
+              case 58: // TOWN BASES
                 if(display.objectives.towns) {
                   iconlist.push(<MO.Town key={U.signature(obj)} signature={U.signature(obj)} 
                              regionId={region} 

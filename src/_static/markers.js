@@ -309,17 +309,33 @@ const icons = ['', // 0
     n: 'Bases/MapIconRelicBase.png',
     c: 'Bases/MapIconRelicBaseColonial.png',
     w: 'Bases/MapIconRelicBaseWarden.png',
-  },
+  }, // 45
   {
     n: 'Bases/MapIconRelicBase.png',
     c: 'Bases/MapIconRelicBaseColonial.png',
     w: 'Bases/MapIconRelicBaseWarden.png',
-  },
+  }, // 46
   {
     n: 'Bases/MapIconRelicBase.png',
     c: 'Bases/MapIconRelicBaseColonial.png',
     w: 'Bases/MapIconRelicBaseWarden.png',
-  }, // RELIC BASES
+  }, // 47 RELIC BASES
+  48, 49, 50, 51, 52, 53, 54, 55,
+  {
+    n: 'Bases/MapIconTownBaseTier1.png',
+    c: 'Bases/MapIconTownBaseTier1Colonial.png',
+    w: 'Bases/MapIconTownBaseTier1Warden.png',
+  }, // 56 TOWN BASES
+  {
+    n: 'Bases/MapIconTownBaseTier2.png',
+    c: 'Bases/MapIconTownBaseTier2Colonial.png',
+    w: 'Bases/MapIconTownBaseTier2Warden.png',
+  }, // 57 TOWN BASES
+  {
+    n: 'Bases/MapIconTownBaseTier3.png',
+    c: 'Bases/MapIconTownBaseTier3Colonial.png',
+    w: 'Bases/MapIconTownBaseTier3Warden.png',
+  }, // 58 TOWN BASES
   /* {n:'',
      c:'',
      w:''}         */
@@ -391,7 +407,7 @@ function GenerateIcon(obj, param) {
     }
   } else {
     switch (obj.iconType) {
-      case 5: case 6: case 7: case 11: case 17: case 27: case 28: case 29: case 33: case 34: case 35: case 36: case 45: case 46: case 47:
+      case 5: case 6: case 7: case 11: case 17: case 27: case 28: case 29: case 33: case 34: case 35: case 36: case 45: case 46: case 47: case 56: case 57: case 58:
         if (param == 'min') {
           iconUrl = icons[obj.iconType].min[obj.teamId[0].toLowerCase()];
         } else {

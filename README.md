@@ -38,3 +38,5 @@ Run the server with `docker-compose up`. It...
 [STATIC](https://war-service-live.foxholeservices.com/api/worldconquest/maps/DeadLandsHex/static) https://war-service-live.foxholeservices.com/api/worldconquest/maps/DeadLandsHex/static
 
 [WAR REPORT](https://war-service-live.foxholeservices.com/api/worldconquest/warReport/DeadLandsHex) https://war-service-live.foxholeservices.com/api/worldconquest/warReport/DeadLandsHex
+
+a bit of [warapi documentation](https://github.com/clapfoot/warapi)

@@ -11,7 +11,9 @@ class FobPanel_ extends React.Component {
   constructor(props) {
     super(props);
     this.handleChangeLevel = this.handleChangeLevel.bind(this);
+    this.handleChangeType = this.handleChangeType.bind(this);
   }
+
   handleChangeSide(side) {
     let obj = clone(this.props.storeObj);
     obj.side = side;
@@ -22,6 +24,7 @@ class FobPanel_ extends React.Component {
       key: this.props.selected.key,
     });
   }
+
   handleChangeLevel(event) {
     let value = event.target.value;
     let obj = clone(this.props.storeObj);
@@ -37,6 +40,23 @@ class FobPanel_ extends React.Component {
       }
     }
   }
+
+  handleChangeType(event) {
+    let value = event.target.value;
+    let obj = clone(this.props.storeObj);
+    if (value == 0 || value == 1) {
+      if (obj.building_type != value) {
+        obj.building_type = value;
+        store.dispatch(A.updateObject('fobs', obj, this.props.selected.key));
+        socket.emit('updateObject', {
+          type: 'fobs',
+          object: obj,
+          key: this.props.selected.key,
+        });
+      }
+    }
+  }
+
   render() {
     let side = this.props.storeObj.side;
     let classes = [
@@ -72,6 +92,14 @@ class FobPanel_ extends React.Component {
             disabled={side == 2}
             onClick={() => this.handleChangeSide(2)}
           />
+          <select
+            value={this.props.storeObj.building_type}
+            onChange={this.handleChangeType}
+            className='fob_card_dropdown'
+          >
+            <option value={0}>FOB</option>
+            <option value={1}>BB</option>
+          </select>
           <select
             value={this.props.storeObj.level}
             onChange={this.handleChangeLevel}

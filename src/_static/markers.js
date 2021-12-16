@@ -109,27 +109,68 @@ const FobIconBase = L.Icon.extend({
 });
 const FobIcon = [
   [
-    new FobIconBase({ iconUrl: `${repo}Bases/MapIconForwardBase1.png` }), // LVL 0 NEUT
-    new FobIconBase({
-      iconUrl: `${repo}Bases/MapIconForwardBase1Colonial.png`,
-    }), // LVL 0 COL
-    new FobIconBase({ iconUrl: `${repo}Bases/MapIconForwardBase1Warden.png` }),
+    // FOB
+    [
+      new FobIconBase({ iconUrl: `${repo}Bases/MapIconForwardBase1.png` }), // LVL 0 NEUT
+      new FobIconBase({
+        iconUrl: `${repo}Bases/MapIconForwardBase1Colonial.png`,
+      }), // LVL 0 COL
+      new FobIconBase({
+        iconUrl: `${repo}Bases/MapIconForwardBase1Warden.png`,
+      }),
+    ],
+    [
+      // LVL 0 WAR
+      new FobIconBase({ iconUrl: `${repo}Bases/MapIconForwardBase2.png` }), // LVL 1 NEUT
+      new FobIconBase({
+        iconUrl: `${repo}Bases/MapIconForwardBase2Colonial.png`,
+      }), // LVL 1 COL
+      new FobIconBase({
+        iconUrl: `${repo}Bases/MapIconForwardBase2Warden.png`,
+      }),
+    ],
+    [
+      // LVL 1 WAR
+      new FobIconBase({ iconUrl: `${repo}Bases/MapIconForwardBase3.png` }), // LVL 2 NEUT
+      new FobIconBase({
+        iconUrl: `${repo}Bases/MapIconForwardBase3Colonial.png`,
+      }), // LVL 2 COL
+      new FobIconBase({
+        iconUrl: `${repo}Bases/MapIconForwardBase3Warden.png`,
+      }),
+    ],
   ],
   [
-    // LVL 0 WAR
-    new FobIconBase({ iconUrl: `${repo}Bases/MapIconForwardBase2.png` }), // LVL 1 NEUT
-    new FobIconBase({
-      iconUrl: `${repo}Bases/MapIconForwardBase2Colonial.png`,
-    }), // LVL 1 COL
-    new FobIconBase({ iconUrl: `${repo}Bases/MapIconForwardBase2Warden.png` }),
-  ],
-  [
-    // LVL 1 WAR
-    new FobIconBase({ iconUrl: `${repo}Bases/MapIconForwardBase3.png` }), // LVL 2 NEUT
-    new FobIconBase({
-      iconUrl: `${repo}Bases/MapIconForwardBase3Colonial.png`,
-    }), // LVL 2 COL
-    new FobIconBase({ iconUrl: `${repo}Bases/MapIconForwardBase3Warden.png` }),
+    // BB
+    [
+      new FobIconBase({ iconUrl: `${repo}Bases/MapIconBunkerBaseTier1.png` }), // LVL 0 NEUT
+      new FobIconBase({
+        iconUrl: `${repo}Bases/MapIconBunkerBaseTier1Colonial.png`,
+      }), // LVL 0 COL
+      new FobIconBase({
+        iconUrl: `${repo}Bases/MapIconBunkerBaseTier1Warden.png`,
+      }),
+    ],
+    [
+      // LVL 0 WAR
+      new FobIconBase({ iconUrl: `${repo}Bases/MapIconBunkerBaseTier2.png` }), // LVL 1 NEUT
+      new FobIconBase({
+        iconUrl: `${repo}Bases/MapIconBunkerBaseTier2Colonial.png`,
+      }), // LVL 1 COL
+      new FobIconBase({
+        iconUrl: `${repo}Bases/MapIconBunkerBaseTier2Warden.png`,
+      }),
+    ],
+    [
+      // LVL 1 WAR
+      new FobIconBase({ iconUrl: `${repo}Bases/MapIconBunkerBaseTier3.png` }), // LVL 2 NEUT
+      new FobIconBase({
+        iconUrl: `${repo}Bases/MapIconBunkerBaseTier3Colonial.png`,
+      }), // LVL 2 COL
+      new FobIconBase({
+        iconUrl: `${repo}Bases/MapIconBunkerBaseTier3Warden.png`,
+      }),
+    ],
   ],
 ]; // LVL 2 WAR
 

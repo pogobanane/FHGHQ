@@ -193,6 +193,7 @@ class GlobalMap extends React.Component {
       position: { x: event.latlng.lng, y: event.latlng.lat },
       side: 0,
       level: 0,
+      building_type: 0,
       notes: '',
       stockpile: {},
       lastupdate: new Date(),
@@ -268,7 +269,7 @@ class GlobalMap extends React.Component {
               callback: (event) => this.CreateMiscIcon(event, 4),
             },
             {
-              text: 'FOB',
+              text: 'FOB / BB',
               icon: 'https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2FMapIconForwardBase1.png?1554666597044',
               callback: this.CreateFob,
             },

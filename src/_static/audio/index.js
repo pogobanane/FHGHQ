@@ -1,5 +1,3 @@
 import deadlands from './deadlands';
 
-export default [
-    ...deadlands
-]
+export default [...deadlands];

@@ -40,7 +40,7 @@ socket.on('submitEvent', (packet) => {
       type: packet.type,
       date: packet.date,
       packet: packet.packet,
-    }),
+    })
   );
 });
 socket.on('submitOpTimer', (packet) => {
@@ -129,11 +129,11 @@ class Notes extends React.Component {
     if (obj == undefined || obj.notes == undefined) {
       return (
         <>
-          <div className={classname} id="cardnotes">
+          <div className={classname} id='cardnotes'>
             <textarea
-              className="card_notes_input useronly"
-              spellCheck="false"
-              value=""
+              className='card_notes_input useronly'
+              spellCheck='false'
+              value=''
               onChange={(event) => this.ChangeNotes(event)}
             />
           </div>
@@ -142,10 +142,10 @@ class Notes extends React.Component {
     }
     return (
       <>
-        <div className={classname} id="cardnotes">
+        <div className={classname} id='cardnotes'>
           <textarea
-            className="card_notes_input useronly"
-            spellCheck="false"
+            className='card_notes_input useronly'
+            spellCheck='false'
             value={obj.notes}
             onChange={(event) => this.ChangeNotes(event)}
           />
@@ -158,14 +158,14 @@ class Notes extends React.Component {
 class LastUpdate_ extends React.Component {
   render() {
     if (
-      this.props.storeObj == undefined
-      || this.props.storeObj.lastupdate == undefined
+      this.props.storeObj == undefined ||
+      this.props.storeObj.lastupdate == undefined
     ) {
       return (
         <div
-          className="card-header cardheader"
-          data-toggle="collapse"
-          href="#cardnotes"
+          className='card-header cardheader'
+          data-toggle='collapse'
+          href='#cardnotes'
         >
           Last Update: None
         </div>
@@ -196,39 +196,41 @@ class DeletePopover extends React.Component {
     return (
       <Popover.default
         isOpen={this.state.isPopoverOpen}
-        position="left" // preferred position
+        position='left' // preferred position
         onClickOutside={() => this.setState({ isPopoverOpen: false })}
-        content={(
-          <div id="submit_popover">
+        content={
+          <div id='submit_popover'>
             <p>{this.props.header}</p>
             <button
-              className="popover_submit_btn"
+              className='popover_submit_btn'
               onClick={() => this.handleDelete()}
             >
               <img
-                className="popover_submit_img"
-                src="https://cdn.glitch.com/6393f3fd-16a7-4641-ae3d-994f8e7cea4e%2Fcheckmark.png?1546938883091"
+                className='popover_submit_img'
+                src='https://cdn.glitch.com/6393f3fd-16a7-4641-ae3d-994f8e7cea4e%2Fcheckmark.png?1546938883091'
               />
             </button>
             <button
-              className="popover_submit_btn"
+              className='popover_submit_btn'
               onClick={() => this.setState({ isPopoverOpen: false })}
             >
               <img
-                className="popover_submit_img"
-                src="https://cdn.glitch.com/6393f3fd-16a7-4641-ae3d-994f8e7cea4e%2FX%20icon%20small.png?1546753641488"
+                className='popover_submit_img'
+                src='https://cdn.glitch.com/6393f3fd-16a7-4641-ae3d-994f8e7cea4e%2FX%20icon%20small.png?1546753641488'
               />
             </button>
           </div>
-        )}
+        }
       >
         <button
-          className="card_remove_btn"
-          onClick={() => this.setState({ isPopoverOpen: !this.state.isPopoverOpen })}
+          className='card_remove_btn'
+          onClick={() =>
+            this.setState({ isPopoverOpen: !this.state.isPopoverOpen })
+          }
         >
           <img
-            className="card_remove_image"
-            src="https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2FX.png?1557668374293"
+            className='card_remove_image'
+            src='https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2FX.png?1557668374293'
           />
         </button>
       </Popover.default>

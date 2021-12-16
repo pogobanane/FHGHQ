@@ -3864,7 +3864,7 @@ packages:
     resolution:
       integrity: sha512-fpoe2T0RbHwBTBUOftAfBPaDEi06ufaUai0mE6Yn1kacc3SnTErfb/h+X94VXzI64rKFHYImXSvdwGGCmwOqCA==
   /natives/1.1.6:
-    deprecated: 'This module relies on Node.js''s internals and will break at some point. Do not use it, and update to graceful-fs@4.x.'
+    deprecated: "This module relies on Node.js's internals and will break at some point. Do not use it, and update to graceful-fs@4.x."
     dev: false
     resolution:
       integrity: sha512-6+TDFewD4yxY14ptjKaS63GVdtKiES1pTPyxn9Jb0rBqPMZ7VcCiooEhPNsr+mqHtMGxa/5c/HhcC4uPEUw/nA==

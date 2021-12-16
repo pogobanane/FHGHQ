@@ -3,7 +3,8 @@ import store from '../../../../redux/store';
 import A from '../../../../redux/actions';
 import socket from '../../../../_static/socket';
 
-const repo = 'https://raw.githubusercontent.com/the-fellowship-of-the-warapi/Assets/master/Item Icons/';
+const repo =
+  'https://raw.githubusercontent.com/the-fellowship-of-the-warapi/Assets/master/Item Icons/';
 
 export class IconPanel extends React.Component {
   constructor(props) {
@@ -34,8 +35,11 @@ export class IconPanel extends React.Component {
 
   GetIcon(index, src) {
     return (
-      <button className="map_artycontrol_btn2" onClick={() => this.SpawnIcon(index)}>
-        <img className="map_artycontrol_img" src={repo + src} />
+      <button
+        className='map_artycontrol_btn2'
+        onClick={() => this.SpawnIcon(index)}
+      >
+        <img className='map_artycontrol_img' src={repo + src} />
       </button>
     );
   }
@@ -43,8 +47,8 @@ export class IconPanel extends React.Component {
   render() {
     return (
       <>
-        <div id="map_artycontrol_dropdown" className="collapse width">
-          <div id="map_artycontrol_innerdiv">
+        <div id='map_artycontrol_dropdown' className='collapse width'>
+          <div id='map_artycontrol_innerdiv'>
             {this.GetIcon(25, 'Items/MortarItemIcon.png')}
             {this.GetIcon(26, 'Vehicles/GunboatColonial.png')}
             {this.GetIcon(27, 'Vehicles/ArtilleryIcon.png')}
@@ -54,13 +58,13 @@ export class IconPanel extends React.Component {
           </div>
         </div>
         <button
-          id="map_artycontrol_btn"
+          id='map_artycontrol_btn'
           onClick={() => this.ToggleMenu()}
-          data-toggle="collapse"
-          data-target="#map_artycontrol_dropdown"
+          data-toggle='collapse'
+          data-target='#map_artycontrol_dropdown'
         >
           <img
-            id="map_artycontrol_main_img"
+            id='map_artycontrol_main_img'
             src={`${repo}Structures/StaticArtilleryStructureIcon.png`}
           />
         </button>

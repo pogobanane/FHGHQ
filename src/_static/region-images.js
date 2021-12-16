@@ -28,24 +28,24 @@ const regionNames = [
   'WeatheredExpanseHex', // 22
   'DrownedValeHex', // 23
   'ShackledChasmHex', // 24
-  'ViperPitHex', // 25
-  , // 26
-  , // 27
-  , // 28
-  "NevishLineHex", // 29
-  "AcrithiaHex", // 30
-  "RedRiverHex", // 31
-  "CallumsCapeHex",
-  "SpeakingWoodsHex",
-  "BasinSionnachHex",
-  "HowlCountyHex",
-  "ClansheadValleyHex",
-  "MorgensCrossingHex",
-  "TheFingersHex",
-  "TerminusHex",
-  "KalokaiHex",
-    "AshFieldsHex",
-  "OriginHex",
+  'ViperPitHex', // 25 // 26 // 27 // 28
+  ,
+  ,
+  ,
+  'NevishLineHex', // 29
+  'AcrithiaHex', // 30
+  'RedRiverHex', // 31
+  'CallumsCapeHex',
+  'SpeakingWoodsHex',
+  'BasinSionnachHex',
+  'HowlCountyHex',
+  'ClansheadValleyHex',
+  'MorgensCrossingHex',
+  'TheFingersHex',
+  'TerminusHex',
+  'KalokaiHex',
+  'AshFieldsHex',
+  'OriginHex',
 ];
 
 /*
@@ -65,16 +65,19 @@ const regionNames = [
  * 2.  f_c(a) = c = sqrt(3)*a/2
  *
  */
-const bounds = [[-256, 0], [0, 256]];
+const bounds = [
+  [-256, 0],
+  [0, 256],
+];
 const o = { y: -128, x: 128 };
 const height = bounds[1][0] - bounds[0][0];
 const width = bounds[1][1] - bounds[0][1];
 const mapwidth = 12012; // does this number relate to a pixel-size of some image?
 const ratio = (bounds[1][1] - bounds[0][1]) / mapwidth;
 const k = height / 7; // height of a region is the maps height devided by 7 regions (basin, ..., kalokai)
-const w = 2 * k / Math.sqrt(3); // region width depends on its height: f_c(k)
+const w = (2 * k) / Math.sqrt(3); // region width depends on its height: f_c(k)
 
-// the indizes of this list must match the regionId from apidata_dynamic. 
+// the indizes of this list must match the regionId from apidata_dynamic.
 // Don't ask me why we hardcode them here.
 const regionlist = [
   { name: '', center: [-1000, -1000] }, // 0
@@ -93,7 +96,10 @@ const regionlist = [
   { name: 'Farranac Coast', center: [o.y, o.x - 1.5 * w] }, // 13
   { name: 'Westgate', center: [o.y - k, o.x - 1.5 * w] }, // 14
   { name: "Fisherman's Row", center: [o.y - 0.5 * k, o.x - 2.25 * w] }, // 15
-  { name: /* The */ 'Oarbreaker Isles', center: [o.y + 0.5 * k, o.x - 2.25 * w] }, // 16
+  {
+    name: /* The */ 'Oarbreaker Isles',
+    center: [o.y + 0.5 * k, o.x - 2.25 * w],
+  }, // 16
   { name: 'Great March', center: [o.y - 2 * k, o.x] }, // 17
   { name: 'Tempest Island', center: [o.y - 0.5 * k, o.x + 2.25 * w] }, // 18
   { name: 'Godcrofts', center: [o.y + 0.5 * k, o.x + 2.25 * w] }, // 19
@@ -119,7 +125,7 @@ const regionlist = [
   { name: 'Terminus', center: [o.y - 2 * k, o.x + 1.5 * w] }, // 38
   { name: 'Kalokai', center: [o.y - 3 * k, o.x + 0 * w] }, // 36
   { name: 'Ash Fields', center: [o.y - 2 * k, o.x - 1.5 * w] }, // 28
-  { name: 'Origin', center: [o.y - 1.5 * k, o.x -2.25 * w] }, // 27
+  { name: 'Origin', center: [o.y - 1.5 * k, o.x - 2.25 * w] }, // 27
 ];
 
 function GetBounds(index) {

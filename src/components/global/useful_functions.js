@@ -62,7 +62,8 @@ function GetUser(users, id) {
       const user = JSON.parse(JSON.stringify(users[i]));
       user.valid = true;
       if (user.id.includes('anonymous')) {
-        user.avatar = 'https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2Fdasd.jpg?1556805827222';
+        user.avatar =
+          'https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2Fdasd.jpg?1556805827222';
       }
       return user;
     }
@@ -82,13 +83,11 @@ function GetUpdate(props) {
   // console.log("Update obj",obj)
   return (
     <div
-      className="card-header cardheader"
-      data-toggle="collapse"
-      href="#cardnotes"
+      className='card-header cardheader'
+      data-toggle='collapse'
+      href='#cardnotes'
     >
-      Last Update:
-      {' '}
-      {GetDateString(new Date(obj.lastupdate))}
+      Last Update: {GetDateString(new Date(obj.lastupdate))}
     </div>
   );
 
@@ -207,12 +206,10 @@ const GetStoreProps = (store) => {
     obj = {};
   } else if (selected.townname == 'misc') {
     obj = JSON.parse(
-      JSON.stringify(privateinfo.misc[selected.type][selected.key]),
+      JSON.stringify(privateinfo.misc[selected.type][selected.key])
     );
   } else {
-    obj = JSON.parse(
-      JSON.stringify(privateinfo[selected.type][selected.key]),
-    );
+    obj = JSON.parse(JSON.stringify(privateinfo[selected.type][selected.key]));
   }
   return {
     storeObj: obj,
@@ -234,64 +231,52 @@ const squadnumbers = [
 const roleicons = [
   {
     name: 'No role',
-    url:
-      'https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2Ftrasp.png?1557577826580',
+    url: 'https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2Ftrasp.png?1557577826580',
   },
 
   {
     name: '  Medic',
-    url:
-      'https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2F6393f3fd-16a7-4641-ae3d-994f8e7cea4eIconFilterMedical.png?1554067564203',
+    url: 'https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2F6393f3fd-16a7-4641-ae3d-994f8e7cea4eIconFilterMedical.png?1554067564203',
   },
   {
     name: '  Engineer',
-    url:
-      'https://cdn.glitch.com/6393f3fd-16a7-4641-ae3d-994f8e7cea4e%2FIconFilterUtility.png?1548935226605',
+    url: 'https://cdn.glitch.com/6393f3fd-16a7-4641-ae3d-994f8e7cea4e%2FIconFilterUtility.png?1548935226605',
   },
   {
     name: '  Scrapper',
-    url:
-      'https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2F98ac14b2-4603-4541-b92e-320b855d2e65SledgeHammerItemIcon.png?1554067559208',
+    url: 'https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2F98ac14b2-4603-4541-b92e-320b855d2e65SledgeHammerItemIcon.png?1554067559208',
   },
   {
     name: '  Rifleman',
-    url:
-      'https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2F98ac14b2-4603-4541-b92e-320b855d2e65RifleItemIcon.png?1554067557676',
+    url: 'https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2F98ac14b2-4603-4541-b92e-320b855d2e65RifleItemIcon.png?1554067557676',
   },
   {
     name: '  Sniper',
-    url:
-      'https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2F98ac14b2-4603-4541-b92e-320b855d2e65SniperRifleItemIcon.png?1554067559653',
+    url: 'https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2F98ac14b2-4603-4541-b92e-320b855d2e65SniperRifleItemIcon.png?1554067559653',
   },
   {
     name: '  Machine Gunner',
-    url:
-      'https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2F98ac14b2-4603-4541-b92e-320b855d2e65HeavyMachineGunIcon.png?1554067573521',
+    url: 'https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2F98ac14b2-4603-4541-b92e-320b855d2e65HeavyMachineGunIcon.png?1554067573521',
   },
   {
     name: '  Grenadier',
-    url:
-      'https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2F98ac14b2-4603-4541-b92e-320b855d2e65GrenadeItemIcon.png?1554067573845',
+    url: 'https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2F98ac14b2-4603-4541-b92e-320b855d2e65GrenadeItemIcon.png?1554067573845',
   },
   {
     name: '  RPG',
-    url:
-      'https://cdn.glitch.com/6393f3fd-16a7-4641-ae3d-994f8e7cea4e%2FRpgItemIcon.png?1548192480952',
+    url: 'https://cdn.glitch.com/6393f3fd-16a7-4641-ae3d-994f8e7cea4e%2FRpgItemIcon.png?1548192480952',
   },
   {
     name: '  Artillery Crew',
-    url:
-      'https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2FField_Artillery.png?1555248898255',
+    url: 'https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2FField_Artillery.png?1555248898255',
   },
   {
     name: '  Sailor',
-    url:
-      'https://cdn.glitch.com/6393f3fd-16a7-4641-ae3d-994f8e7cea4e%2FMapIconShipyard.png?1547280455531',
+    url: 'https://cdn.glitch.com/6393f3fd-16a7-4641-ae3d-994f8e7cea4e%2FMapIconShipyard.png?1547280455531',
   },
   {
     name: '  Vehicle Crew',
-    url:
-      'https://cdn.glitch.com/6393f3fd-16a7-4641-ae3d-994f8e7cea4e%2FPistolItemIcon.png?v=1548192477296',
+    url: 'https://cdn.glitch.com/6393f3fd-16a7-4641-ae3d-994f8e7cea4e%2FPistolItemIcon.png?v=1548192477296',
   },
 ];
 // ///////////////////////////////////////////////////////////////////////////
@@ -300,17 +285,7 @@ function GetShortDate(date) {
   datestring = datestring.split(' ');
   let timestring = new Date(date).toLocaleTimeString();
   timestring = timestring.split(':');
-  return (
-    `${datestring[1]
-    } ${
-      datestring[2]
-    } ${
-      datestring[3]
-    } ${
-      timestring[0]
-    }:${
-      timestring[1]}`
-  );
+  return `${datestring[1]} ${datestring[2]} ${datestring[3]} ${timestring[0]}:${timestring[1]}`;
 }
 // ////////////////////////////
 function FormatNumber(x) {

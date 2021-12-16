@@ -18,58 +18,91 @@ function Tabs(props) {
   }
   let requestpill = null;
   if (requestcounter > 0) {
-    requestpill = <p className="badge badge-pill" id="requestcounter">{requestcounter}</p>;
+    requestpill = (
+      <p className='badge badge-pill' id='requestcounter'>
+        {requestcounter}
+      </p>
+    );
   }
   let messagepill = null;
   if (props.tab.messages > 0) {
-    messagepill = <p className="badge badge-pill" id="messagecounter">{props.tab.messages}</p>;
+    messagepill = (
+      <p className='badge badge-pill' id='messagecounter'>
+        {props.tab.messages}
+      </p>
+    );
   }
   return (
-    <ul className="nav nav-tabs" role="tablist">
-      <li className="nav-item" id="hometab" onClick={() => store.dispatch(A.selectTab(0))}>
-        <a id="homehref" className="nav-link active" data-toggle="tab" href="#home">
+    <ul className='nav nav-tabs' role='tablist'>
+      <li
+        className='nav-item'
+        id='hometab'
+        onClick={() => store.dispatch(A.selectTab(0))}
+      >
+        <a
+          id='homehref'
+          className='nav-link active'
+          data-toggle='tab'
+          href='#home'
+        >
           <img
-            className="nav_image"
-            src="https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2Fdadf1.png?v=1560105039857"
+            className='nav_image'
+            src='https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2Fdadf1.png?v=1560105039857'
           />
         </a>
       </li>
-      <li className="nav-item" id="chat" onClick={() => store.dispatch(A.selectTab(7))}>
-        <a className="nav-link" data-toggle="tab" href="#home">
+      <li
+        className='nav-item'
+        id='chat'
+        onClick={() => store.dispatch(A.selectTab(7))}
+      >
+        <a className='nav-link' data-toggle='tab' href='#home'>
           <img
-            className="nav_image"
-            src="https://cdn.glitch.com/84b19724-a86b-4caa-8e69-1e9c973e043f%2FIconFacilitiesRadioStation3.png?v=1565529795969"
+            className='nav_image'
+            src='https://cdn.glitch.com/84b19724-a86b-4caa-8e69-1e9c973e043f%2FIconFacilitiesRadioStation3.png?v=1565529795969'
           />
         </a>
         {messagepill}
       </li>
-      <li className="nav-item" id="squad" onClick={() => store.dispatch(A.selectTab(1))}>
-        <a className="nav-link" data-toggle="tab" href="#squadtab">
+      <li
+        className='nav-item'
+        id='squad'
+        onClick={() => store.dispatch(A.selectTab(1))}
+      >
+        <a className='nav-link' data-toggle='tab' href='#squadtab'>
           <img
-            className="nav_image"
-            src="https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2FIconFacilitiesLargeGarrison.png?v=1560375757858"
+            className='nav_image'
+            src='https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2FIconFacilitiesLargeGarrison.png?v=1560375757858'
           />
         </a>
       </li>
-      <li className="nav-item" id="refi" onClick={() => store.dispatch(A.selectTab(2))}>
+      <li
+        className='nav-item'
+        id='refi'
+        onClick={() => store.dispatch(A.selectTab(2))}
+      >
         <a
-          id="refineryhref"
-          className="nav-link"
-          data-toggle="tab"
-          href="#refinery"
+          id='refineryhref'
+          className='nav-link'
+          data-toggle='tab'
+          href='#refinery'
           onClick={() => store.dispatch(A.selectTab(2))}
         >
           <img
-            className="nav_image"
-            src="https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2Fref.png?1556809275423"
+            className='nav_image'
+            src='https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2Fref.png?1556809275423'
           />
         </a>
       </li>
-      <li className="nav-item" id="logi" onClick={() => store.dispatch(A.selectTab(3))}>
-        <a className="nav-link" data-toggle="tab" href="#logicalc">
+      <li
+        className='nav-item'
+        id='logi'
+        onClick={() => store.dispatch(A.selectTab(3))}
+      >
+        <a className='nav-link' data-toggle='tab' href='#logicalc'>
           <img
-            className="nav_image"
-            src="https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2Flogi.png?1554636831579"
+            className='nav_image'
+            src='https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2Flogi.png?1554636831579'
           />
         </a>
       </li>
@@ -80,23 +113,41 @@ function Tabs(props) {
       {/*  <a className="nav-link" data-toggle="tab" href="#statstab"><img className="nav_image" src="https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2Fsta0.png?v=1557932324597" /></a> */}
       {/* </li> */}
 
-      {props.users.myrank < 3
-        && (
-        <li className="nav-item" id="managetab" onClick={() => store.dispatch(A.selectTab(6))}>
-          <a id="managetablink" className="nav-link" data-toggle="tab" href="#manage">
+      {props.users.myrank < 3 && (
+        <li
+          className='nav-item'
+          id='managetab'
+          onClick={() => store.dispatch(A.selectTab(6))}
+        >
+          <a
+            id='managetablink'
+            className='nav-link'
+            data-toggle='tab'
+            href='#manage'
+          >
             <img
-              className="nav_image"
-              src="https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2Fsetting.png?1554570996253"
+              className='nav_image'
+              src='https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2Fsetting.png?1554570996253'
             />
           </a>
           {requestpill}
         </li>
-        )}
-      <li id="tabs_op_timer_li"><OpTimer /></li>
-      <li id="tabs_totalresources"><TotalResources /></li>
-      <li id="tabs_totalplayers"><TotalPlayers /></li>
-      <li id="tabs_meta_li"><Meta /></li>
-      <li><Top /></li>
+      )}
+      <li id='tabs_op_timer_li'>
+        <OpTimer />
+      </li>
+      <li id='tabs_totalresources'>
+        <TotalResources />
+      </li>
+      <li id='tabs_totalplayers'>
+        <TotalPlayers />
+      </li>
+      <li id='tabs_meta_li'>
+        <Meta />
+      </li>
+      <li>
+        <Top />
+      </li>
     </ul>
   );
 }
@@ -114,7 +165,8 @@ class OpTimer_ extends React.Component {
     if (day < 10) {
       day = `0${day}`;
     }
-    this.state = { // /State
+    this.state = {
+      // /State
       date: `${date.getFullYear()}-${month}-${day}`,
       time: '00:00',
       timer: 0,
@@ -126,13 +178,15 @@ class OpTimer_ extends React.Component {
   }
 
   componentDidMount() {
-    this.interval = setInterval(() => this.setState({ timer: Date.now() }), 1000);
+    this.interval = setInterval(
+      () => this.setState({ timer: Date.now() }),
+      1000
+    );
   }
 
   componentWillUnmount() {
     clearInterval(this.interval);
   }
-
 
   handleSetDate(event) {
     const { value } = event.target;
@@ -186,7 +240,20 @@ class OpTimer_ extends React.Component {
         return num;
       }
 
-      const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+      const months = [
+        'Jan',
+        'Feb',
+        'Mar',
+        'Apr',
+        'May',
+        'Jun',
+        'Jul',
+        'Aug',
+        'Sep',
+        'Oct',
+        'Nov',
+        'Dec',
+      ];
       const day = addZero(date.getDate());
       const month = months[date.getMonth()];
       const hour = date.getHours();
@@ -212,40 +279,51 @@ class OpTimer_ extends React.Component {
         totalstring = `OP started since ${time}`;
       }
       if (time == '00:01:00:00' && timerdate > now) {
-        window.soundcontrol.PlaySingle('https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2FOP.mp3?1559289539656');
+        window.soundcontrol.PlaySingle(
+          'https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2FOP.mp3?1559289539656'
+        );
       }
     }
     return (
-      <div className="dropdown">
-        <button type="button" id="op_timer_container" data-toggle="dropdown">
+      <div className='dropdown'>
+        <button type='button' id='op_timer_container' data-toggle='dropdown'>
           {totalstring}
         </button>
-        <div className="dropdown-menu" id="op_timer_dropdown">
-          <span id="op_timer_date_span">{date}</span>
-          <div className="op_timer_input_div">
+        <div className='dropdown-menu' id='op_timer_dropdown'>
+          <span id='op_timer_date_span'>{date}</span>
+          <div className='op_timer_input_div'>
             <input
-              type="date"
-              id="op_timer_calendar"
+              type='date'
+              id='op_timer_calendar'
               value={this.state.date}
               onChange={this.handleSetDate}
-              min="2019-01-01"
+              min='2019-01-01'
             />
             <InputMask
-              id="op_timer_inputmask"
+              id='op_timer_inputmask'
               value={this.state.time}
-              mask="99:99"
-              maskChar=" "
-              placeholder="00:00"
+              mask='99:99'
+              maskChar=' '
+              placeholder='00:00'
               onChange={this.handleChangeTime}
             />
           </div>
-          <div className="op_timer_input_div">
-            <button type="button" className="btn" id="op_timer_submitbtn" onClick={this.submitTimer}>
-Set timer
+          <div className='op_timer_input_div'>
+            <button
+              type='button'
+              className='btn'
+              id='op_timer_submitbtn'
+              onClick={this.submitTimer}
+            >
+              Set timer
             </button>
-            <button type="button" className="btn" id="op_timer_removebtn" onClick={this.deleteTimer}>
-Remove
-                        timer
+            <button
+              type='button'
+              className='btn'
+              id='op_timer_removebtn'
+              onClick={this.deleteTimer}
+            >
+              Remove timer
             </button>
           </div>
         </div>
@@ -255,13 +333,14 @@ Remove
 }
 
 const mapStateToProps = (store) =>
-// console.log(store)
+  // console.log(store)
   ({
     users: store.users,
     tab: store.tab,
   });
 
-const mapStateToPropsOpTimer = (store) => { // Importing props from store
+const mapStateToPropsOpTimer = (store) => {
+  // Importing props from store
   const { meta } = store;
   return {
     settings: meta.settings,
@@ -295,39 +374,44 @@ class Top_ extends React.Component {
     }
     // console.log(this.props.users.users)
     if (window.steamid.includes('anonymous')) {
-      profile.avatar = 'https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2Fdasd.jpg?1556805827222';
+      profile.avatar =
+        'https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2Fdasd.jpg?1556805827222';
     }
 
     window.myname = profile.name;
     return (
-      <div className="dropdown">
+      <div className='dropdown'>
         <button
-          type="button"
-          id="profile_dropdown_btn"
-          className="btn btn-primary dropdown-toggle"
-          data-toggle="dropdown"
+          type='button'
+          id='profile_dropdown_btn'
+          className='btn btn-primary dropdown-toggle'
+          data-toggle='dropdown'
         >
-          <img className="profileimg" src={profile.avatar} />
+          <img className='profileimg' src={profile.avatar} />
         </button>
-        <div className="dropdown-menu dropdown-menu-right">
-          <div id="top_dropdown_namespan">
-            <img
-              className="profileimg"
-              src={profile.avatar}
-            />
-            {window.steamid.includes('anonymous') ? ` ${profile.name}`
-              : (
-                <a
-                  href={`https://steamcommunity.com/profiles/${window.steamid}`}
-                  target="_blank"
-                >
-                  {` ${profile.name}`}
-                </a>
-              )}
+        <div className='dropdown-menu dropdown-menu-right'>
+          <div id='top_dropdown_namespan'>
+            <img className='profileimg' src={profile.avatar} />
+            {window.steamid.includes('anonymous') ? (
+              ` ${profile.name}`
+            ) : (
+              <a
+                href={`https://steamcommunity.com/profiles/${window.steamid}`}
+                target='_blank'
+              >
+                {` ${profile.name}`}
+              </a>
+            )}
           </div>
-          <a className="dropdown-item" href="#" onClick={this.LogOut}>Log Out</a>
-          <a className="dropdown-item" href="/">Profile</a>
-          <a className="dropdown-item" href="/about">About</a>
+          <a className='dropdown-item' href='#' onClick={this.LogOut}>
+            Log Out
+          </a>
+          <a className='dropdown-item' href='/'>
+            Profile
+          </a>
+          <a className='dropdown-item' href='/about'>
+            About
+          </a>
         </div>
       </div>
     );
@@ -342,8 +426,8 @@ class TotalPlayers_ extends React.Component {
 
   render() {
     return (
-      <p id="top_banner_playersonline">
-Online:
+      <p id='top_banner_playersonline'>
+        Online:
         {this.props.totalplayers}
       </p>
     );
@@ -369,7 +453,8 @@ class TotalResources_ extends React.Component {
     for (const user in this.props.reftotal) {
       for (let i = 0; i < resource.length; i++) {
         if (this.props.reftotal[user][i] != undefined) {
-          resource[i] = Number(resource[i]) + Number(this.props.reftotal[user][i]);
+          resource[i] =
+            Number(resource[i]) + Number(this.props.reftotal[user][i]);
         }
       }
     }
@@ -381,30 +466,36 @@ class TotalResources_ extends React.Component {
         text = resource[i];
         imgclass = 'top_banner_resources_img';
       }
-      resourcetds.push(<div key={i}>
-        <span>
-          <img className={imgclass} src={imglinks[i]} />
-          {text}
-        </span>
-      </div>);
+      resourcetds.push(
+        <div key={i}>
+          <span>
+            <img className={imgclass} src={imglinks[i]} />
+            {text}
+          </span>
+        </div>
+      );
     }
-    return <div id="top_banner_resources">{resourcetds}</div>;
+    return <div id='top_banner_resources'>{resourcetds}</div>;
   }
 }
 
-const mapStateToPropsRefTotal = (store) => { // Importing props from store
+const mapStateToPropsRefTotal = (store) => {
+  // Importing props from store
   const privateinfo = store.private;
   return {
     reftotal: privateinfo.misc.reftotal,
   };
 };
-const mapStateToPropsUsers = (store) => // Importing props from store
-// console.log(store)
+const mapStateToPropsUsers = (
+  store // Importing props from store
+) =>
+  // console.log(store)
   ({
     users: store.users,
   });
 
-const mapStateToPropsPlayers = (store) => { // Importing props from store
+const mapStateToPropsPlayers = (store) => {
+  // Importing props from store
   const { roominfo } = store;
   const { stats } = roominfo;
   return {

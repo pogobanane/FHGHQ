@@ -106,7 +106,15 @@ const deleteObject = (kind, signature) => ({
 });
 
 const SELECT_OBJECT = 'SELECT_OBJECT';
-const selectObject = (objtype, signature, townname, misctype, refinery, production, storage) => {
+const selectObject = (
+  objtype,
+  signature,
+  townname,
+  misctype,
+  refinery,
+  production,
+  storage
+) => {
   if (townname == undefined) {
     townname = '';
   }
@@ -159,7 +167,6 @@ const updateTech = (techtree) => ({
   techtree,
 });
 
-
 const ADD_ARTY_RESULT = 'ADD_ARTY_RESULT';
 const addArtyResult = (totalstring) => ({
   type: ADD_ARTY_RESULT,
@@ -183,7 +190,6 @@ const SUBMIT_OPTIMER = 'SUBMIT_OPTIMER';
 const submitOpTimer = (date) => ({
   type: SUBMIT_OPTIMER,
   date,
-
 });
 
 const DELETE_OPTIMER = 'DELETE_OPTIMER';

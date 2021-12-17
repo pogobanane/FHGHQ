@@ -1,10 +1,12 @@
 [
     {
+      "comment": "downloaded from https://foxholelogi.com/ and added imgPath as icon from github.com/foxholetools/assets",
       "displayId": 0,
       "faction": [
         "warden"
       ],
       "imgName": "Cascadier_873.png",
+      "imgPath": "icons/items/pistollightwitem.png",
       "itemName": "Cascadier 873",
       "itemDesc": "This unique sidearm fires in three-round bursts. The Cascadier may not have the stopping power of its cousins, but it more than makes up for it with its lightweight frame, concealability, and fire rate.",
       "itemCategory": "small_arms",
@@ -24,6 +26,7 @@
         "warden"
       ],
       "imgName": "8mm.png",
+      "imgPath": "icons/items/pistolammoitem.png",
       "itemName": "8mm",
       "itemDesc": "Standard ammunition for pistols.",
       "itemCategory": "small_arms",
@@ -42,6 +45,7 @@
         "warden"
       ],
       "imgName": "Cometa_T2_9.png",
+      "imgPath": "icons/items/revolveritem.png",
       "itemName": "Cometa T2-9",
       "itemDesc": "The Cometa T2-9 boasts remarkable stopping power for a sidearm. This Estrellan mainstay has lived through several generations due to its fine craftsmanship design.",
       "itemCategory": "small_arms",
@@ -60,6 +64,7 @@
         "warden"
       ],
       "imgName": "The_Hangman_757.png",
+      "imgPath": "icons/items/revolvingriflewitem.png",
       "itemName": "The Hangman 757",
       "itemDesc": "The weapon of choice for pirates and smugglers, its legend is well-earned. With incredibly high stopping power and unique revolver mechanism, the Hangman often playes judge, jury, and executioner.",
       "itemCategory": "small_arms",
@@ -79,6 +84,7 @@
         "warden"
       ],
       "imgName": "44.png",
+      "imgPath": "icons/items/revolverammoitem.png",
       "itemName": ".44",
       "itemDesc": "Standard ammunition for revolvers.",
       "itemCategory": "small_arms",
@@ -96,6 +102,7 @@
         "warden"
       ],
       "imgName": "No_2_Loughcaster.png",
+      "imgPath": "icons/items/rifleitem.png",
       "itemName": "No.2 Loughcaster",
       "itemDesc": "Standard-issue Warden rifle. This bolt-action firearm is as robust as they come and has seen over a century of use on the battlefield.",
       "itemCategory": "small_arms",
@@ -114,6 +121,7 @@
         "warden"
       ],
       "imgName": "Blakerow_871.png",
+      "imgPath": "icons/items/carbineitem.png",
       "itemName": "Blakerow 871",
       "itemDesc": "The Blakerow is a carbine with a high rate of fire compared to its bolt-action predecessor. This increased fire rate does come at the cost of innate stopping power; however, its versatility and lightweight frame more than makes up for any perceived shortcomings.",
       "itemCategory": "small_arms",
@@ -132,6 +140,7 @@
         "warden"
       ],
       "imgName": "Clancy_Cinder_M3.png",
+      "imgPath": "icons/items/riflelongw.png",
       "itemName": "Clancy Cinder M3",
       "itemDesc": "The Clancy Cinder is a classic, high-powered long rifle designed for use in mid-to-long range encounters. First deployed with the Hands during a high-risk operation in Acrithia.",
       "itemCategory": "small_arms",
@@ -150,6 +159,7 @@
         "warden"
       ],
       "imgName": "Sampo_Auto_Rifle_77.png",
+      "imgPath": "icons/items/rifleautomaticw.png",
       "itemName": "Sampo Auto-Rifle 77",
       "itemDesc": "The precursor to the storm rifle, the Sampo Auto-Rifle, is a mastercraft of its day. With a single shot and automatic fire mode, this versatile rifle may not reach the fire rates of automatic weapons but more than makes up for it with utility.",
       "itemCategory": "small_arms",
@@ -168,6 +178,7 @@
         "colonial"
       ],
       "imgName": "Argenti_R_II.png",
+      "imgPath": "icons/items/riflecitem.png",
       "itemName": "Argenti r.II Rifle",
       "itemDesc": "The primary infantry rifle of the Colonial legion. Its predecessor, the Volta repeater, was a sturdy, reliable firearm but had many limitations, namely, fire rate. The Argenti solves this limitation as well as being more compact and lightweight.",
       "itemCategory": "small_arms",
@@ -186,6 +197,7 @@
         "colonial"
       ],
       "imgName": "Fuscina_pi_I.png",
+      "imgPath": "icons/items/riflelightcitem.png",
       "itemName": "Fuscina pi.I",
       "itemDesc": "This unique rifle fires three rounds in rapid succession. The Fuscina is the first of its kind, designed for laying down suppressive fire during assaults on fortified enemy entrenchments.",
       "itemCategory": "small_arms",
@@ -204,6 +216,7 @@
         "colonial"
       ],
       "imgName": "KRR2_790_Omen.png",
+      "imgPath": "icons/items/riflelongc.png",
       "itemName": "KRR2-790 Omen",
       "itemDesc": "An older but reliable model of Kraunian long rifle. The Omen is a sturdy, simple weapon best used in long-distance skirmishes.",
       "itemCategory": "small_arms",
@@ -222,6 +235,7 @@
         "colonial"
       ],
       "imgName": "Volta_r_I_Repeater.png",
+      "imgPath": "icons/items/rifleheavycitem.png",
       "itemName": "Volta r.I Repeater",
       "itemDesc": "An old war Mesean rifle. It boasts high stopping power, but not as accurate as its modern variant. A weapon of legend, the Howling Lions wielded the Volta during their raid on the beaches of Fisherman's Row.",
       "itemCategory": "small_arms",
@@ -241,6 +255,7 @@
         "warden"
       ],
       "imgName": "7_62mm.png",
+      "imgPath": "icons/items/rifleammoitem.png",
       "itemName": "7.62mm",
       "itemDesc": "Standard ammunition for rifles.",
       "itemCategory": "small_arms",
@@ -258,6 +273,7 @@
         "warden"
       ],
       "imgName": "Fiddler_Submachine_Gun_Model_868.png",
+      "imgPath": "icons/items/submachinegun.png",
       "itemName": "Fiddler Submachine Gun Model 868",
       "itemDesc": "The Fiddler Submachine gun is a widely used urban combat weapon. Its high rate of fire and compact frame makes it ideal for close-quarters engagements.",
       "itemCategory": "small_arms",
@@ -276,6 +292,7 @@
         "warden"
       ],
       "imgName": "No_1_The_Liar_Submachine_Gun.png",
+      "imgPath": "icons/items/smgheavywitem.png",
       "itemName": "No.1 \"The Liar\" Submachinegun",
       "itemDesc": "This unique, heavy-duty submachine gun is not very useful on the run, but with careful aim and adequate cover, becomes a razorblade in the night.",
       "itemCategory": "small_arms",
@@ -294,6 +311,7 @@
         "colonial"
       ],
       "imgName": "The_Pitch_Gun_mc_V.png",
+      "imgPath": "icons/items/smgcitem.png",
       "itemName": "\"The Pitch Gun\" mc. V",
       "itemDesc": "This classic submachine gun is sturdy and irreplaceable as a general tool for close-range engagements. The \"Pitch Gun\" earned its namesake from Mesean sailors who employed the weapon to successfully defend against a night raid on the Geraston docks.",
       "itemCategory": "small_arms",
@@ -312,6 +330,7 @@
         "colonial"
       ],
       "imgName": "Lionclaw_mc_VIII.png",
+      "imgPath": "icons/items/smgheavycitem.png",
       "itemName": "\"Lionclaw\" mc.VIII",
       "itemDesc": "A heavier, modern variation of the Pitch Gun, the Lionclaw Performs well as a decent, all-around submachine gun designed as a primary firearm in urban and close-quarters combat operations.",
       "itemCategory": "small_arms",
@@ -331,6 +350,7 @@
         "warden"
       ],
       "imgName": "9mm_SMG.png",
+      "imgPath": "icons/items/submachinegunammo.png",
       "itemName": "9mm SMG",
       "itemDesc": "Standard ammunition for submachine guns.",
       "itemCategory": "small_arms",
@@ -349,6 +369,7 @@
         "warden"
       ],
       "imgName": "Brasa_Shotgun.png",
+      "imgPath": "icons/items/shotgunitem.png",
       "itemName": "Brasa Shotgun",
       "itemDesc": "This close-range firearm is an Estrellan import originally designed for hunting wild game. The Brasa is primarily used in urban operations.",
       "itemCategory": "small_arms",
@@ -368,6 +389,7 @@
         "warden"
       ],
       "imgName": "Buckshot.png",
+      "imgPath": "icons/items/shotgunammoitem.png",
       "itemName": "Buckshot",
       "itemDesc": "Standard ammunition for Shotguns.",
       "itemCategory": "small_arms",
@@ -385,6 +407,7 @@
         "warden"
       ],
       "imgName": "Aalto_Storm_Rifle_24.png",
+      "imgPath": "icons/items/assaultrifleitem.png",
       "itemName": "Aalto Storm Rifle 24",
       "itemDesc": "Widely considered to be the first storm rifle, the Aalto is a marvel in Caoivish engineering. With its two fire modes, it can be used as a rapid-fire assault weapon or a mid-range rifle.",
       "itemCategory": "small_arms",
@@ -403,6 +426,7 @@
         "warden"
       ],
       "imgName": "Booker_Storm_Rifle_Model_838.png",
+      "imgPath": "icons/items/assaultrifleheavywitem.png",
       "itemName": "Booker Storm Rifle Model 838",
       "itemDesc": "The Booker is a high-impact three-round burst Storm Rifle for those who like to shoot first.",
       "itemCategory": "small_arms",
@@ -421,6 +445,7 @@
         "colonial"
       ],
       "imgName": "Catara_mo_II.png",
+      "imgPath": "icons/items/lightmachinegun.png",
       "itemName": "Catara mo.II",
       "itemDesc": "A titanic light machine gun capable of scattering infantry lines with ease, the Catara is a modern weapon for the modern Colonial.",
       "itemCategory": "small_arms",
@@ -439,6 +464,7 @@
         "colonial"
       ],
       "imgName": "Dusk_ce_III.png",
+      "imgPath": "icons/items/assaultrifleheavycitem.png",
       "itemName": "\"Dusk\" ce.III",
       "itemDesc": "This unique assault rifle includes a high-capacity drum magazine designed for sustained rapid fire.",
       "itemCategory": "small_arms",
@@ -458,6 +484,7 @@
         "warden"
       ],
       "imgName": "7_92mm.png",
+      "imgPath": "icons/items/assaultrifleammoitem.png",
       "itemName": "7.92mm",
       "itemDesc": "Standard ammunition for storm rifles, light machine guns, and armored cars.",
       "itemCategory": "small_arms",
@@ -475,6 +502,7 @@
         "warden"
       ],
       "imgName": "Clancy_Raca_M4.png",
+      "imgPath": "icons/items/sniperrifleitem.png",
       "itemName": "Clancy-Raca M4",
       "itemDesc": "A heavy-duty, long-range marksman rifle. The Clancy-Raca has one hell of a kick but is fitted with a powerful scope, allowing infantry to survey the battlefield and provide support from a safe location.",
       "itemCategory": "small_arms",
@@ -494,6 +522,7 @@
         "colonial"
       ],
       "imgName": "KRR3_792_Auger.png",
+      "imgPath": "icons/items/sniperriflecitem.png",
       "itemName": "KRR3-792 Auger",
       "itemDesc": "A Kraunian rifle modified for long-range engagements. It doesn't have the range or stopping power of other marksman rifles but more than makes up for it with unmatched reliability in a range of environments and a superior effective rate of fire.",
       "itemCategory": "small_arms",
@@ -514,6 +543,7 @@
         "warden"
       ],
       "imgName": "8_5mm.png",
+      "imgPath": "icons/items/sniperrifleammoitem.png",
       "itemName": "8.5mm",
       "itemDesc": "Standard ammunition for sniper rifles.",
       "itemCategory": "small_arms",
@@ -531,6 +561,7 @@
         "colonial"
       ],
       "imgName": "KRN886_127_Gast_Machine_Gun.png",
+      "imgPath": "icons/items/mgcitem.png",
       "itemName": "KRN886-127 Gast Machine Gun",
       "itemDesc": "The Gast is a deadly but cumbersome Kraunian heavy machine gun. It is best suited to holding and defending established fortifications or garrisoned structures against encroaching infantry.",
       "itemCategory": "small_arms",
@@ -550,6 +581,7 @@
         "warden"
       ],
       "imgName": "Malone_MK_2.png",
+      "imgPath": "icons/items/mgwitem.png",
       "itemName": "Malone MK.2",
       "itemDesc": "This heavy machine gun is bulky enough to require a steady surface to maintain stability. The Malone series of machine guns are unmatched defenders on the battlefield.",
       "itemCategory": "small_arms",
@@ -569,6 +601,7 @@
         "warden"
       ],
       "imgName": "12_7mm.png",
+      "imgPath": "icons/items/machinegunammo.png",
       "itemName": "12.7mm",
       "itemDesc": "Standard ammunition for all machine guns, including vehicle mounted weapons like those on the half-track and battle tank.",
       "itemCategory": "small_arms",
@@ -586,6 +619,7 @@
         "warden"
       ],
       "imgName": "PT_815_Smoke_Grenade.png",
+      "imgPath": "icons/items/smokegrenadeicon1.png",
       "itemName": "PT-815 Smoke Grenade",
       "itemDesc": "A standard smoke grenade designed for concealing allied movement or screening the enemy's vision.",
       "itemCategory": "small_arms",
@@ -603,6 +637,7 @@
         "warden"
       ],
       "imgName": "135_Neville_Anti_Tank_Rifle.png",
+      "imgPath": "icons/items/atrifleitem.png",
       "itemName": "135 Neville Anti-Tank Rifle",
       "itemDesc": "The Neville is unmatched in its versatility as a portable, magazine-based anti-armor firearm.",
       "itemCategory": "heavy_arms",
@@ -622,6 +657,7 @@
         "warden"
       ],
       "imgName": "20mm.png",
+      "imgPath": "icons/items/atrifleammoitem.png",
       "itemName": "20mm",
       "itemDesc": "Standard ammunition for anti-tank rifles.",
       "itemCategory": "heavy_arms",
@@ -641,6 +677,7 @@
         "colonial"
       ],
       "imgName": "Daucus_isg_III.png",
+      "imgPath": "icons/items/infantrysupportgunitem.png",
       "itemName": "Daucus isg.III",
       "itemDesc": "This heavy infantry cannon requires a tripod for stability. The Daucus is designed to give infantry a foothold against enemy vehicles and light fortifications or established fortified garrisons.",
       "itemCategory": "heavy_arms",
@@ -660,6 +697,7 @@
         "warden"
       ],
       "imgName": "30mm.png",
+      "imgPath": "icons/items/minitankammoitem.png",
       "itemName": "30mm",
       "itemDesc": "Standard explosive shell for small vehicles or infantry weapons.",
       "itemCategory": "heavy_arms",
@@ -681,6 +719,7 @@
         "warden"
       ],
       "imgName": "40mm.png",
+      "imgPath": "icons/items/lighttankammoitem.png",
       "itemName": "40mm",
       "itemDesc": "Standard payload for light tanks.",
       "itemCategory": "heavy_arms",
@@ -702,6 +741,7 @@
         "warden"
       ],
       "imgName": "68mm.png",
+      "imgPath": "icons/items/atammo.png",
       "itemName": "68mm AT",
       "itemDesc": "An anti-tank shell that's effective against penetrating tank armor.",
       "itemCategory": "heavy_arms",
@@ -723,6 +763,7 @@
         "warden"
       ],
       "imgName": "Cutler_Launcher_4.png",
+      "imgPath": "icons/items/rpgitem.png",
       "itemName": "Cutler Launcher 4",
       "itemDesc": "The Cutler Launcher is capable of firing and unguided, rocket-propelled grenade over short distances with startling efficiency. Its simple design allows for easy deployment and storage.",
       "itemCategory": "heavy_arms",
@@ -746,6 +787,7 @@
         "warden"
       ],
       "imgName": "R_P_G_Shell.png",
+      "imgPath": "icons/items/rpgammoitem.png",
       "itemName": "R.P.G Shell",
       "itemDesc": "An explosive projectile fired from an R.P.G.",
       "itemCategory": "heavy_arms",
@@ -766,6 +808,7 @@
         "colonial"
       ],
       "imgName": "Venom_c_II.png",
+      "imgPath": "icons/items/atrpgcitem.png",
       "itemName": "Venom c.II 35",
       "itemDesc": "The venom RPG launcher fires anti-tank charges. Its simple design makes it easy to deploy, even in high-stakes operations",
       "itemCategory": "heavy_arms",
@@ -789,6 +832,7 @@
         "colonial"
       ],
       "imgName": "Ignifist_30.png",
+      "imgPath": "icons/items/atrpglightcitem.png",
       "itemName": "Ignifist 30",
       "itemDesc": "This single-use rocket can be fired a short distance. Designed to punch holes into tanks, the ignifist is the perfect tool for infantry anticipating armored resistance.",
       "itemCategory": "heavy_arms",
@@ -811,6 +855,7 @@
         "colonial"
       ],
       "imgName": "Bane_45.png",
+      "imgPath": "icons/items/atrpgitem.png",
       "itemName": "Bane 45",
       "itemDesc": "This shoulder-mounted heavy launcher is the first of its kind. It features heavy blast shielding and is capable of launching anti-tank charges over relatively large distances.",
       "itemCategory": "heavy_arms",
@@ -834,6 +879,7 @@
         "colonial"
       ],
       "imgName": "A_T_R_P_G_Shell.png",
+      "imgPath": "icons/items/atrpgammoitem.png",
       "itemName": "A.T.R.P.G Shell",
       "itemDesc": "An anti-tank projectile fired from an R.P.G.",
       "itemCategory": "heavy_arms",
@@ -855,6 +901,7 @@
         "warden"
       ],
       "imgName": "Bonesaw_MK_3.png",
+      "imgPath": "icons/items/atmortaritem.png",
       "itemName": "Bonesaw MK.3",
       "itemDesc": "The pride of the Warden anti-armored arsenal, the Bonesaw Mk.3 has one job; to cut through heavy metal plating of Colonial tanks.",
       "itemCategory": "heavy_arms",
@@ -877,6 +924,7 @@
         "warden"
       ],
       "imgName": "Mounted_Bonesaw_MK_3.png",
+      "imgPath": "icons/items/atmortarwtripoditem.png",
       "itemName": "Mounted Bonesaw MK.3",
       "itemDesc": "This variant of the Bonesaw MK.3 is specially designed for use with tripod mounts. This affords it with increased stability and maximum potential range.",
       "itemCategory": "heavy_arms",
@@ -898,6 +946,7 @@
         "warden"
       ],
       "imgName": "A_T_R_P_G_Indirect_Shell.png",
+      "imgPath": "icons/items/atmortarammoitem.png",
       "itemName": "A.T.R.P.G. Indirect Shell",
       "itemDesc": "An anti-tank projectile fired from indirect R.P.G. weapons.",
       "itemCategory": "heavy_arms",
@@ -919,6 +968,7 @@
         "warden"
       ],
       "imgName": "Cremari_Mortar.png",
+      "imgPath": "icons/items/mortaritem.png",
       "itemName": "Cremari Mortar",
       "itemDesc": "This short-range cannon is designed to bombard enemy infantry with indirect fire.",
       "itemCategory": "heavy_arms",
@@ -939,6 +989,7 @@
         "warden"
       ],
       "imgName": "Mortar_Shell.png",
+      "imgPath": "icons/items/mortarammo.png",
       "itemName": "Mortar Shell",
       "itemDesc": "An explosive projectile fired from a mortar.",
       "itemCategory": "heavy_arms",
@@ -959,6 +1010,7 @@
         "warden"
       ],
       "imgName": "Mortar_Shell.png",
+      "imgPath": "icons/items/mortarammo.png",
       "itemName": "Mortar Shrapnel Shell",
       "itemDesc": "A shell that explodes into shrapnel on impact, devastating nearby infantry.",
       "itemCategory": "heavy_arms",
@@ -979,6 +1031,7 @@
         "warden"
       ],
       "imgName": "Mortar_Shell.png",
+      "imgPath": "icons/items/mortarammo.png",
       "itemName": "Mortar Flare Shell",
       "itemDesc": "A shell that ignites midair and illuminates a large area, revealing enemy targets.",
       "itemCategory": "heavy_arms",
@@ -997,6 +1050,7 @@
         "warden"
       ],
       "imgName": "120mm.png",
+      "imgPath": "icons/items/lightartilleryammoitem.png",
       "itemName": "120mm",
       "itemDesc": "Payload for light artillery weapons.",
       "itemCategory": "heavy_arms",
@@ -1017,6 +1071,7 @@
         "warden"
       ],
       "imgName": "150mm.png",
+      "imgPath": "icons/items/heavyartilleryammoitem.png",
       "itemName": "150mm",
       "itemDesc": "Payload for heavy artillery weapons.",
       "itemCategory": "heavy_arms",
@@ -1037,6 +1092,7 @@
         "warden"
       ],
       "imgName": "250mm.png",
+      "imgPath": "icons/items/mortartank.png",
       "itemName": "250mm",
       "itemDesc": "A shell that is launched over short distances by a spigot mortar.",
       "itemCategory": "heavy_arms",
@@ -1056,6 +1112,7 @@
         "warden"
       ],
       "imgName": "Green_Ash_Grenade.png",
+      "imgPath": "icons/items/deadlygas01.png",
       "itemName": "Green Ash Grenade",
       "itemDesc": "Green ash is an asphyxiating toxin. Inhaling it without protection will result in a quick death. Be sure to wear a gas mask with fresh filters when handling green ash.",
       "itemCategory": "heavy_arms",
@@ -1075,6 +1132,7 @@
         "colonial"
       ],
       "imgName": "Bomastone_Grenade.png",
+      "imgPath": "icons/items/grenadecitem.png",
       "itemName": "Bomastone Grenade",
       "itemDesc": "The bomastone is a 'stick' style fragmentation grenade with a handle designed to aid in lobbing over moderate distances.",
       "itemCategory": "heavy_arms",
@@ -1095,6 +1153,7 @@
         "warden"
       ],
       "imgName": "A3_Harpa_Fragmentation_Grenade.png",
+      "imgPath": "icons/items/grenadeitem.png",
       "itemName": "A3 Harpa Fragmentation Grenade",
       "itemDesc": "This anti-personnel fragmentation grenade is designed with pull-pin mechanics and a time fuse for user safety. Serrations in the casing allow for a better grip and increased fragmentation effectiveness.",
       "itemCategory": "heavy_arms",
@@ -1115,6 +1174,7 @@
         "warden"
       ],
       "imgName": "Mammon_91_b.png",
+      "imgPath": "icons/items/hegrenadeitem.png",
       "itemName": "Mammon 91-b",
       "itemDesc": "This densely packed, high-explosive grenade is designed to damage structures and vehicles.",
       "itemCategory": "heavy_arms",
@@ -1135,6 +1195,7 @@
         "warden"
       ],
       "imgName": "Anti_Tank_Sticky_Bomb.png",
+      "imgPath": "icons/items/stickybomb.png",
       "itemName": "Anti-Tank Sticky Bomb",
       "itemDesc": "An adherable grenade designed to penetrate heavy tank armor. The sticky bomb can only be thrown a short distance and is ineffective against structures.",
       "itemCategory": "heavy_arms",
@@ -1154,6 +1215,7 @@
         "warden"
       ],
       "imgName": "BF5_White_Ash_Flask_Grenade.png",
+      "imgPath": "icons/items/atgrenadew.png",
       "itemName": "BF5 White Ash Flask Grenade",
       "itemDesc": "An explosive flask used for melting enemy armor. This carefully designed liquid bomb explodes into a dazzling flash of molten debris upon impact.",
       "itemCategory": "heavy_arms",
@@ -1175,6 +1237,7 @@
         "warden"
       ],
       "imgName": "Warhead.png",
+      "imgPath": "icons/items/rocketwarhead.png",
       "itemName": "Warhead",
       "itemDesc": "The payload for ballistic rockets. A high yield bomb that delivers over 3 tons of TNT and is capable of leveling an entire village or town block.",
       "itemCategory": "heavy_arms",
@@ -1193,6 +1256,7 @@
         "warden"
       ],
       "imgName": "300mm.png",
+      "imgPath": "icons/items/lrartilleryammoitem.png",
       "itemName": "300mm",
       "itemDesc": "Payload for the storm cannon.",
       "itemCategory": "heavy_arms",
@@ -1212,6 +1276,7 @@
         "warden"
       ],
       "imgName": "Shovel.png",
+      "imgPath": "icons/items/shovel.png",
       "itemName": "Shovel",
       "itemDesc": "A tool for digging trenches and other entrenched structures.",
       "itemCategory": "utilities",
@@ -1229,6 +1294,7 @@
         "warden"
       ],
       "imgName": "Sledge_Hammer.png",
+      "imgPath": "icons/items/sledgehammeritem.png",
       "itemName": "Sledge Hammer",
       "itemDesc": "A tool used to salvage components from remains of old vehicles and equipment.",
       "itemCategory": "utilities",
@@ -1246,6 +1312,7 @@
         "warden"
       ],
       "imgName": "Binoculars.png",
+      "imgPath": "icons/items/binocularsitem.png",
       "itemName": "Binoculars",
       "itemDesc": "An optical instrument used for viewing distant objects.",
       "itemCategory": "utilities",
@@ -1263,6 +1330,7 @@
         "warden"
       ],
       "imgName": "Gas_Mask.png",
+      "imgPath": "icons/items/gasmask.png",
       "itemName": "Gas Mask",
       "itemDesc": "Protects against poison gas.",
       "itemCategory": "utilities",
@@ -1280,6 +1348,7 @@
         "warden"
       ],
       "imgName": "Gas_Mask_Filter.png",
+      "imgPath": "icons/items/gasmaskfilter.png",
       "itemName": "Gas Mask Filter",
       "itemDesc": "When attached to a gas mask, this filter provides fresh air to the wearer.",
       "itemCategory": "utilities",
@@ -1297,6 +1366,7 @@
         "warden"
       ],
       "imgName": "Wrench.png",
+      "imgPath": "icons/items/workwrench.png",
       "itemName": "Wrench",
       "itemDesc": "A multipurpose tool. Can be used to dismantle mines/barbed wire and unlock vehicles.",
       "itemCategory": "utilities",
@@ -1314,6 +1384,7 @@
         "warden"
       ],
       "imgName": "Radio.png",
+      "imgPath": "icons/items/radioitem.png",
       "itemName": "Radio",
       "itemDesc": "Receives map intelligence updates.",
       "itemCategory": "utilities",
@@ -1331,6 +1402,7 @@
         "warden"
       ],
       "imgName": "Radio_Backpack.png",
+      "imgPath": "icons/items/radiobackpackitem.png",
       "itemName": "Radio Backpack",
       "itemDesc": "Automatically gathers map intel periodically when equipped. The radio backpack is also used to transmit other sensitive information across long distances.",
       "itemCategory": "utilities",
@@ -1348,6 +1420,7 @@
         "warden"
       ],
       "imgName": "Buckhorn_CCQ_18.png",
+      "imgPath": "icons/items/bayonet.png",
       "itemName": "Buckhorn CCQ-18",
       "itemDesc": "Attached to the barrel of a rifle, this short blade can spear enemies in close quarters encounters.",
       "itemCategory": "utilities",
@@ -1366,6 +1439,7 @@
         "warden"
       ],
       "imgName": "Tripod.png",
+      "imgPath": "icons/items/deployabletripoditem.png",
       "itemName": "Tripod",
       "itemDesc": "A mount point for deployable infantry weapons and equipment.",
       "itemCategory": "utilities",
@@ -1382,6 +1456,7 @@
         "colonial"
       ],
       "imgName": "Hydras_Whisper.png",
+      "imgPath": "icons/menus/bangaloreitem.png",
       "itemName": "Hydra's Whisper",
       "itemDesc": "This unique demolotion tool is a long, metal tube packed with explosives. The Hydra's Whisper is designed to destroy out-of-reach movement impairing structures and detonate any mines along the length of the tube.",
       "itemCategory": "utilities",
@@ -1403,6 +1478,7 @@
         "warden"
       ],
       "imgName": "Alligator_Charge.png",
+      "imgPath": "icons/items/",
       "itemName": "Alligator Charge",
       "itemDesc": "This heavy-duty explosive device is designed to deal significant damage to structures and stationary vehicles.",
       "itemCategory": "utilities",
@@ -1423,6 +1499,7 @@
         "warden"
       ],
       "imgName": "Abisme_AT_99.png",
+      "imgPath": "icons/items/",
       "itemName": "Abisme AT-99",
       "itemDesc": "A simple mine that is placed under terrain and fitted with a pressure-sensitive plate to detonate under the weight of heavy vehicles. Mines are visible to friendlies and enemies on foot and deactivate after 48 in-game days.",
       "itemCategory": "utilities",
@@ -1444,6 +1521,7 @@
         "warden"
       ],
       "imgName": "Rocket_Booster.png",
+      "imgPath": "icons/items/rocketbooster.png",
       "itemName": "Rocket Booster",
       "itemDesc": "A booster engine that provides thrust for launching ballistic rockets to long distant targets.",
       "itemCategory": "utilities",
@@ -1461,6 +1539,7 @@
         "warden"
       ],
       "imgName": "Listening_Kit.png",
+      "imgPath": "icons/items/listeningkit.png",
       "itemName": "Listening Kit",
       "itemDesc": "A device used to intercept enemy radio broadcasts transmitted from nearby sources.",
       "itemCategory": "utilities",
@@ -1478,6 +1557,7 @@
         "warden"
       ],
       "imgName": "Soldier_Supplies.png",
+      "imgPath": "icons/items/clothitem.png",
       "itemName": "Soldier Supplies",
       "itemDesc": "A standard issue set of supplies for foot soldiers. Bases must be stockpiled with soldier supplies in order for players to spawn.",
       "itemCategory": "medical",
@@ -1495,6 +1575,7 @@
         "warden"
       ],
       "imgName": "Bandages.png",
+      "imgPath": "icons/items/bandagesitem.png",
       "itemName": "Bandages",
       "itemDesc": "Used to stem bleeding.",
       "itemCategory": "medical",
@@ -1512,6 +1593,7 @@
         "warden"
       ],
       "imgName": "First_Aid_kit.png",
+      "imgPath": "icons/items/firstaidkititem.png",
       "itemName": "First Aid Kit",
       "itemDesc": "Used by medics to heal other soldiers.",
       "itemCategory": "medical",
@@ -1529,6 +1611,7 @@
         "warden"
       ],
       "imgName": "Trauma_Kit.png",
+      "imgPath": "icons/items/traumakititem.png",
       "itemName": "Trauma Kit",
       "itemDesc": "Used by medics to revive wounded soldiers.",
       "itemCategory": "medical",
@@ -1546,6 +1629,7 @@
         "warden"
       ],
       "imgName": "Blood_Plasma.png",
+      "imgPath": "icons/items/bloodplasmaitem.png",
       "itemName": "Blood Plasma",
       "itemDesc": "A blood component used to treat wounded soldiers on the battlefield.",
       "itemCategory": "medical",
@@ -1563,6 +1647,7 @@
         "warden"
       ],
       "imgName": "Garrison_Supplies.png",
+      "imgPath": "icons/items/garrisonsupplies.png",
       "itemName": "Garrison Supplies",
       "itemDesc": "Supplies for maintaining structures. Store at bases to prevent decay on surrounding structures.",
       "itemCategory": "supplies",
@@ -1580,6 +1665,7 @@
         "warden"
       ],
       "imgName": "Bunker_Supplies.png",
+      "imgPath": "icons/items/bunkersupplies.png",
       "itemName": "Bunker Supplies",
       "itemDesc": "Supplies for maintaining structures. Store at bases to prevent decay on surrounding bunker/trench structures when garrison supplies are not available.",
       "itemCategory": "supplies",

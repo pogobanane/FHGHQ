@@ -2,9 +2,15 @@ import React from 'react';
 import store from '../../../redux/store';
 import { connect } from 'react-redux';
 import VoiceEvents from '../../../_static/voice';
+import cost from '../../../_static/cost.js';
 
 function Meta(props) {
   document.title = props.meta.settings.name;
+  if (props.meta.settings.faction == 0) {
+    cost.update_items('colonial');
+  } else {
+    cost.update_items('warden');
+  }
   return (
     <React.Fragment>
       {props.meta.settings.name} HQ by{' '}

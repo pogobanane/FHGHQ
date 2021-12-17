@@ -630,24 +630,24 @@ const map_items = function (items) {
   });
 };
 
-// category as in items. Returns items as in iteminfo[0]
-const process_items = function (items, category) {
+// category as in items.
+// faction as in "warden" or "colonial"
+// Returns items as in iteminfo[0]
+const process_items = function (items, faction, category) {
   const ret = items.filter(function (item) {
-    return (
-      item.itemCategory == category && item.faction.includes('warden') // TODO
-    );
+    return item.itemCategory == category && item.faction.includes(faction);
   });
   return map_items(ret);
 };
 
-iteminfo[1] = process_items(items.all, 'small_arms');
-iteminfo[2] = process_items(items.all, 'heavy_arms');
-iteminfo[3] = process_items(items.all, 'utilities');
-iteminfo[4] = process_items(items.all, 'medical');
-iteminfo[5] = process_items(items.all, 'supplies');
-iteminfo[6] = process_items(items.all, 'uniforms');
-
-// TODO new vehicles
+const update_items = function (faction) {
+  iteminfo[1] = process_items(items.all, faction, 'small_arms');
+  iteminfo[2] = process_items(items.all, faction, 'heavy_arms');
+  iteminfo[3] = process_items(items.all, faction, 'utilities');
+  iteminfo[4] = process_items(items.all, faction, 'medical');
+  iteminfo[5] = process_items(items.all, faction, 'supplies');
+  iteminfo[6] = process_items(items.all, faction, 'uniforms');
+};
 
 var filters = [
   repo + 'Filters/IconFilterAll.png',
@@ -704,5 +704,6 @@ export default {
   filters: filters,
   filterrow: Filter,
   findItem: FindItem,
+  update_items: update_items,
 };
 //disabled={this.state.selectedfilter==index} onClick={()=>this.SelectFilter(index)}

@@ -1,6 +1,6 @@
-[
+// downloaded from https://foxholelogi.com/ and added imgPath as icon from github.com/foxholetools/assets
+const all = [
     {
-      "comment": "downloaded from https://foxholelogi.com/ and added imgPath as icon from github.com/foxholetools/assets",
       "displayId": 0,
       "faction": [
         "warden"
@@ -3440,4 +3440,7 @@
         "bmat": 100
       }
     }
-  ]
+  ];
+export default {
+  all: all,
+};

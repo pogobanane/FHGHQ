@@ -1,8 +1,12 @@
 //database of items
 import React from 'react';
+import items from './items.js';
 const repo =
   'https://raw.githubusercontent.com/the-fellowship-of-the-warapi/Assets/master/Item Icons/';
 //repo+''
+const repo2 =
+  'https://raw.githubusercontent.com/foxholetools/assets/master/dist/';
+
 /*
  * I believe the items look like this:
  *
@@ -605,6 +609,32 @@ for (let i = 0; i < iteminfo.length; i++) {
     iteminfo[i][j].src = repo + iteminfo[i][j].src;
   }
 }
+
+const smallarms = items.all.filter(function (item) {
+  return (
+    item.itemCategory == 'small_arms' && item.faction.includes('warden') // TODO
+  );
+});
+const smallarms2 = smallarms.map(function (item) {
+  var ret = {
+    name: item.itemName,
+    i: item.numberProduced,
+    src: repo2 + item.imgPath,
+  };
+  if (item.cost.bmat != null) {
+    ret['b'] = item.cost.bmat;
+  }
+  if (item.cost.emat != null) {
+    ret['e'] = item.cost.emat;
+  }
+  if (item.cost.hemat != null) {
+    ret['he'] = item.cost.hemat;
+  }
+  return ret;
+});
+
+iteminfo[1] = smallarms2;
+
 var filters = [
   repo + 'Filters/IconFilterAll.png',
   repo + 'Materials/BasicMaterialsIcon.png',

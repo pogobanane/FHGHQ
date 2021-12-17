@@ -610,30 +610,44 @@ for (let i = 0; i < iteminfo.length; i++) {
   }
 }
 
-const smallarms = items.all.filter(function (item) {
-  return (
-    item.itemCategory == 'small_arms' && item.faction.includes('warden') // TODO
-  );
-});
-const smallarms2 = smallarms.map(function (item) {
-  var ret = {
-    name: item.itemName,
-    i: item.numberProduced,
-    src: repo2 + item.imgPath,
-  };
-  if (item.cost.bmat != null) {
-    ret['b'] = item.cost.bmat;
-  }
-  if (item.cost.emat != null) {
-    ret['e'] = item.cost.emat;
-  }
-  if (item.cost.hemat != null) {
-    ret['he'] = item.cost.hemat;
-  }
-  return ret;
-});
+const map_items = function (items) {
+  return items.map(function (item) {
+    var ret = {
+      name: item.itemName,
+      i: item.numberProduced,
+      src: repo2 + item.imgPath,
+    };
+    if (item.cost.bmat != null) {
+      ret['b'] = item.cost.bmat;
+    }
+    if (item.cost.emat != null) {
+      ret['e'] = item.cost.emat;
+    }
+    if (item.cost.hemat != null) {
+      ret['he'] = item.cost.hemat;
+    }
+    return ret;
+  });
+};
 
-iteminfo[1] = smallarms2;
+// category as in items. Returns items as in iteminfo[0]
+const process_items = function (items, category) {
+  const ret = items.filter(function (item) {
+    return (
+      item.itemCategory == category && item.faction.includes('warden') // TODO
+    );
+  });
+  return map_items(ret);
+};
+
+iteminfo[1] = process_items(items.all, 'small_arms');
+iteminfo[2] = process_items(items.all, 'heavy_arms');
+iteminfo[3] = process_items(items.all, 'utilities');
+iteminfo[4] = process_items(items.all, 'medical');
+iteminfo[5] = process_items(items.all, 'supplies');
+iteminfo[6] = process_items(items.all, 'uniforms');
+
+// TODO new vehicles
 
 var filters = [
   repo + 'Filters/IconFilterAll.png',
@@ -642,8 +656,8 @@ var filters = [
   repo + 'Filters/IconFilterHeavyWeapons.png',
   repo + 'Filters/IconFilterUtility.png',
   repo + 'Filters/IconFilterMedical.png',
-  repo + 'Filters/IconFacilitiesSupplies.png',
-  repo + 'Filters/IconFacilitiesExplosive.png',
+  repo + 'Filters/IconFilterResource.png',
+  repo + 'Filters/IconFilterUniforms.png',
   repo + 'Filters/IconFilterVehicle.png',
 ];
 class Filter extends React.Component {

@@ -3,6 +3,16 @@ import React from 'react';
 const repo =
   'https://raw.githubusercontent.com/the-fellowship-of-the-warapi/Assets/master/Item Icons/';
 //repo+''
+/*
+ * I believe the items look like this:
+ *
+ * i: nr of items per crate
+ * b: bmats required to produce
+ * r: rmats "
+ * e: emats "
+ * he: hemats "
+ * t: techmats? I don't think it is ever used.
+ */
 var iteminfo = [
   [
     //Resources 0
@@ -24,9 +34,9 @@ var iteminfo = [
       e: 100,
       src: 'Materials/ExplosiveMaterialIcon.png',
     },
-    { name: 'Tech Part', i: 1, src: 'Materials/TechPartIcon.png' },
-    { name: 'Upgrade Part', i: 1, src: 'Materials/UpgradePartIcon.png' },
-    { name: 'Research Part', i: 10, src: 'Materials/ResearchPartIcon.png' },
+    //{ name: "Tech Part", i: 1, src: "Materials/TechPartIcon.png" },
+    //{ name: "Upgrade Part", i: 1, src: "Materials/UpgradePartIcon.png" },
+    //{ name: "Research Part", i: 10, src: "Materials/ResearchPartIcon.png" },
     { name: 'Fuel', i: 100, src: 'Materials/ResourceFuelIcon.png' },
     { name: 'Refined Fuel', i: 100, src: 'Materials/RefinedFuelIcon.png' },
     {

@@ -634,6 +634,27 @@ const all = [
     {
       "displayId": 0,
       "faction": [
+        "colonial"
+      ],
+      "imgName": "Typhon_ra_XII.png",
+      "itemName": "\"Typhon\" ra.XII",
+      "imgPath": "icons/items/atrifletc.png",
+      "itemDesc": "This mounted anti-tank rifle boasts improved accuracy over its free-standing counterparts. The Typhon was specifically designed with shock absorption in mind, allowing for faster, more consistent firing patterns.",
+      "itemCategory": "heavy_arms",
+      "itemClass": "Mounted Anti-Tank Rifle",
+      "highVelocityBonus": "Equipped with a high velocity barrel that deals 50% extra damage per shot.",
+      "ammoUsed": "20mm",
+      "isMountable": true,
+      "numberProduced": 5,
+      "isTeched": true,
+      "isMpfCraftable": true,
+      "cost": {
+        "bmat": 150
+      }
+    },
+    {
+      "displayId": 1,
+      "faction": [
         "warden"
       ],
       "imgName": "135_Neville_Anti_Tank_Rifle.png",
@@ -651,7 +672,7 @@ const all = [
       }
     },
     {
-      "displayId": 1,
+      "displayId": 2,
       "faction": [
         "colonial",
         "warden"
@@ -672,7 +693,7 @@ const all = [
       }
     },
     {
-      "displayId": 2,
+      "displayId": 3,
       "faction": [
         "colonial"
       ],
@@ -691,7 +712,7 @@ const all = [
       }
     },
     {
-      "displayId": 3,
+      "displayId": 4,
       "faction": [
         "colonial",
         "warden"
@@ -713,7 +734,7 @@ const all = [
       }
     },
     {
-      "displayId": 4,
+      "displayId": 5,
       "faction": [
         "colonial",
         "warden"
@@ -735,7 +756,7 @@ const all = [
       }
     },
     {
-      "displayId": 5,
+      "displayId": 6,
       "faction": [
         "colonial",
         "warden"
@@ -758,7 +779,7 @@ const all = [
       }
     },
     {
-      "displayId": 6,
+      "displayId": 7,
       "faction": [
         "warden"
       ],
@@ -781,7 +802,29 @@ const all = [
       }
     },
     {
-      "displayId": 7,
+      "displayId": 8,
+      "faction": [
+        "warden"
+      ],
+      "imgName": "Cutler_Foebreaker.png",
+      "imgPath": "icons/items/atrpgtw.png",
+      "itemName": "Cutler Foebreaker",
+      "itemClass": "Mounted RPG Launcher",
+      "itemDesc": "This unique duel-barrelled RPG launcher can fire two RPG shells in relatively quick succession. This increase in firepower makes it nearly impossible for a single soldier to operate without the support of a sturdy mount.",
+      "itemCategory": "heavy_arms",
+      "numberProduced": 5,
+      "damageType": "Deals explosive damage",
+      "damageDesc": "Can penetrate armored vehicles",
+      "vehiclePen": "Damage to the sides and rear of armored vehicles have a higher chance to penetrate at close range and at direct angles.",
+      "isTeched": true,
+      "ammoUsed": "R.P.G. Shell",
+      "isMpfCraftable": true,
+      "cost": {
+        "bmat": 200
+      }
+    },
+    {
+      "displayId": 9,
       "faction": [
         "colonial",
         "warden"
@@ -803,7 +846,7 @@ const all = [
       }
     },
     {
-      "displayId": 8,
+      "displayId": 10,
       "faction": [
         "colonial"
       ],
@@ -827,7 +870,7 @@ const all = [
       }
     },
     {
-      "displayId": 9,
+      "displayId": 11,
       "faction": [
         "colonial"
       ],
@@ -850,7 +893,7 @@ const all = [
       }
     },
     {
-      "displayId": 10,
+      "displayId": 12,
       "faction": [
         "colonial"
       ],
@@ -874,7 +917,7 @@ const all = [
       }
     },
     {
-      "displayId": 11,
+      "displayId": 13,
       "faction": [
         "colonial"
       ],
@@ -896,7 +939,7 @@ const all = [
       }
     },
     {
-      "displayId": 12,
+      "displayId": 14,
       "faction": [
         "warden"
       ],
@@ -919,7 +962,7 @@ const all = [
       }
     },
     {
-      "displayId": 13,
+      "displayId": 15,
       "faction": [
         "warden"
       ],
@@ -941,7 +984,7 @@ const all = [
       }
     },
     {
-      "displayId": 14,
+      "displayId": 16,
       "faction": [
         "warden"
       ],
@@ -962,7 +1005,7 @@ const all = [
       }
     },
     {
-      "displayId": 15,
+      "displayId": 17,
       "faction": [
         "colonial",
         "warden"
@@ -983,7 +1026,7 @@ const all = [
       }
     },
     {
-      "displayId": 16,
+      "displayId": 18,
       "faction": [
         "colonial",
         "warden"
@@ -1004,7 +1047,7 @@ const all = [
       }
     },
     {
-      "displayId": 17,
+      "displayId": 19,
       "faction": [
         "colonial",
         "warden"
@@ -1025,7 +1068,7 @@ const all = [
       }
     },
     {
-      "displayId": 18,
+      "displayId": 20,
       "faction": [
         "colonial",
         "warden"
@@ -1044,7 +1087,7 @@ const all = [
       }
     },
     {
-      "displayId": 19,
+      "displayId": 21,
       "faction": [
         "colonial",
         "warden"
@@ -1065,7 +1108,7 @@ const all = [
       }
     },
     {
-      "displayId": 20,
+      "displayId": 22,
       "faction": [
         "colonial",
         "warden"
@@ -1086,7 +1129,7 @@ const all = [
       }
     },
     {
-      "displayId": 21,
+      "displayId": 23,
       "faction": [
         "colonial",
         "warden"
@@ -1106,7 +1149,7 @@ const all = [
       }
     },
     {
-      "displayId": 22,
+      "displayId": 24,
       "faction": [
         "colonial",
         "warden"
@@ -1127,7 +1170,7 @@ const all = [
       }
     },
     {
-      "displayId": 23,
+      "displayId": 25,
       "faction": [
         "colonial"
       ],
@@ -1148,7 +1191,7 @@ const all = [
       }
     },
     {
-      "displayId": 24,
+      "displayId": 26,
       "faction": [
         "warden"
       ],
@@ -1168,7 +1211,7 @@ const all = [
       }
     },
     {
-      "displayId": 25,
+      "displayId": 27,
       "faction": [
         "colonial",
         "warden"
@@ -1189,7 +1232,7 @@ const all = [
       }
     },
     {
-      "displayId": 26,
+      "displayId": 28,
       "faction": [
         "colonial",
         "warden"
@@ -1210,7 +1253,7 @@ const all = [
       }
     },
     {
-      "displayId": 27,
+      "displayId": 29,
       "faction": [
         "warden"
       ],
@@ -1231,7 +1274,7 @@ const all = [
       }
     },
     {
-      "displayId": 28,
+      "displayId": 30,
       "faction": [
         "colonial",
         "warden"
@@ -1250,7 +1293,7 @@ const all = [
       }
     },
     {
-      "displayId": 39,
+      "displayId": 31,
       "faction": [
         "colonial",
         "warden"
@@ -1263,10 +1306,52 @@ const all = [
       "numberProduced": 5,
       "damageType": "Deals demolition damage",
       "isTeched": false,
-      "isMpfCraftable": true,
+      "isMpfCraftable": false,
       "cost": {
         "bmat": 135,
         "hemat": 30
+      }
+    },
+    {
+      "displayId": 32,
+      "faction": [
+        "colonial"
+      ],
+      "imgName": "Lamentum_mm_IV.png",
+      "imgPath": "icons/items/heavymachinegun.png",
+      "itemName": "Lamentum mm.IV",
+      "itemClass": "Mounted machinegun",
+      "itemDesc": "Built on the bones of the first automatic weapons introduced to the Legion, the \"Lamentum\" mm.IV is still quite an intimidating force to encounter on the battlefield. Boasting a large magazine and impressive active range, this mounted machinegun excels at laying down consistent suppressive fire.",
+      "itemCategory": "heavy_arms",
+      "isMountable": true,
+      "highVelocityBonus": "Equipped with a high velocity barrel that deals 50% extra damage per shot.",
+      "ammoUsed": "12.7mm",
+      "numberProduced": 5,
+      "isTeched": true,
+      "isMpfCraftable": true,
+      "cost": {
+        "bmat": 150
+      }
+    },
+    {
+      "displayId": 33,
+      "faction": [
+        "warden"
+      ],
+      "imgName": "Malone_Ratcatcher_MK_1.png",
+      "imgPath": "icons/items/mgheavytwitem.png",
+      "itemName": "Malone Ratcatcher MK.1",
+      "itemClass": "Mounted Machinegun",
+      "itemDesc": "Early iterations of this machinegun were built to be emplaced in bunkers and on the decks of lightly armed warships, the Ratcatcher is Harvey Malone’s first freely mountable infantry weapon designed for field use. Just like its predecessors, this heavy weapon suppresses enemy soldiers with unmatched efficiency.",
+      "itemCategory": "heavy_arms",
+      "highVelocityBonus": "",
+      "ammoUsed": "12.7mm",
+      "isMountable": true,
+      "numberProduced": 5,
+      "isTeched": true,
+      "isMpfCraftable": true,
+      "cost": {
+        "bmat": 150
       }
     },
     {
@@ -1740,7 +1825,7 @@ const all = [
       "isTeched": true,
       "isMpfCraftable": true,
       "cost": {
-        "rmat": 585
+        "rmat": 195
       }
     },
     {
@@ -1952,7 +2037,7 @@ const all = [
         "colonial"
       ],
       "imgName": "T5_Percutio.png",
-      "itemName": "T5 \"Percutio\".png",
+      "itemName": "T5 \"Percutio\"",
       "itemClass": "Armored Car",
       "itemDesc": "This \"Xiphos\" variant is fitted with a high-powered anti-tank turret in place of the twin machine gun platforms.",
       "itemCategory": "vehicles",
@@ -1966,6 +2051,47 @@ const all = [
     {
       "displayId": 5,
       "faction": [
+      "colonial"
+    ],
+    "imgName": "T8_Gemini.png",
+    "itemName": "T8 \"Gemini\"",
+    "itemClass": "Armored Car",
+    "itemDesc": "Fitted with twin RPG launchers, the T8 employs hit-and-run assaults against enemy structures and emplacements.",
+    "damageType": "Deals explosive damage",
+    "damageDesc": "Can penetrate armored vehicles",
+    "vehiclePen": "Higher chance to penetrate armored vehicles at direct angles (to the sides/rear of the target) and at close range.",
+    "itemCategory": "vehicles",
+    "numberProduced": 1,
+    "isTeched": true,
+    "isMpfCraftable": true,
+    "cost": {
+      "rmat": 135
+    }
+  },
+  {
+    "displayId": 6,
+    "faction": [
+      "warden"
+    ],
+    "imgName": "O_Brien_v_113_Gravekeeper.png",
+    "itemName": "O’Brien v.113 Gravekeeper",
+    "itemClass": "Armored Car",
+    "itemDesc": "A slight variation of the v.110, the Gravekeeper comes fitted with an embedded Bonesaw launcher, transforming the humble armoured car into an effective indirect anti-armour vehicle.",
+    "damageType": "Deals Armor Piercing damage",
+    "damageDesc": "Can penetrate armored vehicles",
+    "vehiclePen": "High Chance to penetrate armored vehicles",
+    "vehiclePenChance": "Additional 100% chance to penetrate armored vehicles",
+    "itemCategory": "vehicles",
+    "numberProduced": 3,
+    "isTeched": true,
+    "isMpfCraftable": true,
+    "cost": {
+      "rmat": 135
+    }
+  },
+  {
+    "displayId": 7,
+    "faction": [
         "warden"
       ],
       "imgName": "O_Brien_v_121_Highlander.png",
@@ -1981,7 +2107,7 @@ const all = [
       }
     },
     {
-      "displayId": 6,
+      "displayId": 8,
       "faction": [
         "warden"
       ],
@@ -1998,7 +2124,7 @@ const all = [
       }
     },
     {
-      "displayId": 7,
+      "displayId": 9,
       "faction": [
         "warden"
       ],
@@ -2015,7 +2141,7 @@ const all = [
       }
     },
     {
-      "displayId": 8,
+      "displayId": 10,
       "faction": [
         "colonial"
       ],
@@ -2032,7 +2158,7 @@ const all = [
       }
     },
     {
-      "displayId": 9,
+      "displayId": 11,
       "faction": [
         "warden"
       ],
@@ -2049,7 +2175,7 @@ const all = [
       }
     },
     {
-      "displayId": 10,
+      "displayId": 12,
       "faction": [
         "colonial"
       ],
@@ -2066,7 +2192,7 @@ const all = [
       }
     },
     {
-      "displayId": 11,
+      "displayId": 13,
       "faction": [
         "colonial"
       ],
@@ -2084,7 +2210,7 @@ const all = [
       }
     },
     {
-      "displayId": 12,
+      "displayId": 14,
       "faction": [
         "colonial"
       ],
@@ -2101,7 +2227,7 @@ const all = [
       }
     },
     {
-      "displayId": 13,
+      "displayId": 15,
       "faction": [
         "colonial"
       ],
@@ -2118,7 +2244,7 @@ const all = [
       }
     },
     {
-      "displayId": 14,
+      "displayId": 16,
       "faction": [
         "warden"
       ],
@@ -2136,7 +2262,7 @@ const all = [
       }
     },
     {
-      "displayId": 15,
+      "displayId": 17,
       "faction": [
         "warden"
       ],
@@ -2153,7 +2279,7 @@ const all = [
       }
     },
     {
-      "displayId": 16,
+      "displayId": 18,
       "faction": [
         "warden"
       ],
@@ -2171,7 +2297,7 @@ const all = [
       }
     },
     {
-      "displayId": 17,
+      "displayId": 19,
       "faction": [
         "warden"
       ],
@@ -2188,7 +2314,7 @@ const all = [
       }
     },
     {
-      "displayId": 18,
+      "displayId": 20,
       "faction": [
         "warden"
       ],
@@ -2206,7 +2332,7 @@ const all = [
       }
     },
     {
-      "displayId": 19,
+      "displayId": 21,
       "faction": [
         "warden"
       ],
@@ -2223,7 +2349,7 @@ const all = [
       }
     },
     {
-      "displayId": 20,
+      "displayId": 22,
       "faction": [
         "colonial",
         "warden"
@@ -2241,7 +2367,7 @@ const all = [
       }
     },
     {
-      "displayId": 21,
+      "displayId": 23,
       "faction": [
         "colonial"
       ],
@@ -2258,7 +2384,7 @@ const all = [
       }
     },
     {
-      "displayId": 22,
+      "displayId": 24,
       "faction": [
         "colonial"
       ],
@@ -2275,7 +2401,7 @@ const all = [
       }
     },
     {
-      "displayId": 23,
+      "displayId": 25,
       "faction": [
         "colonial"
       ],
@@ -2292,7 +2418,7 @@ const all = [
       }
     },
     {
-      "displayId": 24,
+      "displayId": 26,
       "faction": [
         "warden"
       ],
@@ -2309,7 +2435,7 @@ const all = [
       }
     },
     {
-      "displayId": 25,
+      "displayId": 27,
       "faction": [
         "warden"
       ],
@@ -2326,7 +2452,7 @@ const all = [
       }
     },
     {
-      "displayId": 26,
+      "displayId": 28,
       "faction": [
         "colonial",
         "warden"
@@ -2344,7 +2470,7 @@ const all = [
       }
     },
     {
-      "displayId": 27,
+      "displayId": 29,
       "faction": [
         "colonial"
       ],
@@ -2361,7 +2487,7 @@ const all = [
       }
     },
     {
-      "displayId": 28,
+      "displayId": 30,
       "faction": [
         "colonial"
       ],
@@ -2378,7 +2504,7 @@ const all = [
       }
     },
     {
-      "displayId": 29,
+      "displayId": 31,
       "faction": [
         "warden"
       ],
@@ -2395,7 +2521,7 @@ const all = [
       }
     },
     {
-      "displayId": 30,
+      "displayId": 32,
       "faction": [
         "colonial"
       ],
@@ -2413,7 +2539,7 @@ const all = [
       }
     },
     {
-      "displayId": 31,
+      "displayId": 33,
       "faction": [
         "colonial"
       ],
@@ -2430,7 +2556,7 @@ const all = [
       }
     },
     {
-      "displayId": 32,
+      "displayId": 34,
       "faction": [
         "colonial"
       ],
@@ -2447,7 +2573,7 @@ const all = [
       }
     },
     {
-      "displayId": 33,
+      "displayId": 35,
       "faction": [
         "colonial"
       ],
@@ -2464,7 +2590,7 @@ const all = [
       }
     },
     {
-      "displayId": 34,
+      "displayId": 36,
       "faction": [
         "colonial"
       ],
@@ -2481,7 +2607,7 @@ const all = [
       }
     },
     {
-      "displayId": 35,
+      "displayId": 37,
       "faction": [
         "colonial"
       ],
@@ -2499,7 +2625,7 @@ const all = [
       }
     },
     {
-      "displayId": 36,
+      "displayId": 38,
       "faction": [
         "colonial"
       ],
@@ -2517,7 +2643,7 @@ const all = [
       }
     },
     {
-      "displayId": 37,
+      "displayId": 39,
       "faction": [
         "colonial"
       ],
@@ -2534,7 +2660,7 @@ const all = [
       }
     },
     {
-      "displayId": 38,
+      "displayId": 40,
       "faction": [
         "colonial"
       ],
@@ -2551,7 +2677,7 @@ const all = [
       }
     },
     {
-      "displayId": 39,
+      "displayId": 41,
       "faction": [
         "colonial"
       ],
@@ -2568,7 +2694,7 @@ const all = [
       }
     },
     {
-      "displayId": 40,
+      "displayId": 42,
       "faction": [
         "colonial"
       ],
@@ -2585,7 +2711,7 @@ const all = [
       }
     },
     {
-      "displayId": 41,
+      "displayId": 43,
       "faction": [
         "colonial"
       ],
@@ -2602,7 +2728,7 @@ const all = [
       }
     },
     {
-      "displayId": 42,
+      "displayId": 44,
       "faction": [
         "colonial"
       ],
@@ -2622,7 +2748,7 @@ const all = [
       }
     },
     {
-      "displayId": 43,
+      "displayId": 45,
       "faction": [
         "colonial"
       ],
@@ -2639,7 +2765,7 @@ const all = [
       }
     },
     {
-      "displayId": 44,
+      "displayId": 46,
       "faction": [
         "colonial"
       ],
@@ -2656,7 +2782,7 @@ const all = [
       }
     },
     {
-      "displayId": 45,
+      "displayId": 47,
       "faction": [
         "colonial"
       ],
@@ -2673,7 +2799,7 @@ const all = [
       }
     },
     {
-      "displayId": 46,
+      "displayId": 48,
       "faction": [
         "colonial"
       ],
@@ -2690,7 +2816,7 @@ const all = [
       }
     },
     {
-      "displayId": 47,
+      "displayId": 49,
       "faction": [
         "colonial"
       ],
@@ -2707,7 +2833,7 @@ const all = [
       }
     },
     {
-      "displayId": 48,
+      "displayId": 50,
       "faction": [
         "colonial"
       ],
@@ -2724,7 +2850,7 @@ const all = [
       }
     },
     {
-      "displayId": 49,
+      "displayId": 51,
       "faction": [
         "warden"
       ],
@@ -2741,7 +2867,7 @@ const all = [
       }
     },
     {
-      "displayId": 50,
+      "displayId": 52,
       "faction": [
         "warden"
       ],
@@ -2758,7 +2884,7 @@ const all = [
       }
     },
     {
-      "displayId": 51,
+      "displayId": 53,
       "faction": [
         "warden"
       ],
@@ -2775,7 +2901,7 @@ const all = [
       }
     },
     {
-      "displayId": 52,
+      "displayId": 54,
       "faction": [
         "warden"
       ],
@@ -2793,7 +2919,7 @@ const all = [
       }
     },
     {
-      "displayId": 53,
+      "displayId": 55,
       "faction": [
         "warden"
       ],
@@ -2811,7 +2937,7 @@ const all = [
       }
     },
     {
-      "displayId": 54,
+      "displayId": 56,
       "faction": [
         "warden"
       ],
@@ -2828,7 +2954,7 @@ const all = [
       }
     },
     {
-      "displayId": 55,
+      "displayId": 57,
       "faction": [
         "warden"
       ],
@@ -2845,7 +2971,7 @@ const all = [
       }
     },
     {
-      "displayId": 56,
+      "displayId": 58,
       "faction": [
         "warden"
       ],
@@ -2862,7 +2988,7 @@ const all = [
       }
     },
     {
-      "displayId": 57,
+      "displayId": 59,
       "faction": [
         "warden"
       ],
@@ -2879,7 +3005,7 @@ const all = [
       }
     },
     {
-      "displayId": 58,
+      "displayId": 60,
       "faction": [
         "warden"
       ],
@@ -2896,7 +3022,7 @@ const all = [
       }
     },
     {
-      "displayId": 59,
+      "displayId": 61,
       "faction": [
         "warden"
       ],
@@ -2913,7 +3039,7 @@ const all = [
       }
     },
     {
-      "displayId": 60,
+      "displayId": 62,
       "faction": [
         "warden"
       ],
@@ -2930,7 +3056,7 @@ const all = [
       }
     },
     {
-      "displayId": 61,
+      "displayId": 63,
       "faction": [
         "warden"
       ],
@@ -2947,7 +3073,7 @@ const all = [
       }
     },
     {
-      "displayId": 62,
+      "displayId": 64,
       "faction": [
         "warden"
       ],
@@ -2964,7 +3090,7 @@ const all = [
       }
     },
     {
-      "displayId": 63,
+      "displayId": 65,
       "faction": [
         "warden"
       ],
@@ -2981,7 +3107,7 @@ const all = [
       }
     },
     {
-      "displayId": 64,
+      "displayId": 66,
       "faction": [
         "warden"
       ],
@@ -2998,7 +3124,7 @@ const all = [
       }
     },
     {
-      "displayId": 65,
+      "displayId": 67,
       "faction": [
         "warden"
       ],
@@ -3015,7 +3141,7 @@ const all = [
       }
     },
     {
-      "displayId": 66,
+      "displayId": 68,
       "faction": [
         "colonial",
         "warden"
@@ -3033,7 +3159,7 @@ const all = [
       }
     },
     {
-      "displayId": 67,
+      "displayId": 69,
       "faction": [
         "colonial",
         "warden"
@@ -3051,7 +3177,7 @@ const all = [
       }
     },
     {
-      "displayId": 68,
+      "displayId": 70,
       "faction": [
         "colonial"
       ],
@@ -3068,7 +3194,7 @@ const all = [
       }
     },
     {
-      "displayId": 69,
+      "displayId": 71,
       "faction": [
         "warden"
       ],
@@ -3085,7 +3211,7 @@ const all = [
       }
     },
     {
-      "displayId": 70,
+      "displayId": 72,
       "faction": [
         "warden"
       ],
@@ -3103,7 +3229,7 @@ const all = [
       }
     },
     {
-      "displayId": 71,
+      "displayId": 73,
       "faction": [
         "colonial",
         "warden"
@@ -3121,7 +3247,7 @@ const all = [
       }
     },
     {
-      "displayId": 72,
+      "displayId": 74,
       "faction": [
         "colonial",
         "warden"
@@ -3139,7 +3265,7 @@ const all = [
       }
     },
     {
-      "displayId": 73,
+      "displayId": 75,
       "faction": [
         "colonial",
         "warden"

@@ -185,6 +185,7 @@ class MapIcons_ extends React.Component {
               );
             }
             break;
+          case 51: // Mass Production Factories
           case 34: //FACTORIES
             if (display.production.productions) {
               iconlist.push(
@@ -212,6 +213,7 @@ class MapIcons_ extends React.Component {
               iconlist.push(this.GetIcon(obj, region));
             }
             break;
+          case 52: // Seaport
           case 18: //SHIPYARDS
             if (display.production.shipyards) {
               iconlist.push(this.GetIcon(obj, region));

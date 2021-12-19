@@ -487,8 +487,8 @@ const icons = [
   48,
   49,
   50,
-  51,
-  52,
+  'Production/MapIconMassProductionFactory.png',
+  'Production/MapIconSeaport.png',
   53,
   54,
   55,
@@ -629,6 +629,12 @@ function GenerateIcon(obj, param) {
     case 27:
     case 28:
     case 35:
+    case 45:
+    case 46:
+    case 47:
+    case 56:
+    case 57:
+    case 58:
       if (obj.flags & 0x02) {
         return new MapIcon({ iconUrl });
       }

@@ -21,6 +21,13 @@ export class RegionPan extends React.Component {
               <button
                 type='button'
                 className='btn regionbtn'
+                onClick={() => this.props.PanRegion(29)}
+              >
+                Nevish Line
+              </button>
+              <button
+                type='button'
+                className='btn regionbtn'
                 onClick={() => this.props.PanRegion(16)}
               >
                 Oarbreaker <br />
@@ -35,8 +42,23 @@ export class RegionPan extends React.Component {
                 <br />
                 row
               </button>
+              <button
+                type='button'
+                className='btn regionbtn'
+                onClick={() => this.props.PanRegion(42)}
+              >
+                Origin
+              </button>
             </div>
             <div className='btn-group-vertical region_pan_btn_group_vertical'>
+              <button
+                type='button'
+                className='btn regionbtn'
+                onClick={() => this.props.PanRegion(32)}
+              >
+                Callums <br />
+                Cape
+              </button>
               <button
                 type='button'
                 className='btn regionbtn'
@@ -58,8 +80,22 @@ export class RegionPan extends React.Component {
               >
                 Westgate
               </button>
+              <button
+                type='button'
+                className='btn regionbtn'
+                onClick={() => this.props.PanRegion(41)}
+              >
+                Ash Fields
+              </button>
             </div>
             <div className='btn-group-vertical region_pan_btn_group_vertical'>
+              <button
+                type='button'
+                className='btn regionbtn'
+                onClick={() => this.props.PanRegion(33)}
+              >
+                Speaking Woods
+              </button>
               <button
                 type='button'
                 className='btn regionbtn'
@@ -88,8 +124,23 @@ export class RegionPan extends React.Component {
               >
                 Heartlands
               </button>
+              <button
+                type='button'
+                className='btn regionbtn'
+                onClick={() => this.props.PanRegion(31)}
+              >
+                Red River
+              </button>
             </div>
             <div className='btn-group-vertical region_pan_btn_group_vertical'>
+              <button
+                type='button'
+                className='btn regionbtn'
+                onClick={() => this.props.PanRegion(34)}
+              >
+                Basin <br />
+                Sionnach
+              </button>
               <button
                 type='button'
                 className='btn regionbtn'
@@ -127,8 +178,22 @@ export class RegionPan extends React.Component {
               >
                 Great March
               </button>
+              <button
+                type='button'
+                className='btn regionbtn'
+                onClick={() => this.props.PanRegion(40)}
+              >
+                Kalokai
+              </button>
             </div>
             <div className='btn-group-vertical region_pan_btn_group_vertical'>
+              <button
+                type='button'
+                className='btn regionbtn'
+                onClick={() => this.props.PanRegion(35)}
+              >
+                Howl County
+              </button>
               <button
                 type='button'
                 className='btn regionbtn'
@@ -157,8 +222,22 @@ export class RegionPan extends React.Component {
               >
                 Shackled Chasm
               </button>
+              <button
+                type='button'
+                className='btn regionbtn'
+                onClick={() => this.props.PanRegion(30)}
+              >
+                Acrithia
+              </button>
             </div>
             <div className='btn-group-vertical region_pan_btn_group_vertical'>
+              <button
+                type='button'
+                className='btn regionbtn'
+                onClick={() => this.props.PanRegion(36)}
+              >
+                Clanshead Valley
+              </button>
               <button
                 type='button'
                 className='btn regionbtn'
@@ -180,8 +259,22 @@ export class RegionPan extends React.Component {
               >
                 Allod's Bight
               </button>
+              <button
+                type='button'
+                className='btn regionbtn'
+                onClick={() => this.props.PanRegion(39)}
+              >
+                Terminus
+              </button>
             </div>
             <div className='btn-group-vertical region_pan_btn_group_vertical'>
+              <button
+                type='button'
+                className='btn regionbtn'
+                onClick={() => this.props.PanRegion(37)}
+              >
+                Morgens Crossing
+              </button>
               <button
                 type='button'
                 className='btn regionbtn'
@@ -195,6 +288,13 @@ export class RegionPan extends React.Component {
                 onClick={() => this.props.PanRegion(18)}
               >
                 Tempest Island
+              </button>
+              <button
+                type='button'
+                className='btn regionbtn'
+                onClick={() => this.props.PanRegion(38)}
+              >
+                The Fingers
               </button>
             </div>
           </div>

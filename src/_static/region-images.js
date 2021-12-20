@@ -35,17 +35,17 @@ const regionNames = [
   'NevishLineHex', // 29
   'AcrithiaHex', // 30
   'RedRiverHex', // 31
-  'CallumsCapeHex',
-  'SpeakingWoodsHex',
-  'BasinSionnachHex',
-  'HowlCountyHex',
-  'ClansheadValleyHex',
-  'MorgensCrossingHex',
-  'TheFingersHex',
-  'TerminusHex',
-  'KalokaiHex',
-  'AshFieldsHex',
-  'OriginHex',
+  'CallumsCapeHex', // 32
+  'SpeakingWoodsHex', // 33
+  'BasinSionnachHex', // 34
+  'HowlCountyHex', // 35
+  'ClansheadValleyHex', // 36
+  'MorgensCrossingHex', // 37
+  'TheFingersHex', // 38
+  'TerminusHex', // 39
+  'KalokaiHex', // 40
+  'AshFieldsHex', // 41
+  'OriginHex', // 42
 ];
 
 /*

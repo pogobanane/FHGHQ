@@ -1,8 +1,22 @@
 //database of items
 import React from 'react';
+import items from './items.js';
 const repo =
   'https://raw.githubusercontent.com/the-fellowship-of-the-warapi/Assets/master/Item Icons/';
 //repo+''
+const repo2 =
+  'https://raw.githubusercontent.com/foxholetools/assets/master/dist/';
+
+/*
+ * I believe the items look like this:
+ *
+ * i: nr of items per crate
+ * b: bmats required to produce
+ * r: rmats "
+ * e: emats "
+ * he: hemats "
+ * t: techmats? I don't think it is ever used.
+ */
 var iteminfo = [
   [
     //Resources 0
@@ -24,9 +38,9 @@ var iteminfo = [
       e: 100,
       src: 'Materials/ExplosiveMaterialIcon.png',
     },
-    { name: 'Tech Part', i: 1, src: 'Materials/TechPartIcon.png' },
-    { name: 'Upgrade Part', i: 1, src: 'Materials/UpgradePartIcon.png' },
-    { name: 'Research Part', i: 10, src: 'Materials/ResearchPartIcon.png' },
+    //{ name: "Tech Part", i: 1, src: "Materials/TechPartIcon.png" },
+    //{ name: "Upgrade Part", i: 1, src: "Materials/UpgradePartIcon.png" },
+    //{ name: "Research Part", i: 10, src: "Materials/ResearchPartIcon.png" },
     { name: 'Fuel', i: 100, src: 'Materials/ResourceFuelIcon.png' },
     { name: 'Refined Fuel', i: 100, src: 'Materials/RefinedFuelIcon.png' },
     {
@@ -595,6 +609,46 @@ for (let i = 0; i < iteminfo.length; i++) {
     iteminfo[i][j].src = repo + iteminfo[i][j].src;
   }
 }
+
+const map_items = function (items) {
+  return items.map(function (item) {
+    var ret = {
+      name: item.itemName,
+      i: item.numberProduced,
+      src: repo2 + item.imgPath,
+    };
+    if (item.cost.bmat != null) {
+      ret['b'] = item.cost.bmat;
+    }
+    if (item.cost.emat != null) {
+      ret['e'] = item.cost.emat;
+    }
+    if (item.cost.hemat != null) {
+      ret['he'] = item.cost.hemat;
+    }
+    return ret;
+  });
+};
+
+// category as in items.
+// faction as in "warden" or "colonial"
+// Returns items as in iteminfo[0]
+const process_items = function (items, faction, category) {
+  const ret = items.filter(function (item) {
+    return item.itemCategory == category && item.faction.includes(faction);
+  });
+  return map_items(ret);
+};
+
+const update_items = function (faction) {
+  iteminfo[1] = process_items(items.all, faction, 'small_arms');
+  iteminfo[2] = process_items(items.all, faction, 'heavy_arms');
+  iteminfo[3] = process_items(items.all, faction, 'utilities');
+  iteminfo[4] = process_items(items.all, faction, 'medical');
+  iteminfo[5] = process_items(items.all, faction, 'supplies');
+  iteminfo[6] = process_items(items.all, faction, 'uniforms');
+};
+
 var filters = [
   repo + 'Filters/IconFilterAll.png',
   repo + 'Materials/BasicMaterialsIcon.png',
@@ -602,8 +656,8 @@ var filters = [
   repo + 'Filters/IconFilterHeavyWeapons.png',
   repo + 'Filters/IconFilterUtility.png',
   repo + 'Filters/IconFilterMedical.png',
-  repo + 'Filters/IconFacilitiesSupplies.png',
-  repo + 'Filters/IconFacilitiesExplosive.png',
+  repo + 'Filters/IconFilterResource.png',
+  repo + 'Filters/IconFilterUniforms.png',
   repo + 'Filters/IconFilterVehicle.png',
 ];
 class Filter extends React.Component {
@@ -650,5 +704,6 @@ export default {
   filters: filters,
   filterrow: Filter,
   findItem: FindItem,
+  update_items: update_items,
 };
 //disabled={this.state.selectedfilter==index} onClick={()=>this.SelectFilter(index)}

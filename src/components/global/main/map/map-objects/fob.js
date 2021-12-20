@@ -24,7 +24,7 @@ class Fob_ extends React.Component {
   }
   render() {
     let fob = this.props.private.fobs[this.props.signature];
-    let icon = markers.FobIcon[fob.level][fob.side];
+    let icon = markers.FobIcon[fob.building_type][fob.level][fob.side];
     return (
       <L.Marker
         position={[fob.position.y, fob.position.x]}

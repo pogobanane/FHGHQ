@@ -7,8 +7,13 @@ services:
       - ./.logs:/etc/nginx/logs
     ports:
       - '1337:1337'
+    environment:
+      - VIRTUAL_HOST=oldhq.illmaren.de, oldhq.3sp-foxhole.de
+      - LETSENCRYPT_HOST=oldhq.illmaren.de, oldhq.3sp-foxhole.de
+      - VIRTUAL_PORT=3000
     expose:
       - '1337'
+    restart: unless-stopped
 
   node:
     build:
@@ -21,3 +26,4 @@ services:
       - ./.data:/app/.data
     env_file:
       - ./mysecretenv
+    restart: unless-stopped

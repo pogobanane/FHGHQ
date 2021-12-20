@@ -142,7 +142,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 258px;
+  height: 333px;
 }
 
 .ref_tab_text {
@@ -414,12 +414,12 @@
 
 #ref_submit_container {
   background-image: url(https://cdn.glitch.com/84b19724-a86b-4caa-8e69-1e9c973e043f%2Fbgnha.png?v=1568384361039);
-  background-repeat: repeat;
+  background-repeat: round;
   background-size: 100%;
   background-position: left;
   background-color: #232323;
   width: 440px;
-  height: 380px;
+  height: 455px;
   border-radius: 1px;
   border-top: 1px outset #292929;
   border-right: 1px outset #242424;
@@ -484,7 +484,7 @@
   padding-right: 4px;
 }
 #ref_map_innercontainer {
-  height: 200px;
+  height: 277px;
   background-color: rgba(0, 0, 0, 0.2);
   width: 260;
   /*height: 175;*/

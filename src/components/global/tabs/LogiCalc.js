@@ -1,5 +1,5 @@
 import React from 'react';
-import cost from "../../../_static/cost";
+import cost from '../../../_static/cost';
 import clone from 'clone';
 export class LogiCalc extends React.Component {
   constructor(props) {
@@ -7,7 +7,7 @@ export class LogiCalc extends React.Component {
     this.state = {
       filter: 0,
       category: 0,
-      array: []
+      array: [],
     };
     this.SetFilter = this.SetFilter.bind(this);
     this.AddItem = this.AddItem.bind(this);
@@ -15,16 +15,16 @@ export class LogiCalc extends React.Component {
     this.RemoveItem = this.RemoveItem.bind(this);
   }
   AddItem(cat, id) {
-    this.setState(state => {
+    this.setState((state) => {
       let array = clone(state.array);
       let item = {
         amount: cost.cost[cat][id].i,
         crates: 1,
         catid: cat,
-        itemid: id
+        itemid: id,
       };
       let obj = array.find(
-        obj => obj.catid == item.catid && obj.itemid == item.itemid
+        (obj) => obj.catid == item.catid && obj.itemid == item.itemid
       );
       if (obj === undefined) {
         array.push(item);
@@ -33,7 +33,7 @@ export class LogiCalc extends React.Component {
         obj.crates++;
       }
       return {
-        array: array
+        array: array,
       };
     });
   }
@@ -42,7 +42,7 @@ export class LogiCalc extends React.Component {
     let value = event.target.value;
     if (value <= 10000) {
       let item = array[index];
-      if (value === "") {
+      if (value === '') {
         value = 0;
       }
       item.crates = value;
@@ -51,34 +51,34 @@ export class LogiCalc extends React.Component {
     }
   }
   RemoveItem(index) {
-    this.setState(state => {
+    this.setState((state) => {
       let array = JSON.parse(JSON.stringify(state.array));
       array.splice(index, 1);
       return {
-        array: array
+        array: array,
       };
     });
   }
   SetFilter(filter) {
     this.setState({
-      filter: filter
+      filter: filter,
     });
   }
 
   GetButton(cat, id) {
     return (
       <button
-        className="requestmodal_itembtn"
+        className='requestmodal_itembtn'
         onClick={() => this.AddItem(cat, id)}
-        key={"logicalc" + cat + "|" + id}
+        key={'logicalc' + cat + '|' + id}
       >
-        <img className="requestmodal_itemimg" src={cost.cost[cat][id].src} />
+        <img className='requestmodal_itemimg' src={cost.cost[cat][id].src} />
       </button>
     );
   }
   GetTotal(type) {
     let amount = 0;
-    this.state.array.forEach(k => {
+    this.state.array.forEach((k) => {
       if (cost.cost[k.catid][k.itemid][type] != undefined) {
         amount += cost.cost[k.catid][k.itemid][type] * k.crates;
       }
@@ -97,7 +97,7 @@ export class LogiCalc extends React.Component {
   }
   GetVehicles() {
     let crates = 0;
-    this.state.array.forEach(k => {
+    this.state.array.forEach((k) => {
       if (k.catid == 7) {
         crates += Number(k.crates);
       }
@@ -127,85 +127,72 @@ export class LogiCalc extends React.Component {
     return (
       <React.Fragment>
         <p>Orders Calculator</p>
-        <div className="row">
-          <div className="col-12 col-sm-12 col-md-5">
-            <div className="categoryrow">
+        <div className='row'>
+          <div className='col-12 col-sm-12 col-md-5'>
+            <div className='categoryrow'>
               <cost.filterrow
                 filter={this.state.filter}
                 setfilter={this.SetFilter}
               />
             </div>
             <br />
-            <div id="category">{this.GetButtons()}</div>
+            <div id='category'>{this.GetButtons()}</div>
           </div>
 
-          <div className="col-md-7">
+          <div className='col-md-7'>
             <div>
               <form>
-                <h4 className="totalh">
+                <h4 className='totalh'>
                   Total cost:
+                  <img className='totalicon' src={cost.cost[0][0].src} />
+                  {this.GetTotal('b')}
+                  <img className='totalicon' src={cost.cost[0][1].src} />
+                  {this.GetTotal('r')}
+                  <img className='totalicon' src={cost.cost[0][2].src} />
+                  {this.GetTotal('e')}
+                  <img className='totalicon' src={cost.cost[0][8].src} />
+                  {this.GetTotal('he')}
                   <img
-                    className="totalicon"
-                    src={cost.cost[0][0].src}
+                    className='totalicon'
+                    src='https://cdn.glitch.com/6393f3fd-16a7-4641-ae3d-994f8e7cea4e%2FCrateItemIcon.png?1548192460894'
                   />
-                  {this.GetTotal("b")}
+                  <a id='totalcrates'>{this.GetCrates()}</a>
                   <img
-                    className="totalicon"
-                    src={cost.cost[0][1].src}
+                    className='totalicon'
+                    src='https://cdn.glitch.com/98ac14b2-4603-4541-b92e-320b855d2e65%2FTruckVehicleIcon.png?1542349073226'
                   />
-                  {this.GetTotal("r")}
-                  <img
-                    className="totalicon"
-                    src={cost.cost[0][2].src}
-                  />
-                  {this.GetTotal("e")}
-                  <img
-                    className="totalicon"
-                    src={cost.cost[0][8].src}
-                  />
-                  {this.GetTotal("he")}
-                  <img
-                    className="totalicon"
-                    src="https://cdn.glitch.com/6393f3fd-16a7-4641-ae3d-994f8e7cea4e%2FCrateItemIcon.png?1548192460894"
-                  />
-                  <a id="totalcrates">{this.GetCrates()}</a>
-                  <img
-                    className="totalicon"
-                    src="https://cdn.glitch.com/98ac14b2-4603-4541-b92e-320b855d2e65%2FTruckVehicleIcon.png?1542349073226"
-                  />
-                  <a id="totalvehicles">{this.GetVehicles()}</a>
+                  <a id='totalvehicles'>{this.GetVehicles()}</a>
                 </h4>
               </form>
-
             </div>
 
-            <div id="itemlist" className="container indextable">
+            <div id='itemlist' className='container indextable'>
               <table
-                className="table table-condensed indextable"
-                id="itemtable"
+                className='table table-condensed indextable'
+                id='itemtable'
               >
                 <colgroup>
-                  <col width="40" className="tablecol" />
-                  <col width="60" className="tablecol" />
+                  <col width='40' className='tablecol' />
+                  <col width='60' className='tablecol' />
                   <col />
-                  <col width="60" className="tablecolwide" />
-                  <col width="60" className="tablecol" />
-                  <col width="60" className="tablecol" />
-                  <col width="60" className="tablecol" />
-                  <col width="60" className="tablecol" />
-                  <col width="60" className="tablecol" />
+                  <col width='60' className='tablecolwide' />
+                  <col width='60' className='tablecol' />
+                  <col width='60' className='tablecol' />
+                  <col width='60' className='tablecol' />
+                  <col width='60' className='tablecol' />
+                  <col width='60' className='tablecol' />
                 </colgroup>
-                <thead className="indextable darkheader">
+                <thead className='indextable darkheader'>
                   <tr>
-                    <th className="tablecol"></th>
+                    <th className='tablecol'></th>
                     <th></th>
                     <th>
                       <p>Item</p>
                     </th>
                     <th>
                       <img
-                        className="crate"
-                        src="https://cdn.glitch.com/6393f3fd-16a7-4641-ae3d-994f8e7cea4e%2FCrateItemIcon.png?1548192460894"
+                        className='crate'
+                        src='https://cdn.glitch.com/6393f3fd-16a7-4641-ae3d-994f8e7cea4e%2FCrateItemIcon.png?1548192460894'
                         style={{ width: 34, height: 34 }}
                       />
                     </th>
@@ -214,25 +201,25 @@ export class LogiCalc extends React.Component {
                     </th>
                     <th>
                       <img
-                        className="tabletotalicon"
+                        className='tabletotalicon'
                         src={cost.cost[0][0].src}
                       />
                     </th>
                     <th>
                       <img
-                        className="tabletotalicon"
+                        className='tabletotalicon'
                         src={cost.cost[0][1].src}
-                      />{" "}
+                      />{' '}
                     </th>
                     <th>
                       <img
-                        className="tabletotalicon"
+                        className='tabletotalicon'
                         src={cost.cost[0][2].src}
                       />
                     </th>
                     <th>
                       <img
-                        className="tabletotalicon"
+                        className='tabletotalicon'
                         src={cost.cost[0][8].src}
                       />
                     </th>
@@ -246,10 +233,10 @@ export class LogiCalc extends React.Component {
               </table>
             </div>
           </div>
-          <div id="logi_image_container">
+          <div id='logi_image_container'>
             <img
-              id="logi_image"
-              src="https://cdn.glitch.com/84b19724-a86b-4caa-8e69-1e9c973e043f%2Ftabl-min.jpg?v=1568729797701"
+              id='logi_image'
+              src='https://cdn.glitch.com/84b19724-a86b-4caa-8e69-1e9c973e043f%2Ftabl-min.jpg?v=1568729797701'
             />
           </div>
         </div>
@@ -265,7 +252,10 @@ function Item(props) {
       return null;
     } else {
       return (
-        <p>{cost.cost[props.obj.catid][props.obj.itemid][type] * props.obj.crates}</p>
+        <p>
+          {cost.cost[props.obj.catid][props.obj.itemid][type] *
+            props.obj.crates}
+        </p>
       );
     }
   }
@@ -273,19 +263,19 @@ function Item(props) {
     <tr>
       <td>
         <button
-          type="button"
-          className="removebutton"
+          type='button'
+          className='removebutton'
           onClick={() => props.parent.RemoveItem(props.index)}
         >
           <img
-            className="removebutton"
-            src="https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2FX.png?v=1557668374293"
+            className='removebutton'
+            src='https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2FX.png?v=1557668374293'
           />
         </button>
       </td>
       <td>
         <img
-          className="requestmodal_itemimg"
+          className='requestmodal_itemimg'
           src={cost.cost[props.obj.catid][props.obj.itemid].src}
         />
       </td>
@@ -294,28 +284,20 @@ function Item(props) {
       </td>
       <td>
         <input
-          type="number"
+          type='number'
           min={0}
           value={props.obj.crates}
           style={{ width: 60 }}
-          onChange={event => props.parent.ChangeItem(props.index, event)}
+          onChange={(event) => props.parent.ChangeItem(props.index, event)}
         ></input>
       </td>
       <td>
         <p>{props.obj.amount}</p>
       </td>
-      <td>
-        {GetCost("b")}
-      </td>
-      <td>
-        {GetCost("r")}
-      </td>
-      <td>
-        {GetCost("e")}
-      </td>
-      <td>
-        {GetCost("he")}
-      </td>
+      <td>{GetCost('b')}</td>
+      <td>{GetCost('r')}</td>
+      <td>{GetCost('e')}</td>
+      <td>{GetCost('he')}</td>
     </tr>
   );
 }

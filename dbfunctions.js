@@ -6,7 +6,8 @@ const XMLHttpRequest = require('xhr2');
 // const discordbot = require('./discordbot.js');
 const socket = require('./socket.js');
 
-let regionNames = ['DeadLandsHex', // 3
+let regionNames = [
+  'DeadLandsHex', // 3
   'CallahansPassageHex', // 4
   'MarbanHollow', // 5
   'UmbralWildwoodHex', // 6
@@ -29,25 +30,29 @@ let regionNames = ['DeadLandsHex', // 3
   'DrownedValeHex', // 23
   'ShackledChasmHex', // 24
   'ViperPitHex',
-  "MorgensCrossingHex",
-  "OriginHex",
-  "AshFieldsHex",
-  "RedRiverHex",
-  "ClansheadValleyHex",
-  "HowlCountyHex",
-  "BasinSionnachHex",
-  "SpeakingWoodsHex",
-  "CallumsCapeHex",
-  "NevishLineHex",
-  "KalokaiHex",
-  "AcrithiaHex",
-  "TerminusHex",
-  "TheFingersHex"
+  'MorgensCrossingHex',
+  'OriginHex',
+  'AshFieldsHex',
+  'RedRiverHex',
+  'ClansheadValleyHex',
+  'HowlCountyHex',
+  'BasinSionnachHex',
+  'SpeakingWoodsHex',
+  'CallumsCapeHex',
+  'NevishLineHex',
+  'KalokaiHex',
+  'AcrithiaHex',
+  'TerminusHex',
+  'TheFingersHex',
 ];
 function UpdateMapList() {
   const request = new XMLHttpRequest();
   request.responseType = 'json';
-  request.open('GET', 'https://war-service-live.foxholeservices.com/api/worldconquest/maps/', true);
+  request.open(
+    'GET',
+    'https://war-service-live.foxholeservices.com/api/worldconquest/maps/',
+    true
+  );
   request.onload = function () {
     if (request.status >= 200 && request.status < 400) {
       try {
@@ -56,8 +61,7 @@ function UpdateMapList() {
           obj.push(this.response[i]);
         }
         regionNames = obj;
-      }
-      catch (err) {
+      } catch (err) {
         console.log(err);
       }
     }
@@ -65,16 +69,30 @@ function UpdateMapList() {
   request.send();
 }
 UpdateMapList(); // Getting the map list on launch.
-setInterval(UpdateMapList, 60000/* 100000 */); // Updating map list every minute.
+setInterval(UpdateMapList, 60000 /* 100000 */); // Updating map list every minute.
 
 // Checks if user is logged on
 exports.logincheck = function logincheck(request) {
   // console.log(request.headers);
-  if (request.headers.cookie == undefined) { return false; }
-  if (!request.headers.cookie.includes('salt')) { return false; }
+  if (request.headers.cookie == undefined) {
+    return false;
+  }
+  if (!request.headers.cookie.includes('salt')) {
+    return false;
+  }
   const cookiestring = request.headers.cookie;
-  const id = cookiestring.substring(cookiestring.indexOf(' steamid=') + 9, cookiestring.indexOf(' steamid=') + 26).replace(';', '');
-  let salt = cookiestring.substring(cookiestring.indexOf(' salt=') + 6, cookiestring.indexOf(' salt=') + 15).replace(';', '');
+  const id = cookiestring
+    .substring(
+      cookiestring.indexOf(' steamid=') + 9,
+      cookiestring.indexOf(' steamid=') + 26
+    )
+    .replace(';', '');
+  let salt = cookiestring
+    .substring(
+      cookiestring.indexOf(' salt=') + 6,
+      cookiestring.indexOf(' salt=') + 15
+    )
+    .replace(';', '');
   const query = sql.prepare('SELECT * FROM users WHERE id= ?;').get(id);
   // console.log("Validating id "+query.id+" | "+id);
   // console.log("Validating salt "+query.salt+" | "+salt);
@@ -85,26 +103,37 @@ exports.logincheck = function logincheck(request) {
   query.salt = query.salt.slice(0, 9);
   salt = salt.slice(0, 9);
   // console.log(id==query.id)
-  if (query == undefined) { return false; }
+  if (query == undefined) {
+    return false;
+  }
   if (id == query.id && salt == query.salt) {
     return true;
-  } return false;
+  }
+  return false;
 };
 
 exports.offlinecheck = function (online, io) {
-  const users = sql.prepare("SELECT * FROM users WHERE id LIKE 'anonymous%';").all();
+  const users = sql
+    .prepare("SELECT * FROM users WHERE id LIKE 'anonymous%';")
+    .all();
   const now = new Date();
   for (let i = 0; i < users.length; i++) {
     if (users[i].id != 'anonymous') {
-    // console.log(users[i].id);
+      // console.log(users[i].id);
       if (online.includes(users[i].id)) {
-        sql.prepare('UPDATE users SET avatar = ? WHERE id = ?;').run(new Date().toString(), users[i].id);
+        sql
+          .prepare('UPDATE users SET avatar = ? WHERE id = ?;')
+          .run(new Date().toString(), users[i].id);
       } else {
         const timediff = now - new Date(users[i].avatar);
         if (timediff > 1800000) {
           // console.log("Deleting user "+users[i].id+" | "+users[i].name);
-          const rooms = sql.prepare('SELECT * FROM userglobal where userid = ?').all(users[i].id);
-          sql.prepare('DELETE FROM userglobal WHERE userid = ?').run(users[i].id);
+          const rooms = sql
+            .prepare('SELECT * FROM userglobal where userid = ?')
+            .all(users[i].id);
+          sql
+            .prepare('DELETE FROM userglobal WHERE userid = ?')
+            .run(users[i].id);
 
           for (let j = 0; j < rooms.length; j++) {
             io.to(rooms[j].globalid).emit('leaveroomroom', users[i].id);
@@ -122,7 +151,8 @@ exports.existscheck = function (id) {
   // console.log(result);
   if (result == undefined) {
     return false;
-  } return true;
+  }
+  return true;
 };
 
 // Gets account from the database
@@ -134,16 +164,26 @@ exports.getaccount = function (id) {
 
 // Gets membership of a user
 exports.getmembership = function (id, globalid) {
-  const result1 = sql.prepare('SELECT * FROM global WHERE id = ?;').get(globalid);
-  if (result1 == undefined) { return 8; }
-  const result = sql.prepare('SELECT rank FROM userglobal WHERE userid = ? AND globalid = ?;').get(id, globalid);
-  if (result == undefined) { return 7; }
+  const result1 = sql
+    .prepare('SELECT * FROM global WHERE id = ?;')
+    .get(globalid);
+  if (result1 == undefined) {
+    return 8;
+  }
+  const result = sql
+    .prepare('SELECT rank FROM userglobal WHERE userid = ? AND globalid = ?;')
+    .get(id, globalid);
+  if (result == undefined) {
+    return 7;
+  }
   return result.rank;
 };
 
 // Get info on rooms connected to a user
 exports.getrooms = function (id) {
-  const rooms = sql.prepare('SELECT * FROM userglobal WHERE userid = ?;').all(id);
+  const rooms = sql
+    .prepare('SELECT * FROM userglobal WHERE userid = ?;')
+    .all(id);
   const globalinfo = [];
   // console.log(rooms);
   if (rooms.length > 0) {
@@ -152,7 +192,11 @@ exports.getrooms = function (id) {
       // console.log(room)
       const settings = JSON.parse(room.settings);
       const object = {
-        roomname: settings.name, admin: room.adminname, adminid: room.adminid, rank: rooms[i].rank, globalid: rooms[i].globalid,
+        roomname: settings.name,
+        admin: room.adminname,
+        adminid: room.adminid,
+        rank: rooms[i].rank,
+        globalid: rooms[i].globalid,
       };
       // console.log(object);
       globalinfo.push(object);
@@ -163,7 +207,9 @@ exports.getrooms = function (id) {
 
 // Just gets the names of the rooms the user is in
 exports.getroomsshort = function (id) {
-  const rooms = sql.prepare('SELECT * FROM userglobal WHERE userid = ?;').all(id);
+  const rooms = sql
+    .prepare('SELECT * FROM userglobal WHERE userid = ?;')
+    .all(id);
   return rooms;
 };
 
@@ -172,11 +218,18 @@ exports.getroominfo = function (id) {
   // console.log(id);
   const result = sql.prepare('SELECT * FROM global WHERE id = ?;').get(id);
   if (result != undefined) {
-    const adminname = sql.prepare('SELECT * FROM users WHERE id = ?;').get(result.admin).name;
+    const adminname = sql
+      .prepare('SELECT * FROM users WHERE id = ?;')
+      .get(result.admin).name;
 
-    const packet = { adminname, adminid: result.admin, settings: result.settings };
+    const packet = {
+      adminname,
+      adminid: result.admin,
+      settings: result.settings,
+    };
     return packet;
-  } return false;
+  }
+  return false;
 };
 
 // Get private info on room
@@ -198,19 +251,36 @@ exports.getprivateroominfo = function (id) {
   const logi = parse(result.logi);
   const events = parse(result.events);
   return {
-    refinery, production, storage, stockpiles, techtree, requests, fobs, misc, arty, squads, logi, events,
+    refinery,
+    production,
+    storage,
+    stockpiles,
+    techtree,
+    requests,
+    fobs,
+    misc,
+    arty,
+    squads,
+    logi,
+    events,
   };
 };
 exports.getallevents = function () {
-
-  const events = sql.prepare('select * from events order by date desc limit 400').all();
+  const events = sql
+    .prepare('select * from events order by date desc limit 400')
+    .all();
   return { events };
 };
 // Create a room
 exports.createroom = function (id, admin, settings) {
-  const insertroom = sql.prepare('INSERT INTO global (id, admin, settings, techtree,refinery, production, storage, stockpiles,fobs, requests, misc, arty,squads,logi,events) VALUES (@id, @admin, @settings, "", "","", "", "","", "", "", "", @squads,  "","[]");');
+  const insertroom = sql.prepare(
+    'INSERT INTO global (id, admin, settings, techtree,refinery, production, storage, stockpiles,fobs, requests, misc, arty,squads,logi,events) VALUES (@id, @admin, @settings, "", "","", "", "","", "", "", "", @squads,  "","[]");'
+  );
   settings = JSON.stringify(settings);
-  const squads = { vehicles: {}, squads: [{ icon: 0, name: 'New Squad', users: [admin] }] };
+  const squads = {
+    vehicles: {},
+    squads: [{ icon: 0, name: 'New Squad', users: [admin] }],
+  };
   const e = {
     id,
     admin,
@@ -238,7 +308,6 @@ exports.checkpassword = function (id, password) {
     return true;
   }
   return false;
-
 };
 
 // Leave a room
@@ -264,7 +333,11 @@ exports.deleteroom = function (id) {
 
 // Get members of a room
 exports.getroomusers = function (id) {
-  const users = sql.prepare('SELECT users.id, users.name, users.avatar, userglobal.rank, userglobal.role FROM users INNER JOIN userglobal WHERE users.id=userglobal.userid AND userglobal.globalid= ? ORDER BY (userglobal.rank) ASC;').all(id);
+  const users = sql
+    .prepare(
+      'SELECT users.id, users.name, users.avatar, userglobal.rank, userglobal.role FROM users INNER JOIN userglobal WHERE users.id=userglobal.userid AND userglobal.globalid= ? ORDER BY (userglobal.rank) ASC;'
+    )
+    .all(id);
   // console.log(users);
   return users;
 };
@@ -272,7 +345,10 @@ exports.getroomusers = function (id) {
 exports.getrequester = function (id) {
   const user = sql.prepare('SELECT * FROM users WHERE id = ?;').get(id);
   const packet = {
-    id: user.id, name: user.name, avatar: user.avatar, rank: 5,
+    id: user.id,
+    name: user.name,
+    avatar: user.avatar,
+    rank: 5,
   };
   return packet;
 };
@@ -337,23 +413,25 @@ exports.getdynamic = function () {
   return dynamic;
 };
 exports.getevents = function () {
-  const events = sql.prepare('select * from events order by date desc limit 500').all();
+  const events = sql
+    .prepare('select * from events order by date desc limit 500')
+    .all();
   return events;
 };
 // Changes rank of users
 exports.changeusers = function (subjid, objects, globalid) {
   const subjrank = exports.getmembership(subjid, globalid);
-  const admin = (subjid == exports.getroominfo(globalid).adminid);
+  const admin = subjid == exports.getroominfo(globalid).adminid;
   if (subjrank < 3) {
     for (let i = 0; i < objects.length; i++) {
       const objrank = exports.getmembership(objects[i].id, globalid);
       if (objrank != 7 && objrank != 8) {
         const newrank = objects[i].rank;
-        if (newrank != undefined && (newrank < 6)) {
+        if (newrank != undefined && newrank < 6) {
           if (subjrank == 1 && newrank != 1) {
             updaterank.run(newrank, objects[i].id, globalid);
           }
-          if (subjrank == 2 && newrank != 1 && (objrank != 2) && (newrank != 2)) {
+          if (subjrank == 2 && newrank != 1 && objrank != 2 && newrank != 2) {
             updaterank.run(newrank, objects[i].id, globalid);
           }
         }
@@ -371,29 +449,42 @@ exports.setRole = function (user, globalid) {
 
 // Transfer room ownership
 exports.hailnewking = function (id, newadmin, globalid) {
-  const admin = (id == exports.getroominfo(globalid).adminid);
+  const admin = id == exports.getroominfo(globalid).adminid;
   const membership = exports.getmembership(newadmin, globalid);
-  if (admin && (membership < 7)) {
-  // console.log("newadmin = "+newadmin+", oldadmin = "+id+", globalid"+globalid);
-    sql.prepare('UPDATE userglobal SET rank = 1 WHERE userid = ? AND globalid =?;').run(newadmin, globalid)
-    sql.prepare('UPDATE userglobal SET rank = 2 WHERE userid = ? AND globalid =?;').run(id, globalid)
-    sql.prepare('UPDATE global SET admin = ? WHERE id = ?;').run(newadmin, globalid)
+  if (admin && membership < 7) {
+    // console.log("newadmin = "+newadmin+", oldadmin = "+id+", globalid"+globalid);
+    sql
+      .prepare(
+        'UPDATE userglobal SET rank = 1 WHERE userid = ? AND globalid =?;'
+      )
+      .run(newadmin, globalid);
+    sql
+      .prepare(
+        'UPDATE userglobal SET rank = 2 WHERE userid = ? AND globalid =?;'
+      )
+      .run(id, globalid);
+    sql
+      .prepare('UPDATE global SET admin = ? WHERE id = ?;')
+      .run(newadmin, globalid);
     socket.hailnewking(newadmin, globalid);
     return true;
-  } return false;
+  }
+  return false;
 };
-
 
 // Change levels of tech
 exports.changetech = function (packet) {
-  sql.prepare('UPDATE global SET techtree = ? WHERE id = ?;').run(packet.techtree, packet.globalid);
+  sql
+    .prepare('UPDATE global SET techtree = ? WHERE id = ?;')
+    .run(packet.techtree, packet.globalid);
 };
-
 
 // Creates/updates an object
 exports.updateObject = function (packet) {
-// console.log(packet)
-  const global = sql.prepare('SELECT * FROM global WHERE id = ?').get(packet.globalid);
+  // console.log(packet)
+  const global = sql
+    .prepare('SELECT * FROM global WHERE id = ?')
+    .get(packet.globalid);
   // console.log(global);
   if (packet.type.includes('misc')) {
     let misc = {};
@@ -406,7 +497,9 @@ exports.updateObject = function (packet) {
     }
     misc[kind][packet.key] = packet.object;
     misc = JSON.stringify(misc);
-    sql.prepare('UPDATE global SET misc = ? WHERE id = ?;').run(misc, packet.globalid);
+    sql
+      .prepare('UPDATE global SET misc = ? WHERE id = ?;')
+      .run(misc, packet.globalid);
   } else {
     let type = {};
     if (global[packet.type] != '') {
@@ -414,14 +507,18 @@ exports.updateObject = function (packet) {
     }
     type[packet.key] = packet.object;
     type = JSON.stringify(type);
-    sql.prepare(`UPDATE global SET ${packet.type} = ? WHERE id = ?;`).run(type, packet.globalid);
+    sql
+      .prepare(`UPDATE global SET ${packet.type} = ? WHERE id = ?;`)
+      .run(type, packet.globalid);
   }
 };
 
 // Deletes logi request
 exports.deleteObject = function (packet) {
-// console.log(packet)
-  const global = sql.prepare('SELECT * FROM global WHERE id = ?').get(packet.globalid);
+  // console.log(packet)
+  const global = sql
+    .prepare('SELECT * FROM global WHERE id = ?')
+    .get(packet.globalid);
   if (packet.type.includes('misc')) {
     let misc = {};
     if (global.misc != '') {
@@ -433,7 +530,9 @@ exports.deleteObject = function (packet) {
     }
     delete misc[kind][packet.key];
     misc = JSON.stringify(misc);
-    sql.prepare('UPDATE global SET misc = ? WHERE id = ?;').run(misc, packet.globalid);
+    sql
+      .prepare('UPDATE global SET misc = ? WHERE id = ?;')
+      .run(misc, packet.globalid);
   } else {
     let type = {};
     if (global[packet.type] != '') {
@@ -441,28 +540,40 @@ exports.deleteObject = function (packet) {
     }
     delete type[packet.key];
     type = JSON.stringify(type);
-    sql.prepare(`UPDATE global SET ${packet.type} = ? WHERE id = ?;`).run(type, packet.globalid);
+    sql
+      .prepare(`UPDATE global SET ${packet.type} = ? WHERE id = ?;`)
+      .run(type, packet.globalid);
   }
 };
 // Adds arty calculations
 exports.addArtyResult = function (packet) {
-// console.log(packet)
-  const global = sql.prepare('SELECT arty FROM global WHERE id = ?').get(packet.globalid);
-  if (global.arty == '') { global.arty = []; } else {
+  // console.log(packet)
+  const global = sql
+    .prepare('SELECT arty FROM global WHERE id = ?')
+    .get(packet.globalid);
+  if (global.arty == '') {
+    global.arty = [];
+  } else {
     global.arty = JSON.parse(global.arty);
   }
-  if (global.arty.constructor != Array) { global.arty = []; }
+  if (global.arty.constructor != Array) {
+    global.arty = [];
+  }
   global.arty.push(packet.totalstring);
   if (global.arty.length > 5) {
     global.arty.splice(0, 1);
   }
   global.arty = JSON.stringify(global.arty);
-  sql.prepare('UPDATE global SET arty = ? WHERE id = ?;').run(global.arty, packet.globalid);
+  sql
+    .prepare('UPDATE global SET arty = ? WHERE id = ?;')
+    .run(global.arty, packet.globalid);
 };
 
 // Updates squads
 exports.updateSquads = function (packet) {
-  const global = sql.prepare('SELECT * FROM global WHERE id = ?').get(packet.globalid);
+  const global = sql
+    .prepare('SELECT * FROM global WHERE id = ?')
+    .get(packet.globalid);
   if (global.squads == '' || global.squads == '[]') {
     global.squads = {};
   } else {
@@ -472,16 +583,19 @@ exports.updateSquads = function (packet) {
   global.squads = JSON.stringify(global.squads);
   // console.log("Updating squads",global.squads)
   // let squads = JSON.stringify(packet.squads);
-  sql.prepare('UPDATE global SET squads = ? WHERE id = ?;').run(global.squads, packet.globalid);
+  sql
+    .prepare('UPDATE global SET squads = ? WHERE id = ?;')
+    .run(global.squads, packet.globalid);
 };
-
 
 // Adds a private event
 exports.submitEvent = function (packet) {
-// console.log(packet)
-  const global = sql.prepare('SELECT * FROM global WHERE id = ?').get(packet.globalid);
+  // console.log(packet)
+  const global = sql
+    .prepare('SELECT * FROM global WHERE id = ?')
+    .get(packet.globalid);
   switch (packet.type) {
-    case 0:// TECH EVENT
+    case 0: // TECH EVENT
       // discordbot.techEvent(global, packet.packet);
       break;
   }
@@ -495,17 +609,23 @@ exports.submitEvent = function (packet) {
   }
   // console.log(packet)
   events = JSON.stringify(events);
-  sql.prepare('UPDATE global SET events = ? WHERE id = ?').run(events, packet.globalid);
+  sql
+    .prepare('UPDATE global SET events = ? WHERE id = ?')
+    .run(events, packet.globalid);
 };
 
 exports.submitOpTimer = function (packet) {
-  const global = sql.prepare('SELECT * FROM global WHERE id = ?').get(packet.globalid);
+  const global = sql
+    .prepare('SELECT * FROM global WHERE id = ?')
+    .get(packet.globalid);
   let settings = JSON.parse(global.settings);
   settings.optimer = packet.date;
   global.settings = settings;
   // discordbot.startOpTimer(global);
   settings = JSON.stringify(settings);
-  sql.prepare('UPDATE global SET settings = ? WHERE id = ?').run(settings, packet.globalid);
+  sql
+    .prepare('UPDATE global SET settings = ? WHERE id = ?')
+    .run(settings, packet.globalid);
 };
 
 exports.toggleSecure = function (globalid, data) {
@@ -513,9 +633,15 @@ exports.toggleSecure = function (globalid, data) {
   let settings = JSON.parse(global.settings);
   settings.secure = data;
   settings = JSON.stringify(settings);
-  sql.prepare('UPDATE global SET settings = ? WHERE id = ?').run(settings, globalid);
+  sql
+    .prepare('UPDATE global SET settings = ? WHERE id = ?')
+    .run(settings, globalid);
   if (data == 1) {
-    sql.prepare('DELETE FROM userglobal WHERE userid LIKE "anonymous%" AND globalid = ?;').run(globalid);
+    sql
+      .prepare(
+        'DELETE FROM userglobal WHERE userid LIKE "anonymous%" AND globalid = ?;'
+      )
+      .run(globalid);
     const users = exports.getroomusers(globalid);
     return users;
   }
@@ -528,7 +654,11 @@ exports.clearRoom = function (globalid) {
     admin: global.admin,
     settings: global.settings,
   };
-  sql.prepare('INSERT OR REPLACE INTO global (id, admin, settings, techtree,refinery, production, storage, stockpiles,fobs, requests, misc, arty,squads,logi,events) VALUES (@id, @admin, @settings, "", "","", "", "","", "", "", "", "",  "","[]");').run(e);
+  sql
+    .prepare(
+      'INSERT OR REPLACE INTO global (id, admin, settings, techtree,refinery, production, storage, stockpiles,fobs, requests, misc, arty,squads,logi,events) VALUES (@id, @admin, @settings, "", "","", "", "","", "", "", "", "",  "","[]");'
+    )
+    .run(e);
 };
 
 exports.clearMap = function (globalid) {
@@ -544,7 +674,9 @@ exports.clearMap = function (globalid) {
     }
   }
   misc = JSON.stringify(misc);
-  sql.prepare('UPDATE global SET fobs="",requests="",misc=?  WHERE id = ?').run(misc, globalid);
+  sql
+    .prepare('UPDATE global SET fobs="",requests="",misc=?  WHERE id = ?')
+    .run(misc, globalid);
 };
 
 exports.changeSettings = function (globalid, type, data) {
@@ -552,7 +684,9 @@ exports.changeSettings = function (globalid, type, data) {
   let settings = JSON.parse(global.settings);
   settings[type] = data;
   settings = JSON.stringify(settings);
-  sql.prepare('UPDATE global SET settings = ? WHERE id = ?').run(settings, globalid);
+  sql
+    .prepare('UPDATE global SET settings = ? WHERE id = ?')
+    .run(settings, globalid);
 };
 
 exports.deleteSettings = function (globalid, type) {
@@ -565,32 +699,40 @@ exports.deleteSettings = function (globalid, type) {
   settings = JSON.stringify(settings);
   // console.log("Deleting optimer")
   // console.log(settings)
-  sql.prepare('UPDATE global SET settings = ? WHERE id = ?').run(settings, globalid);
+  sql
+    .prepare('UPDATE global SET settings = ? WHERE id = ?')
+    .run(settings, globalid);
 };
 
 exports.getRoomByToken = function (token, link) {
   const text = `%"token":"${token}"%`;
-  const global = sql.prepare('SELECT * FROM global WHERE settings LIKE ?;').get(text);
+  const global = sql
+    .prepare('SELECT * FROM global WHERE settings LIKE ?;')
+    .get(text);
   // console.log(global)
   if (global != undefined) {
     global.settings = JSON.parse(global.settings);
     global.settings.link = link;
     delete global.settings.token;
     const settings = JSON.stringify(global.settings);
-    sql.prepare('UPDATE global SET settings = ? WHERE id = ?').run(settings, global.id);
+    sql
+      .prepare('UPDATE global SET settings = ? WHERE id = ?')
+      .run(settings, global.id);
   }
   return global;
 };
 
 exports.getRoomFromDiscordChannel = function (channelid) {
   const text = `%"channelid":"${channelid}"%`;
-  const global = sql.prepare('SELECT * FROM global WHERE settings LIKE ?;').get(text);
+  const global = sql
+    .prepare('SELECT * FROM global WHERE settings LIKE ?;')
+    .get(text);
   return global;
 };
 
 // Adds chat messsage
 exports.addMessage = function (packet, category, globalid) {
-// console.log(packet)
+  // console.log(packet)
   const global = sql.prepare('SELECT * FROM global WHERE id = ?').get(globalid);
   // console.log(global);
   let misc = {};
@@ -609,15 +751,27 @@ exports.addMessage = function (packet, category, globalid) {
 };
 
 // SQL Constant commands
-exports.insertuser = sql.prepare('INSERT INTO users (id, salt, name, avatar) VALUES (?, ?, ?, ?);');
-exports.updateuser = sql.prepare('UPDATE users SET name = ?, avatar = ? WHERE id = ?;');
+exports.insertuser = sql.prepare(
+  'INSERT INTO users (id, salt, name, avatar) VALUES (?, ?, ?, ?);'
+);
+exports.updateuser = sql.prepare(
+  'UPDATE users SET name = ?, avatar = ? WHERE id = ?;'
+);
 
-exports.insertrelation = sql.prepare('INSERT OR REPLACE INTO userglobal (id, userid, globalid, rank, role) VALUES (?, ?, ?, ?, "[0,0]");');
+exports.insertrelation = sql.prepare(
+  'INSERT OR REPLACE INTO userglobal (id, userid, globalid, rank, role) VALUES (?, ?, ?, ?, "[0,0]");'
+);
 
-const deleterelation = sql.prepare('DELETE FROM userglobal WHERE userid = ? AND globalid = ?;');
+const deleterelation = sql.prepare(
+  'DELETE FROM userglobal WHERE userid = ? AND globalid = ?;'
+);
 
-const updaterank = sql.prepare('UPDATE userglobal SET rank = ? WHERE userid = ? AND globalid =?;');
-const updaterole = sql.prepare('UPDATE userglobal SET role = ? WHERE userid = ? AND globalid =?;');
+const updaterank = sql.prepare(
+  'UPDATE userglobal SET rank = ? WHERE userid = ? AND globalid =?;'
+);
+const updaterole = sql.prepare(
+  'UPDATE userglobal SET role = ? WHERE userid = ? AND globalid =?;'
+);
 
 function parse(string) {
   // console.log(string)
@@ -625,32 +779,39 @@ function parse(string) {
     return {};
   }
   return JSON.parse(string);
-
 }
-setInterval(CheckOpTimers, 60000/* 100000 */);
+setInterval(CheckOpTimers, 60000 /* 100000 */);
 function CheckOpTimers() {
   let date = new Date();
   date.setHours(date.getHours() + 1);
   date = JSON.stringify(date);
   date = date.substring(0, 17);
   // console.log(date)
-  const globallist = sql.prepare('SELECT settings FROM global WHERE settings LIKE ? AND settings LIKE "%channelid%" ').all(`%"optimer":${date}%`);
+  const globallist = sql
+    .prepare(
+      'SELECT settings FROM global WHERE settings LIKE ? AND settings LIKE "%channelid%" '
+    )
+    .all(`%"optimer":${date}%`);
   if (globallist.length > 0) {
     for (let i = 0; i < globallist.length; i++) {
       const settings = JSON.parse(globallist[i].settings);
       // discordbot.emitNotifyOp(settings);
     }
   }
-// console.log("Op check global list")
-// console.log(globallist)
+  // console.log("Op check global list")
+  // console.log(globallist)
 }
 exports.GetWar = function (warnumber) {
-  const war = sql.prepare('SELECT * FROM warhistory WHERE warnumber = ?').get(warnumber);
+  const war = sql
+    .prepare('SELECT * FROM warhistory WHERE warnumber = ?')
+    .get(warnumber);
   return war;
 };
 
 exports.GetTownName = function (obj, regionId) {
-  const region = sql.prepare('SELECT * FROM apidata_static WHERE regionId = ?').get(regionId);
+  const region = sql
+    .prepare('SELECT * FROM apidata_static WHERE regionId = ?')
+    .get(regionId);
   // console.log("Town name - region",region)
   const data = JSON.parse(region.data);
   const name = GetTownName(data.mapTextItems, obj);
@@ -659,16 +820,25 @@ exports.GetTownName = function (obj, regionId) {
 };
 
 exports.GetCounts = function () {
-  const steamcount = sql.prepare('SELECT count(id) FROM users WHERE id NOT LIKE "anon%";').get();
-  const nosteamcount = sql.prepare('SELECT count(id) FROM users WHERE id LIKE "anonymous_%";').get();
-  return { steamcount: steamcount['count(id)'], nosteamcount: nosteamcount['count(id)'] };
+  const steamcount = sql
+    .prepare('SELECT count(id) FROM users WHERE id NOT LIKE "anon%";')
+    .get();
+  const nosteamcount = sql
+    .prepare('SELECT count(id) FROM users WHERE id LIKE "anonymous_%";')
+    .get();
+  return {
+    steamcount: steamcount['count(id)'],
+    nosteamcount: nosteamcount['count(id)'],
+  };
 };
 function GetTownName(labellist, town) {
   function compare(a, b) {
-    if (a.distance < b.distance)
-    { return -1; }
-    if (a.distance > b.distance)
-    { return 1; }
+    if (a.distance < b.distance) {
+      return -1;
+    }
+    if (a.distance > b.distance) {
+      return 1;
+    }
     return 0;
   }
   for (let i = 0; i < labellist.length; i++) {
@@ -687,4 +857,4 @@ function GetTownName(labellist, town) {
 
 exports.cunt = function test(string) {
   console.log(`Database functions module ${string}`);
-}
+};

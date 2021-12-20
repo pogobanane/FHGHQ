@@ -25,11 +25,15 @@ class MapCore extends React.Component {
     if (this.props.tab.tab != 0 && nextProps.tab.tab == 0) {
       return true;
     }
-    if ((this.props.tab.tab == 7 && nextProps.tab.tab != 7)
-        || (this.props.tab.tab != 7 && nextProps.tab.tab == 7)) {
+    if (
+      (this.props.tab.tab == 7 && nextProps.tab.tab != 7) ||
+      (this.props.tab.tab != 7 && nextProps.tab.tab == 7)
+    ) {
       return true;
     }
-    if (JSON.stringify(this.props.roominfo) != JSON.stringify(nextProps.roominfo)) {
+    if (
+      JSON.stringify(this.props.roominfo) != JSON.stringify(nextProps.roominfo)
+    ) {
       return true;
     }
     return false;
@@ -53,10 +57,21 @@ class MapCore extends React.Component {
         active.push({ regionId: region, active: false });
       }
 
-      for (let j = 0; j < this.props.roominfo.static[i].data.mapTextItems.length; j++) {
+      for (
+        let j = 0;
+        j < this.props.roominfo.static[i].data.mapTextItems.length;
+        j++
+      ) {
         const obj = this.props.roominfo.static[i].data.mapTextItems[j];
-        const position = this.convert(this.props.roominfo.static[i].regionId, obj.x, obj.y);
-        var myIcon = NativeL.divIcon({ className: 'my-div-icon', html: `<span class='maptext'><b>${obj.text}</b></span>` });
+        const position = this.convert(
+          this.props.roominfo.static[i].regionId,
+          obj.x,
+          obj.y
+        );
+        var myIcon = NativeL.divIcon({
+          className: 'my-div-icon',
+          html: `<span class='maptext'><b>${obj.text}</b></span>`,
+        });
         myIcon.options.iconSize = [200, 20];
         myIcon.options.iconAnchor = [0, 0];
         myIcon.options.iconAnchor[0] = myIcon.options.iconSize[0] / 2;
@@ -68,12 +83,21 @@ class MapCore extends React.Component {
     for (let i = 0; i < RegionImages.regionlist.length; i++) {
       const region = RegionImages.regionlist[i];
       if (region.name != '') {
-        var myIcon = NativeL.divIcon({ className: 'my-div-icon', html: `<span class='regiontext'><b>${region.name}</b></span>` });
+        var myIcon = NativeL.divIcon({
+          className: 'my-div-icon',
+          html: `<span class='regiontext'><b>${region.name}</b></span>`,
+        });
         myIcon.options.iconSize = [80, 30];
         myIcon.options.iconAnchor = [0, 0];
         myIcon.options.iconAnchor[0] = myIcon.options.iconSize[0] / 2;
         myIcon.options.iconAnchor[1] = myIcon.options.iconSize[1] / 2;
-        const icon = <L.Marker position={region.center} icon={myIcon} zIndexOffset={40000}></L.Marker>;
+        const icon = (
+          <L.Marker
+            position={region.center}
+            icon={myIcon}
+            zIndexOffset={40000}
+          ></L.Marker>
+        );
         regionlabels.push(icon);
       }
     }
@@ -98,29 +122,52 @@ class GlobalMap extends React.Component {
 
   componentDidMount() {
     ReactDOM.render(
-      <ContextDropdown ref={(obj) => { this.refs.context_squad_dropdown = obj; }} type={0} />,
-      document.getElementById('context_squad_dropdown'),
+      <ContextDropdown
+        ref={(obj) => {
+          this.refs.context_squad_dropdown = obj;
+        }}
+        type={0}
+      />,
+      document.getElementById('context_squad_dropdown')
     );
     ReactDOM.render(
-      <ContextDropdown ref={(obj) => { this.refs.context_objectives_dropdown = obj; }} type={1} />,
-      document.getElementById('context_objectives_dropdown'),
+      <ContextDropdown
+        ref={(obj) => {
+          this.refs.context_objectives_dropdown = obj;
+        }}
+        type={1}
+      />,
+      document.getElementById('context_objectives_dropdown')
     );
     // ReactDOM.render(
     // <ContextDropdown ref={(obj) => {this.refs.context_relics_dropdown = obj}} type={2}/>,
     // document.getElementById('context_relics_dropdown'));
     ReactDOM.render(
-      <ContextDropdown ref={(obj) => { this.refs.context_ships_dropdown = obj; }} type={3} />,
-      document.getElementById('context_ships_dropdown'),
+      <ContextDropdown
+        ref={(obj) => {
+          this.refs.context_ships_dropdown = obj;
+        }}
+        type={3}
+      />,
+      document.getElementById('context_ships_dropdown')
     );
     ReactDOM.render(
-      <ContextDropdown ref={(obj) => { this.refs.context_logi_vehicles_dropdown = obj; }} type={4} />,
-      document.getElementById('context_logi_vehicles_dropdown'),
+      <ContextDropdown
+        ref={(obj) => {
+          this.refs.context_logi_vehicles_dropdown = obj;
+        }}
+        type={4}
+      />,
+      document.getElementById('context_logi_vehicles_dropdown')
     );
   }
 
   PanRegion(regionId) {
     const zoom = 4;
-    this.refs.worldmap.leafletElement.setView(RegionImages.regionlist[regionId].center, zoom);
+    this.refs.worldmap.leafletElement.setView(
+      RegionImages.regionlist[regionId].center,
+      zoom
+    );
   }
 
   HandleZoom(zoom) {
@@ -131,7 +178,10 @@ class GlobalMap extends React.Component {
 
   CreateMiscIcon(event, type) {
     const packet = {
-      position: { x: event.latlng.lng, y: event.latlng.lat }, notes: '', type, lastupdate: new Date(),
+      position: { x: event.latlng.lng, y: event.latlng.lat },
+      notes: '',
+      type,
+      lastupdate: new Date(),
     };
     const key = U.signature(packet.position);
     store.dispatch(A.updateObject('misc_icon', packet, key));
@@ -140,7 +190,12 @@ class GlobalMap extends React.Component {
 
   CreateFob(event) {
     const packet = {
-      position: { x: event.latlng.lng, y: event.latlng.lat }, side: 0, level: 0, notes: '', stockpile: {}, lastupdate: new Date(),
+      position: { x: event.latlng.lng, y: event.latlng.lat },
+      side: 0,
+      level: 0,
+      notes: '',
+      stockpile: {},
+      lastupdate: new Date(),
     };
     const key = U.signature(packet.position);
     store.dispatch(A.updateObject('fobs', packet, key));
@@ -151,7 +206,10 @@ class GlobalMap extends React.Component {
     const menu = document.getElementById(id);
     if (menu.classList.contains('show')) {
       menu.setAttribute('class', 'dropdown-menu');
-      this.refs[id].CreateIcon(event, this.refs.worldmap.leafletElement.contextmenu);
+      this.refs[id].CreateIcon(
+        event,
+        this.refs.worldmap.leafletElement.contextmenu
+      );
     } else {
       menu.setAttribute('class', 'dropdown-menu show');
     }
@@ -169,7 +227,7 @@ class GlobalMap extends React.Component {
     return (
       <>
         <L.Map
-          ref="worldmap"
+          ref='worldmap'
           onZoomend={(event) => {
             this.HandleZoom(event.target._zoom);
           }}
@@ -185,13 +243,14 @@ class GlobalMap extends React.Component {
           attributionControl={false}
           contextmenu
           contextmenuWidth={254}
-          contextmenuItems={
-          [
+          contextmenuItems={[
             {
               text: 'Logi Request',
               icon: 'https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2Ftra.png?1558692436307',
-              callback: (event) => window.requestmodalcontainer.ShowModal(event, 0),
-            }, {
+              callback: (event) =>
+                window.requestmodalcontainer.ShowModal(event, 0),
+            },
+            {
               text: 'Enemy',
               icon: 'https://cdn.glitch.com/6393f3fd-16a7-4641-ae3d-994f8e7cea4e%2FIndicator_queue.png?1548525724233',
               callback: (event) => this.CreateMiscIcon(event, 1),
@@ -199,49 +258,56 @@ class GlobalMap extends React.Component {
             {
               text: '<div class="dropup"><span class="dropdown-toggle" >Logi vehicles</span>  <div class="dropdown-menu" id="context_logi_vehicles_dropdown"></div></div> ',
               icon: 'https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2Fdagts.png?1554890715341',
-              callback: (event) => this.OpenMenu(event, 'context_logi_vehicles_dropdown', 4),
+              callback: (event) =>
+                this.OpenMenu(event, 'context_logi_vehicles_dropdown', 4),
               hideOnSelect: false,
             },
             {
               text: 'Move',
               icon: 'https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2Fmove.png?1554589501432',
               callback: (event) => this.CreateMiscIcon(event, 4),
-
-            }, {
+            },
+            {
               text: 'FOB',
               icon: 'https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2FMapIconForwardBase1.png?1554666597044',
               callback: this.CreateFob,
-
-            }, {
+            },
+            {
               text: 'Attack',
               icon: 'https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2Fattack.png?1554589500531',
               callback: (event) => this.CreateMiscIcon(event, 2),
-            }, {
+            },
+            {
               text: '<div class="dropup"><span class="dropdown-toggle" >Squads</span>  <div class="dropdown-menu" id="context_squad_dropdown"></div></div> ',
               icon: 'https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2F1s.png?1557484360213',
               hideOnSelect: false,
-              callback: (event) => this.OpenMenu(event, 'context_squad_dropdown', 0),
-
-            }, {
+              callback: (event) =>
+                this.OpenMenu(event, 'context_squad_dropdown', 0),
+            },
+            {
               text: 'Defend',
               icon: 'https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2Fdefend.png?1554589500846',
               callback: (event) => this.CreateMiscIcon(event, 3),
-            }, {
+            },
+            {
               text: '<div class="dropup"><span class="dropdown-toggle" >Objectives</span>  <div class="dropdown-menu" id="context_objectives_dropdown"></div></div> ',
               icon: 'https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2FOBJ1.png?1554589501515',
-              callback: (event) => this.OpenMenu(event, 'context_objectives_dropdown', 1),
+              callback: (event) =>
+                this.OpenMenu(event, 'context_objectives_dropdown', 1),
               hideOnSelect: false,
-            }, {
+            },
+            {
               text: 'Build',
               icon: 'https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2FUndsfsed-6.png?1558094804796',
               callback: (event) => this.CreateMiscIcon(event, 7),
-
-            }, {
+            },
+            {
               text: '<div class="dropup"><span class="dropdown-toggle" >Ships</span>  <div class="dropdown-menu" id="context_ships_dropdown"></div></div> ',
               icon: 'https://cdn.glitch.com/6393f3fd-16a7-4641-ae3d-994f8e7cea4e%2FMapIconShipyard.png?1547280455531',
-              callback: (event) => this.OpenMenu(event, 'context_ships_dropdown', 3),
+              callback: (event) =>
+                this.OpenMenu(event, 'context_ships_dropdown', 3),
               hideOnSelect: false,
-            }, /* {
+            } /* {
      text: 'Howitzer',
         icon: 'https://cdn.glitch.com/6393f3fd-16a7-4641-ae3d-994f8e7cea4e%2FStaticArtilleryStructureIcon.png?1548192484552',
        callback: (event)=>this.CreateMiscIcon(event,5)
@@ -255,7 +321,7 @@ class GlobalMap extends React.Component {
            text: 'CV',
         icon: 'https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2Fdagts.png?1554890715341',
        callback: (event)=>this.CreateMiscIcon(event,6)
-    } */
+    } */,
             {
               text: 'Note',
               icon: 'https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2Ffdsag.png?1554889393144',
@@ -263,44 +329,58 @@ class GlobalMap extends React.Component {
             },
           ]}
         >
-
           <BaseLayers checked={this.state.satmap} />
 
-          <L.Pane name="backgroundpane">
+          <L.Pane name='backgroundpane'>
             <L.ImageOverlay
-              url="https://cdn.glitch.com/84b19724-a86b-4caa-8e69-1e9c973e043f%2Fdd3f06b2-b7d4-4ccchhhh5_WorldMapBG.jpg?v=1565481206934"
-              bounds={[[-349.538, -265.846], [93.538, 521.846]]}
-            >
-            </L.ImageOverlay>
+              url='https://cdn.glitch.com/84b19724-a86b-4caa-8e69-1e9c973e043f%2Fdd3f06b2-b7d4-4ccchhhh5_WorldMapBG.jpg?v=1565481206934'
+              bounds={[
+                [-349.538, -265.846],
+                [93.538, 521.846],
+              ]}
+            ></L.ImageOverlay>
           </L.Pane>
 
-          <L.Pane name="toppane">
-          </L.Pane>
-          <LeafletControl.default position="topleft" className="leaflet_control_filterpanel">
-            <div id="mapcontainer_toppanel">
-              <div id="mapcontainer_toppanel_filters">
+          <L.Pane name='toppane'></L.Pane>
+          <LeafletControl.default
+            position='topleft'
+            className='leaflet_control_filterpanel'
+          >
+            <div id='mapcontainer_toppanel'>
+              <div id='mapcontainer_toppanel_filters'>
                 <FilterPanel />
               </div>
-              <div id="mapcontainer_toppanel_regionpan">
+              <div id='mapcontainer_toppanel_regionpan'>
                 <MapControl.RegionPan PanRegion={this.PanRegion} />
               </div>
             </div>
           </LeafletControl.default>
           <FullscreenControl
-            position="topleft"
+            position='topleft'
             content="<img src='https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2Faaaaaa.png' />"
           />
-          <L.AttributionControl position="bottomright" prefix={false} />
-          <L.LayerGroup>{this.state.zoom == 1 ? this.props.info.regionlabels : null}</L.LayerGroup>
-          <L.LayerGroup>{this.state.zoom >= 5 ? this.props.info.labels : null}</L.LayerGroup>
-          <LeafletControl.default position="bottomright" className="leaflet_control_arty">
+          <L.AttributionControl position='bottomright' prefix={false} />
+          <L.LayerGroup>
+            {this.state.zoom == 1 ? this.props.info.regionlabels : null}
+          </L.LayerGroup>
+          <L.LayerGroup>
+            {this.state.zoom >= 5 ? this.props.info.labels : null}
+          </L.LayerGroup>
+          <LeafletControl.default
+            position='bottomright'
+            className='leaflet_control_arty'
+          >
             <IconPanel worldmap={this} />
           </LeafletControl.default>
           <MapControl.HexGrid />
           <MapControl.GridLines zoom={this.state.zoom} />
           <MapIcons zoom={this.state.zoom} />
           <MapControl.RLDComp zoom={this.state.zoom} />
-          <MapControl.SelectIcon ref={(e) => { window.selecticon = e; }} />
+          <MapControl.SelectIcon
+            ref={(e) => {
+              window.selecticon = e;
+            }}
+          />
         </L.Map>
       </>
     );

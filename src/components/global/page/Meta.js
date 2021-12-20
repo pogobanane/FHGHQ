@@ -1,21 +1,21 @@
 import React from 'react';
-import store from "../../../redux/store";
-import {connect} from 'react-redux';
-import VoiceEvents from "../../../_static/voice";
+import store from '../../../redux/store';
+import { connect } from 'react-redux';
+import VoiceEvents from '../../../_static/voice';
 
 function Meta(props) {
   document.title = props.meta.settings.name;
   return (
     <React.Fragment>
-      {props.meta.settings.name} HQ by{" "}
+      {props.meta.settings.name} HQ by{' '}
       <a
-        id="tr"
-        href={"https://steamcommunity.com/profiles/" + props.meta.adminid}
+        id='tr'
+        href={'https://steamcommunity.com/profiles/' + props.meta.adminid}
       >
         {props.meta.adminname}
-      </a>{" "}
+      </a>{' '}
       <SoundControl
-        ref={e => {
+        ref={(e) => {
           window.soundcontrol = e;
         }}
       />
@@ -30,9 +30,9 @@ class SoundControl extends React.Component {
       ///State
       toggle: true,
       volume: 50,
-      prevDateLogi: new Date("1970-01-01"),
-      prevDateRelic: new Date("1970-01-01"),
-      prevDateOp: new Date("1970-01-01")
+      prevDateLogi: new Date('1970-01-01'),
+      prevDateRelic: new Date('1970-01-01'),
+      prevDateOp: new Date('1970-01-01'),
     };
     this.ToggleSound = this.ToggleSound.bind(this);
     this.handleChangeVolume = this.handleChangeVolume.bind(this);
@@ -54,7 +54,7 @@ class SoundControl extends React.Component {
       }
       let audio = new Audio(GetAudio());
       audio.volume = Number(this.state.volume) / 100;
-      audio.addEventListener("ended", function() {
+      audio.addEventListener('ended', function () {
         if (i > 0) {
           i--;
           audio.src = GetAudio();
@@ -73,25 +73,25 @@ class SoundControl extends React.Component {
     audio.play();
   }
   PlaySingle(obj) {
-    let prop = "";
-    console.log("Sound obj", obj);
+    let prop = '';
+    console.log('Sound obj', obj);
     if (
       obj ==
-      "https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2Frelic.mp3"
+      'https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2Frelic.mp3'
     ) {
-      prop = "prevDateRelic";
+      prop = 'prevDateRelic';
     } else if (
       obj ==
-        "https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2Fsupp%20completed.mp3" ||
+        'https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2Fsupp%20completed.mp3' ||
       obj ==
-        "https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2Fsupplies.mp3"
+        'https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2Fsupplies.mp3'
     ) {
-      prop = "prevDateLogi";
+      prop = 'prevDateLogi';
     } else if (
       obj ==
-      "https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2FOP.mp3"
+      'https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2FOP.mp3'
     ) {
-      prop = "prevDateOp";
+      prop = 'prevDateOp';
     }
     //console.log("Sound prop",prop)
     var timediff = new Date() - this.state[prop];
@@ -105,40 +105,40 @@ class SoundControl extends React.Component {
     }
   }
   ToggleSound() {
-    this.setState(state => {
+    this.setState((state) => {
       return {
-        toggle: !state.toggle
+        toggle: !state.toggle,
       };
     });
   }
   handleChangeVolume(event) {
     let value = event.target.value;
-    this.setState(state => {
+    this.setState((state) => {
       return {
-        volume: value
+        volume: value,
       };
     });
   }
   render() {
     //console.log("Updating sound control")
     let img =
-      "https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2FUntitled-2.png?1559249870353";
+      'https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2FUntitled-2.png?1559249870353';
     if (!this.state.toggle) {
       img =
-        "https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2F42.png?1559249871623";
+        'https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2F42.png?1559249871623';
     }
     return (
       <React.Fragment>
-        <button onClick={this.ToggleSound} id="audio_btn">
+        <button onClick={this.ToggleSound} id='audio_btn'>
           <img src={img} style={{ width: 25, height: 25 }} />
         </button>
         <input
-          type="range"
-          min="1"
-          max="100"
+          type='range'
+          min='1'
+          max='100'
           value={this.state.volume}
-          className="slider"
-          id="myRange"
+          className='slider'
+          id='myRange'
           style={{ width: 50 }}
           onChange={this.handleChangeVolume}
         />
@@ -146,15 +146,10 @@ class SoundControl extends React.Component {
     );
   }
 }
-const mapStateToProps = store => {
+const mapStateToProps = (store) => {
   return {
-    meta: store.meta
+    meta: store.meta,
   };
 };
 
-export default connect(
-  mapStateToProps,
-  null,
-  null,
-  { forwardRef: true }
-)(Meta);
+export default connect(mapStateToProps, null, null, { forwardRef: true })(Meta);

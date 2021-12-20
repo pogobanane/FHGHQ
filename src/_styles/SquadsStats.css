@@ -423,7 +423,7 @@
   background-color: rgba(0, 0, 0, 0.8);
 }
 
-.stats_div { 
+.stats_div {
   width: 300px;
   font-size: 16px;
   background-color: rgba(0, 0, 0, 0.6);
@@ -515,7 +515,7 @@
   top: 0%;
   height: 100%;
   background: #3c3c3c;
-  content: "";
+  content: '';
   width: 1px;
   display: block;
 }
@@ -637,7 +637,7 @@
   top: 50%;
   height: 1px;
   background: #3c3c3c;
-  content: "";
+  content: '';
   width: 100%;
   display: block;
 }
@@ -1052,7 +1052,6 @@
 #statsp {
   color: #b39c78;
 }
-
 
 .stats_toptowns_sideimg {
   /*filter: drop-shadow(0px 0px 3px black);*/

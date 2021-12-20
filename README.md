@@ -21,10 +21,15 @@ Detailed docs for that are at [passportjs.org passport-steam](https://www.passpo
 
 There is also some discord bot which takes some `DISCORD_TOKEN`.
 
-Run the server with `docker-compose up`. It...
+Build and run the server with `DOCKER_BUILDKIT=1 docker-compose up --build`. It...
 
 - mounts the `./.data` folder to save the database at
 - exposes the service on port `1337`
+
+
+## Contribute
+
+Please conform to `prettier --check src` auto-formatting. 
 
 
 ## Shortcuts

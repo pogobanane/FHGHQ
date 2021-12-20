@@ -19,7 +19,12 @@ window.Ranks = require('../_static/ranks');
 window.timelapseicon = {};
 
 Object.defineProperty(window, 'steamid', {
-  value: document.cookie.substring(document.cookie.indexOf(' steamid=') + 9, document.cookie.indexOf(' steamid=') + 26).replace(';', ''),
+  value: document.cookie
+    .substring(
+      document.cookie.indexOf(' steamid=') + 9,
+      document.cookie.indexOf(' steamid=') + 26
+    )
+    .replace(';', ''),
   writable: false,
   enumerable: true,
   configurable: true,
@@ -38,14 +43,22 @@ $(() => {
   id = id.replace(`${window.location.origin}/room/`, '');
   $.post(`/getroom?${$.param({ id })}`, (roominfo) => {
     store.dispatch(A.loadPage(roominfo));
-    document.cookie = 'redir_room=; expires=Thu, 01 Jan 1970 00:00:01 GMT; path=/';
+    document.cookie =
+      'redir_room=; expires=Thu, 01 Jan 1970 00:00:01 GMT; path=/';
     ReactDOM.render(
       <ReactRedux.Provider store={store}>
-        <ModalContainer.ModalContainer ref={(modalcontainer) => { window.modalcontainer = modalcontainer; }} />
-        <ModalContainer.RequestModalContainer ref={(requestmodalcontainer) => { window.requestmodalcontainer = requestmodalcontainer; }} />
-
+        <ModalContainer.ModalContainer
+          ref={(modalcontainer) => {
+            window.modalcontainer = modalcontainer;
+          }}
+        />
+        <ModalContainer.RequestModalContainer
+          ref={(requestmodalcontainer) => {
+            window.requestmodalcontainer = requestmodalcontainer;
+          }}
+        />
       </ReactRedux.Provider>,
-      document.getElementById('ModalContainer'),
+      document.getElementById('ModalContainer')
     );
     ReactDOM.render(
       <ReactRedux.Provider store={store}>
@@ -53,7 +66,7 @@ $(() => {
           <App />
         </React.StrictMode>
       </ReactRedux.Provider>,
-      document.getElementById('root'),
+      document.getElementById('root')
     );
   });
 });
@@ -62,29 +75,29 @@ function App() {
   return (
     <>
       <TabsPanel />
-      <div className="row" id="general_container_row">
+      <div className='row' id='general_container_row'>
         <UserList />
-        <div className="col total">
-          <div className="tab-content">
-            <div id="home" className="container tab-pane active">
-              <div className="row">
-                <div id="map-workspace" className="col workspace">
+        <div className='col total'>
+          <div className='tab-content'>
+            <div id='home' className='container tab-pane active'>
+              <div className='row'>
+                <div id='map-workspace' className='col workspace'>
                   <p>Right-click to place markers</p>
-                  <div id="mapcontainer">
+                  <div id='mapcontainer'>
                     <WarMap />
                     <Chat.ChatCore />
                   </div>
-                  <div id="cl1" className="row">
-                    <div id="lgm" className="col-sm-12 col-lg-6">
-                      <div id="ch1" className="eventLog">
-                        <ul id="ulid" style={{ listStyleType: 'none' }}>
+                  <div id='cl1' className='row'>
+                    <div id='lgm' className='col-sm-12 col-lg-6'>
+                      <div id='ch1' className='eventLog'>
+                        <ul id='ulid' style={{ listStyleType: 'none' }}>
                           <Events.PrivateEvents />
                         </ul>
                       </div>
                     </div>
-                    <div id="lgm2" className="col-sm-12 col-lg-6">
-                      <div id="ch1" className="eventLog">
-                        <ul id="ulid" style={{ listStyleType: 'none' }}>
+                    <div id='lgm2' className='col-sm-12 col-lg-6'>
+                      <div id='ch1' className='eventLog'>
+                        <ul id='ulid' style={{ listStyleType: 'none' }}>
                           <Events.Events />
                         </ul>
                       </div>
@@ -92,7 +105,7 @@ function App() {
                   </div>
                 </div>
 
-                <div id="ctpn" className="col-sm-12 col-lg-3 nomargin">
+                <div id='ctpn' className='col-sm-12 col-lg-3 nomargin'>
                   <Chat.ChatPersonal />
                   <Card />
                   <RequestCard />
@@ -100,20 +113,20 @@ function App() {
                 </div>
               </div>
             </div>
-            <div id="squadtab" className="container tab-pane">
+            <div id='squadtab' className='container tab-pane'>
               <p>Squads Management</p>
               <Tabs.Squads />
             </div>
 
-            <div id="refinery" className="container tab-pane">
+            <div id='refinery' className='container tab-pane'>
               <Tabs.Refinery />
             </div>
 
-            <div id="logicalc" className="container tab-pane">
+            <div id='logicalc' className='container tab-pane'>
               <Tabs.LogiCalc />
             </div>
 
-            <div id="techtree" className="container tab-pane">
+            <div id='techtree' className='container tab-pane'>
               <p>Technology Tree</p>
               <Tabs.TechTree />
             </div>
@@ -125,7 +138,7 @@ function App() {
         </div>
       </div>
 
-      <div id="mastercontainer" />
+      <div id='mastercontainer' />
     </>
   );
 }

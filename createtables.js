@@ -1,18 +1,17 @@
-const SQLite = require("better-sqlite3");
+const SQLite = require('better-sqlite3');
 const fs = require('fs');
 
 if (!fs.existsSync('./.data')) {
-  throw 'Folder for SQLite database does not exist: ./.data'
+  throw 'Folder for SQLite database does not exist: ./.data';
 }
 
-const sql = SQLite('./.data/global-data.db'); 
+const sql = SQLite('./.data/global-data.db');
 
 function sqlinit(sqlstatement, expected_error) {
   var ran = true;
   try {
     sql.prepare(sqlstatement).run();
-  }
-  catch(err) {
+  } catch (err) {
     // already inited or other error
     if (!err.message.includes(expected_error)) {
       throw err;
@@ -20,7 +19,7 @@ function sqlinit(sqlstatement, expected_error) {
     ran = false;
   }
   if (ran) {
-    console.warn("SQLite db not inited. Executed: " + sqlstatement);
+    console.warn('SQLite db not inited. Executed: ' + sqlstatement);
   }
 }
 
@@ -55,7 +54,7 @@ sqlinit(
 // exports.wipe = function (){
 // sql.prepare("DELETE FROM userglobal;").run();
 // sql.prepare("DELETE FROM global;").run();
-//sql.prepare("DELETE FROM towns;").run();  
+//sql.prepare("DELETE FROM towns;").run();
 //sql.prepare("DELETE FROM forts;").run();
 //sql.prepare("DELETE FROM fobs;").run();
 //sql.prepare("DELETE FROM ambushes;").run();

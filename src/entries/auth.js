@@ -36,7 +36,7 @@ class ModalContainer extends React.Component {
           console.log('Not redirecting');
           window.location.replace('/');
         }
-      // console.log(packet)
+        // console.log(packet)
         // window.location.replace('/');
       });
     }
@@ -45,68 +45,88 @@ class ModalContainer extends React.Component {
   render() {
     return (
       <div>
-        <div className="modal show" style={{ display: 'block' }}>
-          <div className="modal-dialog">
-            <div className="modal-content">
-              <div className="modal-header">
-                <h4 className="modal-title" id="mt">Foxhole Global HQ </h4>
+        <div className='modal show' style={{ display: 'block' }}>
+          <div className='modal-dialog'>
+            <div className='modal-content'>
+              <div className='modal-header'>
+                <h4 className='modal-title' id='mt'>
+                  Foxhole Global HQ{' '}
+                </h4>
               </div>
-              <div className="modal-body">
-                <div id="wrapper">
-                  {this.state.noauth
-                    ? (
-                      <div>
-                        <h5 className="name_input">
-                          <lable>Name: </lable>
-                          <input type="text" value={this.state.name} onChange={this.handleChangeName} />
-                        </h5>
-                        <button type="button" className="btn" onClick={() => this.SubmitNoAuth()}>Submit</button>
-    {/* <button type="button" className="btn" onClick={()=>this.ToggleNoAuth()} >Cancel</button> */}
-                      </div>
-                    )
-                    : (
-                      <div>
-                        <button type="button" className="btn" id="stm" onClick={() => window.location.href = '/auth/steam'}/>
-                        <button type="button" className="btn" onClick={() => this.ToggleNoAuth()}>Without Steam</button>
-                      </div>
-                    )}
+              <div className='modal-body'>
+                <div id='wrapper'>
+                  {this.state.noauth ? (
+                    <div>
+                      <h5 className='name_input'>
+                        <lable>Name: </lable>
+                        <input
+                          type='text'
+                          value={this.state.name}
+                          onChange={this.handleChangeName}
+                        />
+                      </h5>
+                      <button
+                        type='button'
+                        className='btn'
+                        onClick={() => this.SubmitNoAuth()}
+                      >
+                        Submit
+                      </button>
+                      {/* <button type="button" className="btn" onClick={()=>this.ToggleNoAuth()} >Cancel</button> */}
+                    </div>
+                  ) : (
+                    <div>
+                      <button
+                        type='button'
+                        className='btn'
+                        id='stm'
+                        onClick={() => (window.location.href = '/auth/steam')}
+                      />
+                      <button
+                        type='button'
+                        className='btn'
+                        onClick={() => this.ToggleNoAuth()}
+                      >
+                        Without Steam
+                      </button>
+                    </div>
+                  )}
                 </div>
-                <div id="inf">
+                <div id='inf'>
                   <h5>
-                      This is a work in progess setup of the original GlobalHQ
-                      by [3SP]AfrOwner hosted by [3SP]Illmaren.
-                      If you want to help us or have a Question, visit our Discord.
-                      Everything is done in free time so please be patient.
+                    This is a work in progess setup of the original GlobalHQ by
+                    [3SP]AfrOwner hosted by [3SP]Illmaren. If you want to help
+                    us or have a Question, visit our Discord. Everything is done
+                    in free time so please be patient.
                   </h5>
-                  <br />
-                  {' '}
+                  <br />{' '}
                   <h5>
-                    <p id="crdt"> Original Developer: Kastow</p>
-                    <p id="crdt"> Original Project Manager & Design: Mulon</p>
-                    <p id="crdt"> Voiced by: CaptainInArms PressCorps</p>
+                    <p id='crdt'> Original Developer: Kastow</p>
+                    <p id='crdt'> Original Project Manager & Design: Mulon</p>
+                    <p id='crdt'> Voiced by: CaptainInArms PressCorps</p>
                   </h5>
-
                   <h5>
-                    <br />
-                    {' '}
-                    Feedback and Suggestions:
-                    <a href="https://discord.gg/sZs5UZf">
-                      <img alt="discord" src="https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2Fdisc.png?v=1560206167061" />
-                     https://discord.gg/sZs5UZf
+                    <br /> Feedback and Suggestions:
+                    <a href='https://discord.gg/sZs5UZf'>
+                      <img
+                        alt='discord'
+                        src='https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2Fdisc.png?v=1560206167061'
+                      />
+                      https://discord.gg/sZs5UZf
                     </a>
                   </h5>
                   <h5>
                     {' '}
                     <br />
-                    Foxhole is a registered trademark of Clapfoot Inc,
-                      used on this website with their permission.
+                    Foxhole is a registered trademark of Clapfoot Inc, used on
+                    this website with their permission.
                   </h5>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div className="modal-backdrop show" style={{ display: 'block' }} />
+        <div className='modal-backdrop show' style={{ display: 'block' }} />
       </div>
     );
   }

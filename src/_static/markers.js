@@ -5,24 +5,26 @@ const ReactL = require('react-leaflet');
 
 const Leaflet_Pulse = require('leaflet-pulse-icon');
 
-const repo = 'https://raw.githubusercontent.com/the-fellowship-of-the-warapi/Assets/master/Map%20Icons/';
-const repo2 = 'https://raw.githubusercontent.com/the-fellowship-of-the-warapi/Assets/master/Item%20Icons/';
+const repo =
+  'https://raw.githubusercontent.com/the-fellowship-of-the-warapi/Assets/master/Map%20Icons/';
+const repo2 =
+  'https://raw.githubusercontent.com/the-fellowship-of-the-warapi/Assets/master/Item%20Icons/';
 const MapIcon = L.Icon.extend({
-	 	options: {
+  options: {
     iconSize: [16, 16],
     iconAnchor: [8, 8],
     popupAnchor: [0, 0],
   },
 });
 const MineIcon = L.Icon.extend({
-	 	options: {
+  options: {
     iconSize: [24, 24],
     iconAnchor: [12, 12],
     popupAnchor: [0, 0],
   },
 });
 const TownIcon = L.Icon.extend({
-	 	options: {
+  options: {
     iconSize: [24, 24], // 34
     iconAnchor: [12, 12],
     popupAnchor: [0, 0],
@@ -30,21 +32,21 @@ const TownIcon = L.Icon.extend({
   },
 });
 const HQIcon = L.Icon.extend({
-	 	options: {
+  options: {
     iconSize: [34, 34], // 34
     iconAnchor: [17, 17],
     popupAnchor: [0, 0],
   },
 });
 const PulseTownIcon = L.icon.pulse({
-	 	options: {
+  options: {
     iconSize: [34, 34],
     iconAnchor: [17, 17],
     popupAnchor: [0, 0],
   },
 });
 const FortIcon = L.Icon.extend({
-	 	options: {
+  options: {
     iconSize: [20, 20],
     iconAnchor: [10, 10],
     popupAnchor: [0, 0],
@@ -52,7 +54,7 @@ const FortIcon = L.Icon.extend({
   },
 });
 const min_FortIcon = L.Icon.extend({
-	 	options: {
+  options: {
     iconSize: [16, 16],
     iconAnchor: [8, 8],
     popupAnchor: [0, 0],
@@ -60,97 +62,196 @@ const min_FortIcon = L.Icon.extend({
 });
 
 const SelectIcon = L.Icon.extend({
-	 	options: {
+  options: {
     iconSize: [30, 30],
     iconAnchor: [15, 15],
     popupAnchor: [0, 0],
-    iconUrl: 'https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2Fgfds-3.png?v=1560690535457',
+    iconUrl:
+      'https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2Fgfds-3.png?v=1560690535457',
     className: 'map_icon_selected',
   },
 });
 const FilterIcon = L.Icon.extend({
-	 	options: {
+  options: {
     iconSize: [30, 30],
     iconAnchor: [15, 15],
     popupAnchor: [0, 0],
-    iconUrl: 'https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2Ffdsa.png?v=1561113652307',
+    iconUrl:
+      'https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2Ffdsa.png?v=1561113652307',
   },
 });
 const RequestIconBase = L.Icon.extend({
-	 	options: {
+  options: {
     iconSize: [24, 24],
     iconAnchor: [12, 12],
     popupAnchor: [0, 0],
-    iconUrl: 'https://cdn.glitch.com/6393f3fd-16a7-4641-ae3d-994f8e7cea4e%2FIconStatusEncumberedRed.png?1549573551066',
+    iconUrl:
+      'https://cdn.glitch.com/6393f3fd-16a7-4641-ae3d-994f8e7cea4e%2FIconStatusEncumberedRed.png?1549573551066',
     className: 'map_icon_request',
   },
 });
 const RequestIcon = {
-  incomplete: new RequestIconBase({ iconUrl: 'https://cdn.glitch.com/6393f3fd-16a7-4641-ae3d-994f8e7cea4e%2FIconStatusEncumberedRed.png?1549573551066' }),
-  complete: new RequestIconBase({ iconUrl: 'https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2FIconStatusEncumbered.png?1554591180726' }),
+  incomplete: new RequestIconBase({
+    iconUrl:
+      'https://cdn.glitch.com/6393f3fd-16a7-4641-ae3d-994f8e7cea4e%2FIconStatusEncumberedRed.png?1549573551066',
+  }),
+  complete: new RequestIconBase({
+    iconUrl:
+      'https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2FIconStatusEncumbered.png?1554591180726',
+  }),
 };
 const FobIconBase = L.Icon.extend({
-	 	options: {
+  options: {
     iconSize: [28, 28],
     iconAnchor: [14, 14],
     popupAnchor: [0, 0],
   },
 });
-const FobIcon = [[new FobIconBase({ iconUrl: `${repo}Bases/MapIconForwardBase1.png` }), // LVL 0 NEUT
-  new FobIconBase({ iconUrl: `${repo}Bases/MapIconForwardBase1Colonial.png` }), // LVL 0 COL
-  new FobIconBase({ iconUrl: `${repo}Bases/MapIconForwardBase1Warden.png` })], [ // LVL 0 WAR
-  new FobIconBase({ iconUrl: `${repo}Bases/MapIconForwardBase2.png` }), // LVL 1 NEUT
-  new FobIconBase({ iconUrl: `${repo}Bases/MapIconForwardBase2Colonial.png` }), // LVL 1 COL
-  new FobIconBase({ iconUrl: `${repo}Bases/MapIconForwardBase2Warden.png` })], [ // LVL 1 WAR
-  new FobIconBase({ iconUrl: `${repo}Bases/MapIconForwardBase3.png` }), // LVL 2 NEUT
-  new FobIconBase({ iconUrl: `${repo}Bases/MapIconForwardBase3Colonial.png` }), // LVL 2 COL
-  new FobIconBase({ iconUrl: `${repo}Bases/MapIconForwardBase3Warden.png` })]]; // LVL 2 WAR
-
+const FobIcon = [
+  [
+    new FobIconBase({ iconUrl: `${repo}Bases/MapIconForwardBase1.png` }), // LVL 0 NEUT
+    new FobIconBase({
+      iconUrl: `${repo}Bases/MapIconForwardBase1Colonial.png`,
+    }), // LVL 0 COL
+    new FobIconBase({ iconUrl: `${repo}Bases/MapIconForwardBase1Warden.png` }),
+  ],
+  [
+    // LVL 0 WAR
+    new FobIconBase({ iconUrl: `${repo}Bases/MapIconForwardBase2.png` }), // LVL 1 NEUT
+    new FobIconBase({
+      iconUrl: `${repo}Bases/MapIconForwardBase2Colonial.png`,
+    }), // LVL 1 COL
+    new FobIconBase({ iconUrl: `${repo}Bases/MapIconForwardBase2Warden.png` }),
+  ],
+  [
+    // LVL 1 WAR
+    new FobIconBase({ iconUrl: `${repo}Bases/MapIconForwardBase3.png` }), // LVL 2 NEUT
+    new FobIconBase({
+      iconUrl: `${repo}Bases/MapIconForwardBase3Colonial.png`,
+    }), // LVL 2 COL
+    new FobIconBase({ iconUrl: `${repo}Bases/MapIconForwardBase3Warden.png` }),
+  ],
+]; // LVL 2 WAR
 
 const MiscIcon = L.Icon.extend({
-	 	options: {
+  options: {
     iconSize: [24, 24],
     iconAnchor: [12, 12],
     popupAnchor: [0, 0],
   },
 });
 const MiscIconArray = [
-  { name: 'Note', url: 'https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2Ffdsag.png?1554889393144' }, // 0 NOTE
+  {
+    name: 'Note',
+    url: 'https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2Ffdsag.png?1554889393144',
+  }, // 0 NOTE
 
-  { name: 'Enemy', url: 'https://cdn.glitch.com/6393f3fd-16a7-4641-ae3d-994f8e7cea4e%2FIndicator_queue.png?1548525724233' }, // 1
+  {
+    name: 'Enemy',
+    url: 'https://cdn.glitch.com/6393f3fd-16a7-4641-ae3d-994f8e7cea4e%2FIndicator_queue.png?1548525724233',
+  }, // 1
 
-  { name: 'Attack', url: 'https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2Fattack.png?1554589500531' }, // 2
+  {
+    name: 'Attack',
+    url: 'https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2Fattack.png?1554589500531',
+  }, // 2
 
-  { name: 'Defend', url: 'https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2Fdefend.png?v=1554589500846' }, // 3
+  {
+    name: 'Defend',
+    url: 'https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2Fdefend.png?v=1554589500846',
+  }, // 3
 
-  { name: 'Move', url: 'https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2Fmove.png?1554589501432' }, // 4
+  {
+    name: 'Move',
+    url: 'https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2Fmove.png?1554589501432',
+  }, // 4
 
-  { name: 'Howitzer', url: 'https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2Ffsdd-9.png?1558099235579' }, // 5
+  {
+    name: 'Howitzer',
+    url: 'https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2Ffsdd-9.png?1558099235579',
+  }, // 5
 
-  { name: 'CV', url: 'https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2Fcv.png?1554890422722' }, // 6
+  {
+    name: 'CV',
+    url: 'https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2Fcv.png?1554890422722',
+  }, // 6
 
-  { name: 'Build', url: 'https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2FUndsfsed-6.png?1558094804796' }, // 7
+  {
+    name: 'Build',
+    url: 'https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2FUndsfsed-6.png?1558094804796',
+  }, // 7
 
-  { name: ' Squad 1', url: 'https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2F1s.png?1557484360213' }, // 8
-  { name: ' Squad 2', url: 'https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2Fs2.png?1557485248288' }, // 9
-  { name: ' Squad 3', url: 'https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2Fs3.png?1557485249108' }, // 10
-  { name: ' Squad 4', url: 'https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2Fs4.png?1557485250384' }, // 11
-  { name: ' Squad 5', url: 'https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2Fs5.png?1557485251552' }, // 12
+  {
+    name: ' Squad 1',
+    url: 'https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2F1s.png?1557484360213',
+  }, // 8
+  {
+    name: ' Squad 2',
+    url: 'https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2Fs2.png?1557485248288',
+  }, // 9
+  {
+    name: ' Squad 3',
+    url: 'https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2Fs3.png?1557485249108',
+  }, // 10
+  {
+    name: ' Squad 4',
+    url: 'https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2Fs4.png?1557485250384',
+  }, // 11
+  {
+    name: ' Squad 5',
+    url: 'https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2Fs5.png?1557485251552',
+  }, // 12
 
-  { name: ' Objective 1', url: 'https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2FOBJ1.png?1554589501515' }, // 13
-  { name: ' Objective 2', url: 'https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2FOBJ2.png?1554589501600' }, // 14
-  { name: ' Objective 3', url: 'https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2FOBJ3.png?1554589501849' }, // 15
+  {
+    name: ' Objective 1',
+    url: 'https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2FOBJ1.png?1554589501515',
+  }, // 13
+  {
+    name: ' Objective 2',
+    url: 'https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2FOBJ2.png?1554589501600',
+  }, // 14
+  {
+    name: ' Objective 3',
+    url: 'https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2FOBJ3.png?1554589501849',
+  }, // 15
 
-  { name: ' Truck', url: 'https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2Fsh21.png?1558524397895' }, // 16
-  { name: ' Bus', url: 'https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2Fsh1.png?1558524400417' }, // 17
-  { name: ' Storm Tank', url: 'https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2Fsh31.png?1558524397110' }, // 18
-  { name: ' Tractor', url: 'https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2Ffdsa1.png?1558524670995' }, // 19
-  { name: ' Staff Car', url: 'https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2Fsh3.png?1558524399172' }, // 20
+  {
+    name: ' Truck',
+    url: 'https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2Fsh21.png?1558524397895',
+  }, // 16
+  {
+    name: ' Bus',
+    url: 'https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2Fsh1.png?1558524400417',
+  }, // 17
+  {
+    name: ' Storm Tank',
+    url: 'https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2Fsh31.png?1558524397110',
+  }, // 18
+  {
+    name: ' Tractor',
+    url: 'https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2Ffdsa1.png?1558524670995',
+  }, // 19
+  {
+    name: ' Staff Car',
+    url: 'https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2Fsh3.png?1558524399172',
+  }, // 20
 
-  { name: ' Barge', url: 'https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2FBRG-2.png?1558692837627' }, // 21
-  { name: ' Gunboat', url: 'https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2FGBT2.png?1558692846451' }, // 22
-  { name: ' APC', url: 'https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2FAPC-2.png?1558692836707' }, // 23
-  { name: ' Cargo', url: 'https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2FCARGO.png?1558692847027' }, // 24
+  {
+    name: ' Barge',
+    url: 'https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2FBRG-2.png?1558692837627',
+  }, // 21
+  {
+    name: ' Gunboat',
+    url: 'https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2FGBT2.png?1558692846451',
+  }, // 22
+  {
+    name: ' APC',
+    url: 'https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2FAPC-2.png?1558692836707',
+  }, // 23
+  {
+    name: ' Cargo',
+    url: 'https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2FCARGO.png?1558692847027',
+  }, // 24
 
   {
     name: 'Mortar',
@@ -177,11 +278,26 @@ const MiscIconArray = [
     size: 300,
   }, // 28
 
-  { name: ' CV', url: 'https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2Fcv.png?1554890422722' }, // 29
-  { name: ' Crane', url: 'https://cdn.glitch.com/84b19724-a86b-4caa-8e69-1e9c973e043f%2Fcrane1.png?v=1563106383574' }, // 30
-  { name: ' Flatbed', url: 'https://cdn.glitch.com/84b19724-a86b-4caa-8e69-1e9c973e043f%2Ffltbd.png?v=1563106384699' }, // 31
-  { name: ' Container', url: 'https://cdn.glitch.com/84b19724-a86b-4caa-8e69-1e9c973e043f%2Fconta1.png?v=1563106385043' }, // 32
-  { name: ' Oil Truck', url: 'https://cdn.glitch.com/84b19724-a86b-4caa-8e69-1e9c973e043f%2Foilta.png?v=1563106384068' }, // 33
+  {
+    name: ' CV',
+    url: 'https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2Fcv.png?1554890422722',
+  }, // 29
+  {
+    name: ' Crane',
+    url: 'https://cdn.glitch.com/84b19724-a86b-4caa-8e69-1e9c973e043f%2Fcrane1.png?v=1563106383574',
+  }, // 30
+  {
+    name: ' Flatbed',
+    url: 'https://cdn.glitch.com/84b19724-a86b-4caa-8e69-1e9c973e043f%2Ffltbd.png?v=1563106384699',
+  }, // 31
+  {
+    name: ' Container',
+    url: 'https://cdn.glitch.com/84b19724-a86b-4caa-8e69-1e9c973e043f%2Fconta1.png?v=1563106385043',
+  }, // 32
+  {
+    name: ' Oil Truck',
+    url: 'https://cdn.glitch.com/84b19724-a86b-4caa-8e69-1e9c973e043f%2Foilta.png?v=1563106384068',
+  }, // 33
 
   {
     name: 'Storm Cannon',
@@ -197,7 +313,8 @@ const MiscIconArray = [
   }, // 35
 ];
 
-const icons = ['', // 0
+const icons = [
+  '', // 0
   '', // 1
   '', // 2
   '', // 3
@@ -234,7 +351,10 @@ const icons = ['', // 0
     w: 'Production/MapIconHospitalWarden.png',
   }, // 11 HOSPITAL
   'Production/MapIconVehicle.png', // 12 VEHICLE FACTORY
-  13, 14, 15, 16, // 16
+  13,
+  14,
+  15,
+  16, // 16
   {
     n: 'Production/MapIconManufacturing.png',
     c: 'Production/MapIconManufacturingColonial.png',
@@ -247,7 +367,9 @@ const icons = ['', // 0
   'Resources/ResourceComponents.png', // 21 COMPONENTS NODE
   22, // 22
   'Resources/ResourceSulfur.png', // 23 SULFUR NODE
-  24, 25, 26, // 26
+  24,
+  25,
+  26, // 26
   {
     n: 'Bases/MapIconKeep.png',
     c: 'Bases/MapIconKeepColonial.png',
@@ -270,7 +392,8 @@ const icons = ['', // 0
       w: 'Bases/min/Fort2Warden.png',
     },
   }, // 29 FORTS
-  30, 31,
+  30,
+  31,
   'Resources/MineSulfur.png', // 32 SULFUR MINE
 
   {
@@ -320,7 +443,14 @@ const icons = ['', // 0
     c: 'Bases/MapIconRelicBaseColonial.png',
     w: 'Bases/MapIconRelicBaseWarden.png',
   }, // 47 RELIC BASES
-  48, 49, 50, 51, 52, 53, 54, 55,
+  48,
+  49,
+  50,
+  51,
+  52,
+  53,
+  54,
+  55,
   {
     n: 'Bases/MapIconTownBaseTier1.png',
     c: 'Bases/MapIconTownBaseTier1Colonial.png',
@@ -370,8 +500,12 @@ class SimpleIcon extends React.Component {
       objicon = iconarray[10]
     } */
     return (
-      <ReactL.Marker key={`${position[0]}|${position[1]}|${obj.iconType}`} opacity={opacity} position={position} icon={objicon}>
-      </ReactL.Marker>
+      <ReactL.Marker
+        key={`${position[0]}|${position[1]}|${obj.iconType}`}
+        opacity={opacity}
+        position={position}
+        icon={objicon}
+      ></ReactL.Marker>
     );
   }
 }
@@ -388,7 +522,17 @@ function GetVictoryAddon(obj, position) {
       fillOpacity = 0.6;
     }
   }
-  return <ReactL.CircleMarker key={`stats_map_victoryaddon${fillOpacity}${obj.teamId}${obj.x}${obj.y}`} center={position} color="#000000" fillColor={victorycolor} fillOpacity={fillOpacity} radius={18} weight={1} />;
+  return (
+    <ReactL.CircleMarker
+      key={`stats_map_victoryaddon${fillOpacity}${obj.teamId}${obj.x}${obj.y}`}
+      center={position}
+      color='#000000'
+      fillColor={victorycolor}
+      fillOpacity={fillOpacity}
+      radius={18}
+      weight={1}
+    />
+  );
 }
 
 function GenerateHQIcon(team) {
@@ -407,7 +551,24 @@ function GenerateIcon(obj, param) {
     }
   } else {
     switch (obj.iconType) {
-      case 5: case 6: case 7: case 11: case 17: case 27: case 28: case 29: case 33: case 34: case 35: case 36: case 45: case 46: case 47: case 56: case 57: case 58:
+      case 5:
+      case 6:
+      case 7:
+      case 11:
+      case 17:
+      case 27:
+      case 28:
+      case 29:
+      case 33:
+      case 34:
+      case 35:
+      case 36:
+      case 45:
+      case 46:
+      case 47:
+      case 56:
+      case 57:
+      case 58:
         if (param == 'min') {
           iconUrl = icons[obj.iconType].min[obj.teamId[0].toLowerCase()];
         } else {
@@ -421,17 +582,34 @@ function GenerateIcon(obj, param) {
   }
   iconUrl = repo + iconUrl;
   switch (obj.iconType) {
-    case 5: case 6: case 7: case 27: case 28: case 35:
+    case 5:
+    case 6:
+    case 7:
+    case 27:
+    case 28:
+    case 35:
       if (obj.flags & 0x02) {
         return new MapIcon({ iconUrl });
       }
       return new TownIcon({ iconUrl });
 
-    case 12: case 17: case 20: case 23: case 33: case 34: case 36: case 37: case 39:
+    case 12:
+    case 17:
+    case 20:
+    case 23:
+    case 33:
+    case 34:
+    case 36:
+    case 37:
+    case 39:
       return new MapIcon({ iconUrl });
-    case 32: case 38: case 40: case 41:
+    case 32:
+    case 38:
+    case 40:
+    case 41:
       return new MineIcon({ iconUrl });
-    default: return new MapIcon({ iconUrl });
+    default:
+      return new MapIcon({ iconUrl });
   }
 }
 export default {
@@ -489,7 +667,6 @@ export default {
     Garrison Station(35) v0.20
     Ammo Factory	(36) v0.20
     Rocket Site 	(37) v0.20     */
-
 
 /*  IsVictoryBase           (0x01)
     IsHomeBase              (0x02)

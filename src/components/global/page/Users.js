@@ -1,12 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
-const ReactDOM = require("react-dom");
+const ReactDOM = require('react-dom');
 import socket from '../../../_static/socket';
 import store from '../../../redux/store';
 import U from '../useful_functions';
 import A from '../../../redux/actions';
 
-const rankclasses = [,
+const rankclasses = [
+  ,
   'row-admin', // 1
   'row-mod', // 2
   'row-user', // 3
@@ -67,14 +68,14 @@ class UserList extends React.Component {
   shouldComponentUpdate(nextProps, nextState) {
     // console.log(this.props.tab,nextProps.tab)
     if (
-      JSON.stringify(this.props.tab.messagespersonal)
-      != JSON.stringify(nextProps.tab.messagespersonal)
+      JSON.stringify(this.props.tab.messagespersonal) !=
+      JSON.stringify(nextProps.tab.messagespersonal)
     ) {
       return true;
     }
     if (
-      this.props.tab.tab != nextProps.tab.tab
-      && (this.props.tab.tab == 5 || nextProps.tab.tab == 5)
+      this.props.tab.tab != nextProps.tab.tab &&
+      (this.props.tab.tab == 5 || nextProps.tab.tab == 5)
     ) {
       return true;
     }
@@ -133,21 +134,21 @@ class UserList extends React.Component {
       ));
     // console.log('Rendering Online Users'); do you see me?ya
     return (
-      <div id="usrow" className="col-sm-12 col-lg-2 user_panel">
-        <table className="usertable">
+      <div id='usrow' className='col-sm-12 col-lg-2 user_panel'>
+        <table className='usertable'>
           <colgroup>
-            <col width="60" />
+            <col width='60' />
           </colgroup>
           <thead />
-          <tbody id="usertablebody">{userlist.online}</tbody>
+          <tbody id='usertablebody'>{userlist.online}</tbody>
         </table>
 
-        <table className="usertable">
+        <table className='usertable'>
           <colgroup>
-            <col width="60" />
+            <col width='60' />
           </colgroup>
           <thead />
-          <tbody id="usertablebodyoffline">{userlist.offline}</tbody>
+          <tbody id='usertablebodyoffline'>{userlist.offline}</tbody>
         </table>
       </div>
     );
@@ -166,7 +167,7 @@ class UserlistUnit extends React.Component {
   componentDidMount() {
     this.interval = setInterval(
       () => this.setState({ time: Date.now() }),
-      1000,
+      1000
     );
   }
 
@@ -241,8 +242,8 @@ class UserlistUnit extends React.Component {
       if (this.props.tab.messagespersonal[this.props.user.id]) {
         messagesicon = (
           <img
-            className="userlist_chat_notification"
-            src="https://cdn.glitch.com/84b19724-a86b-4caa-8e69-1e9c973e043f%2Fimage.png?v=1566043066208"
+            className='userlist_chat_notification'
+            src='https://cdn.glitch.com/84b19724-a86b-4caa-8e69-1e9c973e043f%2Fimage.png?v=1566043066208'
           />
         );
       }
@@ -251,49 +252,48 @@ class UserlistUnit extends React.Component {
           className={`user-row ${rowclass}`}
           onClick={() => this.handleSelect()}
         >
-          <td className="userlist_icon_cell">
-            <div className="userlist_status_cell">
-              <div className="userlist_status_container_userimg">
+          <td className='userlist_icon_cell'>
+            <div className='userlist_status_cell'>
+              <div className='userlist_status_container_userimg'>
                 <img
-                  className="profileimg"
+                  className='profileimg'
                   src={
                     this.props.user.id.includes('anonymous')
                       ? 'https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2Fdasd.jpg?1556805827222'
                       : this.props.user.avatar
                   }
-                />
-                {' '}
+                />{' '}
               </div>
-              <div className="userlist_status_container">
+              <div className='userlist_status_container'>
                 {statusflags[0] && (
                   <img
-                    className="userlist_status_icon"
+                    className='userlist_status_icon'
                     src={U.roleicons[this.props.user.role[0]].url}
                   />
                 )}
               </div>
-              <div className="userlist_status_container">
+              <div className='userlist_status_container'>
                 {statusflags[1] && (
                   <img
-                    className="userlist_status_icon"
+                    className='userlist_status_icon'
                     src={U.squadnumbers[squadindex]}
                   />
                 )}
               </div>
-              <div className="userlist_status_container">
+              <div className='userlist_status_container'>
                 {statusflags[2] && (
                   <img
-                    className="userlist_status_icon"
-                    src="https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2Fcog.png?1557599395034"
+                    className='userlist_status_icon'
+                    src='https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2Fcog.png?1557599395034'
                   />
                 )}
               </div>
-              <div className="userlist_status_container">
+              <div className='userlist_status_container'>
                 {statusflags[3] && (
                   <img
-                    className="userlist_status_icon"
-                    id="userlist_truck_icon"
-                    src="https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2Ftruckmove.png?1554654847337"
+                    className='userlist_status_icon'
+                    id='userlist_truck_icon'
+                    src='https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2Ftruckmove.png?1554654847337'
                   />
                 )}
               </div>
@@ -301,9 +301,9 @@ class UserlistUnit extends React.Component {
           </td>
           <td className={`userlist_cell ${rowclass}`}>
             <h6
-              className={
-                `userlist_header ${rankclasses[this.props.user.rank]}${online}`
-              }
+              className={`userlist_header ${
+                rankclasses[this.props.user.rank]
+              }${online}`}
             >
               {messagesicon}
               {this.props.user.name}

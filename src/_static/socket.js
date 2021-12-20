@@ -1,2 +1,2 @@
 const socket = require('socket.io-client')();
-export default socket
+export default socket;

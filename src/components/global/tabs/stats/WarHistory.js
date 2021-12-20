@@ -3,12 +3,12 @@ import U from '../../useful_functions';
 
 const FlipMove = require('react-flip-move');
 
-
 // ////////////////////////////////////////////
 class WarHistory extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { // /State
+    this.state = {
+      // /State
       cas: { 33: 215332, 34: 481845 },
       sorting: 0, // 0 - NUM DESC, 1 - NUM ASC, 2 - CAS DESC, 3 - CAS ASC, 4 - DUR DESC, 5 - DUR ASC
     };
@@ -16,7 +16,10 @@ class WarHistory extends React.Component {
   }
 
   shouldComponentUpdate(nextProps, nextState) {
-    if (this.state.sorting != nextState.sorting || this.props.warhistory.length != nextProps.warhistory.length) {
+    if (
+      this.state.sorting != nextState.sorting ||
+      this.props.warhistory.length != nextProps.warhistory.length
+    ) {
       return true;
     }
     return false;
@@ -63,10 +66,20 @@ class WarHistory extends React.Component {
     let winnerIcon = null;
     if (war.winner == 'COLONIALS') {
       rowclass = 'stats_warhistory_winnercollie';
-      winnerIcon = <img className="stats_warhistory_winnericon" src="https://cdn.glitch.com/84b19724-a86b-4caa-8e69-1e9c973e043f%2FlogoColonial64-min.png?v=1567262318680" />;
+      winnerIcon = (
+        <img
+          className='stats_warhistory_winnericon'
+          src='https://cdn.glitch.com/84b19724-a86b-4caa-8e69-1e9c973e043f%2FlogoColonial64-min.png?v=1567262318680'
+        />
+      );
     } else if (war.winner == 'WARDENS') {
       rowclass = 'stats_warhistory_winnerwarden';
-      winnerIcon = <img className="stats_warhistory_winnericon" src="https://cdn.glitch.com/84b19724-a86b-4caa-8e69-1e9c973e043f%2Flogowardl64-min.png?v=1567262313379" />;
+      winnerIcon = (
+        <img
+          className='stats_warhistory_winnericon'
+          src='https://cdn.glitch.com/84b19724-a86b-4caa-8e69-1e9c973e043f%2Flogowardl64-min.png?v=1567262313379'
+        />
+      );
     }
     const duration = this.SplitTime(war.duration);
     const cas = U.FormatNumber(war.cas);
@@ -170,28 +183,37 @@ class WarHistory extends React.Component {
     }
     // console.log("War history",this.state,this.props.warhistory)
     return (
-      <table id="stats_warhistory_container">
+      <table id='stats_warhistory_container'>
         <thead>
           <tr>
             <td onClick={() => this.handleChangeSorting(0)}>
-War
+              War
               {arrows[0]}
             </td>
             <td>Victory</td>
             <td>Victory Towns</td>
             <td onClick={() => this.handleChangeSorting(2)}>
-Casualties
+              Casualties
               {arrows[1]}
             </td>
             <td onClick={() => this.handleChangeSorting(4)}>
-Duration
+              Duration
               {arrows[2]}
             </td>
-            <td id="startend">Start time</td>
-            <td id="startend">End time</td>
+            <td id='startend'>Start time</td>
+            <td id='startend'>End time</td>
           </tr>
         </thead>
-        <FlipMove.default typeName="tbody" enterAnimation="accordionVertical" staggerDelayBy="5" staggerDurationBy="5" easing="ease-in-out" delay="5" leaveAnimation="none" duration={600}>
+        <FlipMove.default
+          typeName='tbody'
+          enterAnimation='accordionVertical'
+          staggerDelayBy='5'
+          staggerDurationBy='5'
+          easing='ease-in-out'
+          delay='5'
+          leaveAnimation='none'
+          duration={600}
+        >
           {rows}
         </FlipMove.default>
       </table>

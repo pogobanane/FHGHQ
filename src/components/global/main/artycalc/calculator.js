@@ -1,14 +1,20 @@
-const repo = "https://raw.githubusercontent.com/the-fellowship-of-the-warapi/Assets/master/Item Icons/"
+const repo =
+  'https://raw.githubusercontent.com/the-fellowship-of-the-warapi/Assets/master/Item Icons/';
 import React from 'react';
-import store from "../../../../redux/store";
-import {connect} from 'react-redux';
-import U from "../../useful_functions";
-import A from "../../../../redux/actions.js";
-import socket from "../../../../_static/socket";
+import store from '../../../../redux/store';
+import { connect } from 'react-redux';
+import U from '../../useful_functions';
+import A from '../../../../redux/actions.js';
+import socket from '../../../../_static/socket';
 
-const maxdistance = [[75, 150], [75, 150], [50, 100], [45, 65]];
+const maxdistance = [
+  [75, 150],
+  [75, 150],
+  [50, 100],
+  [45, 65],
+];
 
-socket.on("addArtyResult", function(packet) {
+socket.on('addArtyResult', function (packet) {
   store.dispatch(A.addArtyResult(packet.totalstring));
 });
 
@@ -21,7 +27,7 @@ class ArtyCalc_ extends React.Component {
       enemy_azimuth: 0,
       arty_distance: 0,
       arty_azimuth: 0,
-      arty_type: 0
+      arty_type: 0,
     };
     this.handleArtyChange = this.handleArtyChange.bind(this);
     this.handleFieldChange = this.handleFieldChange.bind(this);
@@ -30,16 +36,16 @@ class ArtyCalc_ extends React.Component {
   }
   shouldComponentUpdate(nextProps, nextState) {
     if (
-      this.props.selected.type != "artypanel" &&
-      nextProps.selected.type != "artypanel"
+      this.props.selected.type != 'artypanel' &&
+      nextProps.selected.type != 'artypanel'
     ) {
       return false;
     }
     if (
-      (this.props.selected.type != "artypanel" &&
-        nextProps.selected.type == "artypanel") ||
-      (this.props.selected.type == "artypanel" &&
-        nextProps.selected.type != "artypanel")
+      (this.props.selected.type != 'artypanel' &&
+        nextProps.selected.type == 'artypanel') ||
+      (this.props.selected.type == 'artypanel' &&
+        nextProps.selected.type != 'artypanel')
     ) {
       return true;
     }
@@ -54,7 +60,7 @@ class ArtyCalc_ extends React.Component {
   handleArtyChange(value, event) {
     event.target.parentNode.blur();
     this.setState({
-      arty_type: value
+      arty_type: value,
     });
   }
   handleFieldChange(event) {
@@ -63,7 +69,7 @@ class ArtyCalc_ extends React.Component {
     let validity = event.target.validity.valid;
     if (validity) {
       this.setState({
-        [name]: value
+        [name]: value,
       });
     }
   }
@@ -71,7 +77,7 @@ class ArtyCalc_ extends React.Component {
   ShareResult(result) {
     function transformDate(string) {
       if (Number(string) < 10) {
-        return "0" + string;
+        return '0' + string;
       } else {
         return string;
       }
@@ -79,17 +85,17 @@ class ArtyCalc_ extends React.Component {
     let date = new Date();
     let dateString =
       transformDate(date.getHours()) +
-      ":" +
+      ':' +
       transformDate(date.getMinutes()) +
-      ":" +
+      ':' +
       transformDate(date.getSeconds());
     let username = U.GetUsername(this.props.users.users, window.steamid);
     let totalstring = {
       date: dateString,
-      text: result.distance + "m " + result.azimuth + "° - " + username
+      text: result.distance + 'm ' + result.azimuth + '° - ' + username,
     };
     store.dispatch(A.addArtyResult(totalstring));
-    socket.emit("addArtyResult", { totalstring: totalstring });
+    socket.emit('addArtyResult', { totalstring: totalstring });
   }
 
   convertAngle(angle) {
@@ -147,7 +153,7 @@ class ArtyCalc_ extends React.Component {
     );
   }
   render() {
-    if (this.props.selected.type != "artypanel") {
+    if (this.props.selected.type != 'artypanel') {
       return null;
     }
     let result = this.calc_data();
@@ -155,11 +161,11 @@ class ArtyCalc_ extends React.Component {
     let text = <span></span>;
     let limit = maxdistance[this.state.arty_type];
     if (result.distance < limit[0]) {
-      text = <p className="arty_text_warning">Too close</p>;
-      distance = <p className="arty_text_warning">{result.distance} m</p>;
+      text = <p className='arty_text_warning'>Too close</p>;
+      distance = <p className='arty_text_warning'>{result.distance} m</p>;
     } else if (result.distance > limit[1]) {
-      text = <p className="arty_text_warning">Out of range</p>;
-      distance = <p className="arty_text_warning">{result.distance} m</p>;
+      text = <p className='arty_text_warning'>Out of range</p>;
+      distance = <p className='arty_text_warning'>{result.distance} m</p>;
     } else {
       text = <br />;
       distance = <p>{result.distance} m</p>;
@@ -170,61 +176,67 @@ class ArtyCalc_ extends React.Component {
     }
     return (
       <React.Fragment>
-        <div id="arty_calc_col_container">
-          <div id="box" className="horizontal container">
+        <div id='arty_calc_col_container'>
+          <div id='box' className='horizontal container'>
             <button
               className={
                 this.state.arty_type == 0
-                  ? "arty_type_btn arty_type_btn_selected"
-                  : "arty_type_btn"
+                  ? 'arty_type_btn arty_type_btn_selected'
+                  : 'arty_type_btn'
               }
-              onClick={e => this.handleArtyChange(0, e)}
+              onClick={(e) => this.handleArtyChange(0, e)}
             >
               <img
-                className="arty_type"
+                className='arty_type'
                 src={repo + 'Structures/StaticArtilleryStructureIcon.png'}
               />
             </button>
             <button
               className={
                 this.state.arty_type == 1
-                  ? "arty_type_btn arty_type_btn_selected"
-                  : "arty_type_btn"
+                  ? 'arty_type_btn arty_type_btn_selected'
+                  : 'arty_type_btn'
               }
-              onClick={e => this.handleArtyChange(1, e)}
+              onClick={(e) => this.handleArtyChange(1, e)}
             >
               <img
-                className="arty_type"
+                className='arty_type'
                 src={repo + 'Vehicles/ArtilleryIcon.png'}
               />
             </button>
             <button
               className={
                 this.state.arty_type == 2
-                  ? "arty_type_btn arty_type_btn_selected"
-                  : "arty_type_btn"
+                  ? 'arty_type_btn arty_type_btn_selected'
+                  : 'arty_type_btn'
               }
-              onClick={e => this.handleArtyChange(2, e)}
+              onClick={(e) => this.handleArtyChange(2, e)}
             >
-              <img className="arty_type" src={repo + 'Vehicles/GunboatColonial.png'} />
+              <img
+                className='arty_type'
+                src={repo + 'Vehicles/GunboatColonial.png'}
+              />
             </button>
             <button
               className={
                 this.state.arty_type == 3
-                  ? "arty_type_btn arty_type_btn_selected"
-                  : "arty_type_btn"
+                  ? 'arty_type_btn arty_type_btn_selected'
+                  : 'arty_type_btn'
               }
-              onClick={e => this.handleArtyChange(3, e)}
+              onClick={(e) => this.handleArtyChange(3, e)}
             >
-              <img className="arty_type" src={ repo + 'Items/MortarItemIcon.png' } />{" "}
+              <img
+                className='arty_type'
+                src={repo + 'Items/MortarItemIcon.png'}
+              />{' '}
             </button>
           </div>
-          <table id="arttb" className="arty_table">
+          <table id='arttb' className='arty_table'>
             <colgroup>
-              <col width="80" />
-              <col width="130" />
-              <col width="130" />
-              <col width="100" />
+              <col width='80' />
+              <col width='130' />
+              <col width='130' />
+              <col width='100' />
             </colgroup>
             <thead>
               <tr>
@@ -241,11 +253,11 @@ class ArtyCalc_ extends React.Component {
               <tr>
                 <td>
                   <input
-                    className="line"
-                    type="number"
-                    name="enemy_distance"
-                    min="0"
-                    max="1000"
+                    className='line'
+                    type='number'
+                    name='enemy_distance'
+                    min='0'
+                    max='1000'
                     value={this.state.enemy_distance}
                     onChange={this.handleFieldChange}
                   />
@@ -255,11 +267,11 @@ class ArtyCalc_ extends React.Component {
                 </td>
                 <td>
                   <input
-                    className="line"
-                    type="number"
-                    name="arty_distance"
-                    min="0"
-                    max="1000"
+                    className='line'
+                    type='number'
+                    name='arty_distance'
+                    min='0'
+                    max='1000'
                     value={this.state.arty_distance}
                     onChange={this.handleFieldChange}
                   />
@@ -268,11 +280,11 @@ class ArtyCalc_ extends React.Component {
               <tr>
                 <td>
                   <input
-                    className="line"
-                    type="number"
-                    name="enemy_azimuth"
-                    min="0"
-                    max="359"
+                    className='line'
+                    type='number'
+                    name='enemy_azimuth'
+                    min='0'
+                    max='359'
                     value={this.state.enemy_azimuth}
                     onChange={this.handleFieldChange}
                   />
@@ -282,11 +294,11 @@ class ArtyCalc_ extends React.Component {
                 </td>
                 <td>
                   <input
-                    className="line"
-                    type="number"
-                    name="arty_azimuth"
-                    min="0"
-                    max="359"
+                    className='line'
+                    type='number'
+                    name='arty_azimuth'
+                    min='0'
+                    max='359'
                     value={this.state.arty_azimuth}
                     onChange={this.handleFieldChange}
                   />
@@ -294,29 +306,29 @@ class ArtyCalc_ extends React.Component {
               </tr>
             </tbody>
           </table>
-          <table id="arty_result_table">
+          <table id='arty_result_table'>
             <tbody>
               <tr>
                 <td>
-                  <p className="arty_calc_result_cell">{result.distance} m</p>
+                  <p className='arty_calc_result_cell'>{result.distance} m</p>
                 </td>
               </tr>
               <tr>
                 <td>
-                  <p className="arty_calc_result_cell">{result.azimuth} °</p>
+                  <p className='arty_calc_result_cell'>{result.azimuth} °</p>
                 </td>
               </tr>
             </tbody>
           </table>
           {text}
           <button
-            className="share_arty_btn"
+            className='share_arty_btn'
             onClick={() => this.ShareResult(result)}
           >
             Share result
           </button>
-          <div id="artynotesarea">
-            <ul id="ulid" style={{ listStyleType: "none" }}>
+          <div id='artynotesarea'>
+            <ul id='ulid' style={{ listStyleType: 'none' }}>
               {lines}
             </ul>
           </div>
@@ -326,11 +338,11 @@ class ArtyCalc_ extends React.Component {
   }
 }
 /////////////////////////////////////////////////////////////////////////////////////
-const mapStateToPropsCalc = store => {
+const mapStateToPropsCalc = (store) => {
   return {
     users: store.users,
     arty: store.arty,
-    selected: store.selected
+    selected: store.selected,
   };
 };
 

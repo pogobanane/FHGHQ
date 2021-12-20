@@ -4,7 +4,12 @@ import Top from '../components/Index-top';
 import Ranks from '../_static/ranks';
 
 const { socket } = Top;
-const steamid = document.cookie.substring(document.cookie.indexOf(' steamid=') + 9, document.cookie.indexOf(' steamid=') + 26).replace(';', '');
+const steamid = document.cookie
+  .substring(
+    document.cookie.indexOf(' steamid=') + 9,
+    document.cookie.indexOf(' steamid=') + 26
+  )
+  .replace(';', '');
 
 Object.defineProperty(window, 'steamid', {
   value: steamid,
@@ -18,11 +23,32 @@ Top.RenderTop();
 $.post(`/getuserrooms?${$.param({ id: steamid })}`, (roomslist) => {
   // rooms = roomslist;
   // console.log(roomslist)
-  ReactDOM.render(<LeaveModal ref={(leavemodal) => { window.leavemodal = leavemodal; }} />, document.getElementById('leaveModalContainer'));
-  ReactDOM.render(<CreateModal ref={(createmodal) => { window.createmodal = createmodal; }} />, document.getElementById('createModalContainer'));
-  ReactDOM.render(<Room ref={(room) => { window.room = room; }} rooms={roomslist} />, document.getElementById('roomtablebody'));
+  ReactDOM.render(
+    <LeaveModal
+      ref={(leavemodal) => {
+        window.leavemodal = leavemodal;
+      }}
+    />,
+    document.getElementById('leaveModalContainer')
+  );
+  ReactDOM.render(
+    <CreateModal
+      ref={(createmodal) => {
+        window.createmodal = createmodal;
+      }}
+    />,
+    document.getElementById('createModalContainer')
+  );
+  ReactDOM.render(
+    <Room
+      ref={(room) => {
+        window.room = room;
+      }}
+      rooms={roomslist}
+    />,
+    document.getElementById('roomtablebody')
+  );
 });
-
 
 class Room extends React.Component {
   constructor(props) {
@@ -59,21 +85,43 @@ class Room extends React.Component {
   }
 
   render() {
-    const roomlist = this.state.rooms.map((item) => <RoomUnit key={item.globalid} item={item} />);
-    return (
-      <>{roomlist}</>
-    );
+    const roomlist = this.state.rooms.map((item) => (
+      <RoomUnit key={item.globalid} item={item} />
+    ));
+    return <>{roomlist}</>;
   }
 }
 
 function RoomUnit(props) {
   return (
     <tr>
-      <td className="removecell"><button onClick={() => window.leavemodal.ShowModal(props.item)} className="removebutton"><img className="removeimage" src="https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2FX.png?1557668374293" /></button></td>
-      <td><p>{props.item.roomname}</p></td>
-      <td><a href={`https://steamcommunity.com/profiles/${props.item.adminid}`}>{props.item.admin}</a></td>
-      <td><a href={`${window.location.origin}/room/${props.item.globalid}`}>{props.item.globalid}</a></td>
-      <td><p>{Ranks[props.item.rank]}</p></td>
+      <td className='removecell'>
+        <button
+          onClick={() => window.leavemodal.ShowModal(props.item)}
+          className='removebutton'
+        >
+          <img
+            className='removeimage'
+            src='https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2FX.png?1557668374293'
+          />
+        </button>
+      </td>
+      <td>
+        <p>{props.item.roomname}</p>
+      </td>
+      <td>
+        <a href={`https://steamcommunity.com/profiles/${props.item.adminid}`}>
+          {props.item.admin}
+        </a>
+      </td>
+      <td>
+        <a href={`${window.location.origin}/room/${props.item.globalid}`}>
+          {props.item.globalid}
+        </a>
+      </td>
+      <td>
+        <p>{Ranks[props.item.rank]}</p>
+      </td>
     </tr>
   );
 }
@@ -96,14 +144,12 @@ class LeaveModal extends React.Component {
   ShowModal(room) {
     // console.log("Ping!");
     const banned = room.rank === 4;
-    return (
-      this.setState({
-        globalid: room.globalid,
-        roomname: room.roomname,
-        admin: room.rank === 1,
-        show: !banned,
-      })
-    );
+    return this.setState({
+      globalid: room.globalid,
+      roomname: room.roomname,
+      admin: room.rank === 1,
+      show: !banned,
+    });
   }
 
   CloseModal() {
@@ -118,45 +164,60 @@ class LeaveModal extends React.Component {
   LeaveRoom() {
     window.room.RemoveRoom(this.state.globalid);
     this.CloseModal();
-    $.post(`/leaveroom?${$.param({ globalid: this.state.globalid })}`, () => {
-    });
+    $.post(
+      `/leaveroom?${$.param({ globalid: this.state.globalid })}`,
+      () => {}
+    );
   }
 
   render() {
     return (
       <>
-        <div className={(this.state.show) ? 'modal show' : 'modal'} style={{ display: (this.state.show) ? 'block' : 'none' }}>
-          <div className="modal-dialog">
-            <div className="modal-content">
-              <div className="modal-header">
-                <h4 className="modal-title">Leave room</h4>
-                <button type="button" className="close" onClick={this.CloseModal}>&times;</button>
+        <div
+          className={this.state.show ? 'modal show' : 'modal'}
+          style={{ display: this.state.show ? 'block' : 'none' }}
+        >
+          <div className='modal-dialog'>
+            <div className='modal-content'>
+              <div className='modal-header'>
+                <h4 className='modal-title'>Leave room</h4>
+                <button
+                  type='button'
+                  className='close'
+                  onClick={this.CloseModal}
+                >
+                  &times;
+                </button>
               </div>
-              <div className="modal-body">
+              <div className='modal-body'>
                 <h6>
-Are you sure you want to leave room
-                  {this.state.roomname}
-?
+                  Are you sure you want to leave room
+                  {this.state.roomname}?
                 </h6>
-
                 {this.state.admin ? (
-                  <div className="alert alert-warning" id="adminwarning">
-                    <strong>Warning!</strong>
-                    {' '}
-You are the admin of this room. Leaving will delete this room.
+                  <div className='alert alert-warning' id='adminwarning'>
+                    <strong>Warning!</strong> You are the admin of this room.
+                    Leaving will delete this room.
                   </div>
-                ) : <div />}
-                {' '}
-
+                ) : (
+                  <div />
+                )}{' '}
               </div>
-              <div className="modal-footer">
-                <button type="button" className="btn" onClick={this.LeaveRoom}>Leave room</button>
-                <button type="button" className="btn" onClick={this.CloseModal}>Close</button>
+              <div className='modal-footer'>
+                <button type='button' className='btn' onClick={this.LeaveRoom}>
+                  Leave room
+                </button>
+                <button type='button' className='btn' onClick={this.CloseModal}>
+                  Close
+                </button>
               </div>
             </div>
           </div>
         </div>
-        <div className="modal-backdrop show" style={{ display: (this.state.show) ? 'block' : 'none' }} />
+        <div
+          className='modal-backdrop show'
+          style={{ display: this.state.show ? 'block' : 'none' }}
+        />
       </>
     );
   }
@@ -193,9 +254,7 @@ class CreateModal extends React.Component {
   }
 
   handleChange(event) {
-    const {
-      name, value, type, checked,
-    } = event.target;
+    const { name, value, type, checked } = event.target;
     this.setState({ [name]: value });
     // console.log(this.state);
   }
@@ -214,147 +273,177 @@ class CreateModal extends React.Component {
       roomname = 'New Room';
     }
     const settings = {
-      name: roomname, faction: this.state.faction, secure: this.state.secure, password: this.state.password,
+      name: roomname,
+      faction: this.state.faction,
+      secure: this.state.secure,
+      password: this.state.password,
     };
     $.post(`/createroom?${$.param({ id: steamid, settings })}`, (id) => {
       window.location.replace(`/room/${id}`);
     });
   }
 
-
   render() {
     return (
       <div>
-        <div className={(this.state.show) ? 'modal show' : 'modal'} style={{ display: (this.state.show) ? 'block' : 'none' }}>
-          <div className="modal-dialog">
-            <div id="index_createmodal_content" className="modal-content">
-              <div id="index_createmodal_header" className="modal-header">
-                <h4 className="modal-title">Create new room</h4>
-                <button type="button" className="close" onClick={this.CloseModal}>
+        <div
+          className={this.state.show ? 'modal show' : 'modal'}
+          style={{ display: this.state.show ? 'block' : 'none' }}
+        >
+          <div className='modal-dialog'>
+            <div id='index_createmodal_content' className='modal-content'>
+              <div id='index_createmodal_header' className='modal-header'>
+                <h4 className='modal-title'>Create new room</h4>
+                <button
+                  type='button'
+                  className='close'
+                  onClick={this.CloseModal}
+                >
                   <span>&times;</span>
                 </button>
               </div>
-              <div id="index_createmodal_body" className="modal-body">
+              <div id='index_createmodal_body' className='modal-body'>
                 <form>
                   <h5>
                     Room name:
                     <input
-                      type="text"
-                      placeholder="New Room"
+                      type='text'
+                      placeholder='New Room'
                       value={this.state.roomname}
                       onChange={this.handleChangeName}
                     />
                   </h5>
-                  <div className="form-check-inline">
-                    <label className="form-check-label">
+                  <div className='form-check-inline'>
+                    <label className='form-check-label'>
                       <h5>
                         <input
-                          type="radio"
-                          className="form-check-input"
-                          name="faction"
-                          value="0"
+                          type='radio'
+                          className='form-check-input'
+                          name='faction'
+                          value='0'
                           checked={this.state.faction == 0}
                           onChange={this.handleChange}
                         />
                         <img
-                          className="faction_img"
-                          alt="colonial"
-                          src="https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2Fcol.png?v=1560274203875"
+                          className='faction_img'
+                          alt='colonial'
+                          src='https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2Fcol.png?v=1560274203875'
                         />
                       </h5>
                     </label>
                   </div>
-                  <div className="form-check-inline">
-                    <label className="form-check-label">
+                  <div className='form-check-inline'>
+                    <label className='form-check-label'>
                       <h5>
                         <input
-                          type="radio"
-                          className="form-check-input"
-                          name="faction"
-                          value="1"
+                          type='radio'
+                          className='form-check-input'
+                          name='faction'
+                          value='1'
                           checked={this.state.faction == 1}
                           onChange={this.handleChange}
                         />
                         <img
-                          className="faction_img"
-                          alt="warden"
-                          src="https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2FUward.png?v=1560274204371"
+                          className='faction_img'
+                          alt='warden'
+                          src='https://cdn.glitch.com/dd3f06b2-b7d4-4ccc-8675-05897efc4bb5%2FUward.png?v=1560274204371'
                         />
                       </h5>
                     </label>
                   </div>
                   <hr />
-                  <div className="form-check-inline">
-                    <label className="form-check-label">
+                  <div className='form-check-inline'>
+                    <label className='form-check-label'>
                       <h5>
                         <input
-                          type="radio"
-                          className="form-check-input"
-                          name="secure"
-                          value="1"
+                          type='radio'
+                          className='form-check-input'
+                          name='secure'
+                          value='1'
                           checked={this.state.secure == 1}
                           onChange={this.handleChange}
                           disabled={window.steamid.includes('anonymous')}
                         />
-                                Secure
+                        Secure
                       </h5>
-                      <p>Only steam users can request access, no password required</p>
+                      <p>
+                        Only steam users can request access, no password
+                        required
+                      </p>
                     </label>
                   </div>
-                  <div className="form-check-inline">
-                    <label className="form-check-label">
+                  <div className='form-check-inline'>
+                    <label className='form-check-label'>
                       <h5>
                         <input
-                          type="radio"
-                          className="form-check-input"
-                          name="secure"
-                          value="0"
+                          type='radio'
+                          className='form-check-input'
+                          name='secure'
+                          value='0'
                           checked={this.state.secure == 0}
                           onChange={this.handleChange}
                         />
-                                Unsecure
+                        Unsecure
                       </h5>
                       <p>Allow Steam and non Steam users (requires Password)</p>
                     </label>
                   </div>
-                  <br />
-                  {' '}
+                  <br />{' '}
                   <h5>
-                        Password:
+                    Password:
                     <input
-                      type="text"
-                      name="password"
+                      type='text'
+                      name='password'
                       value={this.state.password}
                       onChange={this.handleChange}
                       disabled={this.state.secure == 1}
                     />
                   </h5>
                 </form>
-                <div className="alert alert-warning" role="alert">
-                      Only Steam authorized users can create secure
-                      rooms and change room settings.
+                <div className='alert alert-warning' role='alert'>
+                  Only Steam authorized users can create secure rooms and change
+                  room settings.
                 </div>
               </div>
-              <div className="modal-footer">
-                <button type="button" id="cr" className="btn" onClick={this.CreateRoom}>Create room</button>
-                <button type="button" id="cr" className="btn" onClick={this.CloseModal}>Close</button>
+              <div className='modal-footer'>
+                <button
+                  type='button'
+                  id='cr'
+                  className='btn'
+                  onClick={this.CreateRoom}
+                >
+                  Create room
+                </button>
+                <button
+                  type='button'
+                  id='cr'
+                  className='btn'
+                  onClick={this.CloseModal}
+                >
+                  Close
+                </button>
               </div>
             </div>
           </div>
         </div>
-        <div className="modal-backdrop show" style={{ display: (this.state.show) ? 'block' : 'none' }} />
+        <div
+          className='modal-backdrop show'
+          style={{ display: this.state.show ? 'block' : 'none' }}
+        />
       </div>
     );
   }
 }
 
 // Removes room from the table
-socket.on('leaveroom', (roomid) => { // SOCKET EVENT - LEAVES ROOM
+socket.on('leaveroom', (roomid) => {
+  // SOCKET EVENT - LEAVES ROOM
   window.room.RemoveRoom(roomid);
 });
 
 // Updates room status
-socket.on('updateroom', (roominfo) => { // SOCKET EVENT - UPDATES ROOM
+socket.on('updateroom', (roominfo) => {
+  // SOCKET EVENT - UPDATES ROOM
   // console.log('updating room');
   // console.log(roominfo);
   window.room.UpdateRoom(roominfo);

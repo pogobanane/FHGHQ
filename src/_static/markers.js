@@ -591,34 +591,15 @@ function GenerateIcon(obj, param) {
       iconUrl = icons[10];
     }
   } else {
-    switch (obj.iconType) {
-      case 5:
-      case 6:
-      case 7:
-      case 11:
-      case 17:
-      case 27:
-      case 28:
-      case 29:
-      case 33:
-      case 34:
-      case 35:
-      case 36:
-      case 45:
-      case 46:
-      case 47:
-      case 56:
-      case 57:
-      case 58:
-        if (param == 'min') {
-          iconUrl = icons[obj.iconType].min[obj.teamId[0].toLowerCase()];
-        } else {
-          iconUrl = icons[obj.iconType][obj.teamId[0].toLowerCase()];
-        }
-        break;
-      default:
-        iconUrl = icons[obj.iconType];
-        break;
+    let element = icons[obj.iconType];
+    if (typeof element === 'string') {
+      iconUrl = element;
+    } else if (typeof element === 'object') {
+      if (param == 'min') {
+        iconUrl = element.min[obj.teamId[0].toLowerCase()];
+      } else {
+        iconUrl = element[obj.teamId[0].toLowerCase()];
+      }
     }
   }
   iconUrl = repo + iconUrl;

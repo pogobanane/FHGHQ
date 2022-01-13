@@ -401,8 +401,11 @@ const icons = [
     c: 'Production/MapIconManufacturingColonial.png',
     w: 'Production/MapIconManufacturingWarden.png',
   }, // 17 REFINERY
-
-  'Production/MapIconShipyard.png', // 18 SHIPYARD
+  {
+    n: 'Production/MapIconShipyard.png',
+    c: 'Production/MapIconShipyardColonial.png',
+    w: 'Production/MapIconShipyardWarden.png',
+  }, // 18 SHIPYARD
   19, // 19
   'Resources/ResourceSalvage.png', // 20 SALVAGE NODE
   'Resources/ResourceComponents.png', // 21 COMPONENTS NODE
@@ -487,8 +490,16 @@ const icons = [
   48,
   49,
   50,
-  'Production/MapIconMassProductionFactory.png',
-  'Production/MapIconSeaport.png',
+  {
+    n: 'Production/MapIconMassProductionFactory.png',
+    c: 'Production/MapIconMassProductionFactoryColonial.png',
+    w: 'Production/MapIconMassProductionFactoryWarden.png',
+  }, // 51 MPF
+  {
+    n: 'Production/MapIconSeaport.png',
+    c: 'Production/MapIconSeaportColonial.png',
+    w: 'Production/MapIconSeaportWarden.png',
+  }, // 52 Seaport
   53,
   54,
   55,
@@ -609,10 +620,11 @@ function GenerateIcon(obj, param) {
     case 7:
     case 27:
     case 28:
-    case 35:
+    case 33:
     case 45:
     case 46:
     case 47:
+    case 52:
     case 56:
     case 57:
     case 58:
@@ -620,17 +632,6 @@ function GenerateIcon(obj, param) {
         return new MapIcon({ iconUrl });
       }
       return new TownIcon({ iconUrl });
-
-    case 12:
-    case 17:
-    case 20:
-    case 23:
-    case 33:
-    case 34:
-    case 36:
-    case 37:
-    case 39:
-      return new MapIcon({ iconUrl });
     case 32:
     case 38:
     case 40:

@@ -126,10 +126,10 @@ function App() {
               <Tabs.LogiCalc />
             </div>
 
-            <div id='techtree' className='container tab-pane'>
-              <p>Technology Tree</p>
-              <Tabs.TechTree />
-            </div>
+    {/*            <div id='techtree' className='container tab-pane'> */}
+    {/*              <p>Technology Tree</p> */}
+    {/*              <Tabs.TechTree /> */}
+    {/*            </div> */}
             {/* <div id="statstab" className="container tab-pane"> */}
             {/*  <Tabs.Stats /> */}
             {/* </div> */}

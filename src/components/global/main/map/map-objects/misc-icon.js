@@ -102,6 +102,7 @@ class MiscIcon_ extends React.Component {
   }
   GetArtyIcon(obj) {
     let addon = null;
+    let circles = null;
     let ratio = RegionImages.ratio;
     let artysize = markers.MiscIconArray[obj.type].size;
     let size = artysize * ratio * Math.pow(2, this.props.zoom);
@@ -111,6 +112,65 @@ class MiscIcon_ extends React.Component {
       shadowSize: [size, size],
       shadowAnchor: [size / 2, size / 2],
     });
+    if (obj.type == 25) {
+      let circle1 = markers.MiscIconArray[obj.type].circle1;
+      let circle2 = markers.MiscIconArray[obj.type].circle2;
+      let circle3 = markers.MiscIconArray[obj.type].circle3;
+      circles = (
+        <React.Fragment>
+          <L.Circle
+            center={[obj.position.y, obj.position.x]}
+            color='#463027'
+            weight='1'
+            fillOpacity={0}
+            opacity={0.5}
+            dashArray={"7, 5, 1, 4, 1, 4"}
+            radius={RegionImages.ratio * circle1}
+            zIndexOffset={6000}
+            pane='toppane'
+          />
+          <L.Circle
+            center={[obj.position.y, obj.position.x]}
+            color='#463027'
+            weight='2'
+            fillOpacity={0}
+            opacity={0.5}
+            dashArray={"10, 7, 1, 4, 1, 4"}
+            radius={RegionImages.ratio * circle2}
+            zIndexOffset={6000}
+            pane='toppane'
+          />
+          <L.Circle
+            center={[obj.position.y, obj.position.x]}
+            color='#463027'
+            weight='1'
+            fillOpacity={0}
+            opacity={0.5}
+            dashArray={"7, 5, 1, 4, 1, 4"}
+            radius={RegionImages.ratio * circle3}
+            zIndexOffset={6000}
+            pane='toppane'
+          />
+        </React.Fragment>
+      );
+    }
+    if (obj.type == 26) {
+      circles = (
+        <React.Fragment>
+          <L.Circle
+            center={[obj.position.y, obj.position.x]}
+            color='#463027'
+            weight='1'
+            fillOpacity={0}
+            opacity={0.5}
+            dashArray={"10, 10, 1, 4, 1, 4"}
+            radius={RegionImages.ratio * artysize / 2}
+            zIndexOffset={6000}
+            pane='toppane'
+          />
+        </React.Fragment>
+      );
+    }
     if (this.state.artyaddon != null) {
       // Converts from radians to degrees.
       function toDegrees(radians) {
@@ -144,6 +204,7 @@ class MiscIcon_ extends React.Component {
         });
         IconText.options.iconSize = [undefined, undefined];
         IconText.options.iconAnchor = [30, 0];
+        // this is the arrow/line showing where the artillery piece is aiming at
         addon = (
           <React.Fragment>
             <L.Polyline
@@ -189,6 +250,7 @@ class MiscIcon_ extends React.Component {
           />
         ) : null}
         {addon}
+        {circles}
       </React.Fragment>
     );
   }

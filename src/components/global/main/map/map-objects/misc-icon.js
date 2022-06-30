@@ -223,16 +223,6 @@ class MiscIcon_ extends React.Component {
             />
           </React.Fragment>
         );
-            //<L.Circle
-            //  center={[this.state.artyaddon[0], this.state.artyaddon[1]]}
-            //  fillColor='blue'
-            //  color='blue'
-            //  fillOpacity={1}
-            //  opacity={1}
-            //  radius={(RegionImages.ratio * artysize) / 6}
-            //  zIndexOffset={6000}
-            //  pane='toppane'
-            ///>
       }
     }
     return (
@@ -263,16 +253,6 @@ class MiscIcon_ extends React.Component {
         {circles}
       </React.Fragment>
     );
-        //<L.Circle
-        //  center={[obj.position.y, obj.position.x]}
-        //  fillColor='white'
-        //  color='white'
-        //  fillOpacity={0.5}
-        //  opacity={1}
-        //  radius={(RegionImages.ratio * artysize) / 4}
-        //  zIndexOffset={6000}
-        //  pane='toppane'
-        ///>
   }
   render() {
     let obj = this.props.private[this.props.signature];

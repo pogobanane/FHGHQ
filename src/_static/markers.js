@@ -295,16 +295,19 @@ const MiscIconArray = [
   }, // 24
 
   {
-    name: 'Mortar',
-    url: `${repo2}Items/MortarItemIcon.png`,
+    name: 'Observation Bunker', // repurposed to interactive intel center
+    url: 'https://raw.githubusercontent.com/foxholetools/assets/master/dist/icons/structures/observationbunkert2item.png',
     shadow: '/_static/assets/arty/shadow_mortar.png',
-    size: 130,
+    size: 0,
+    circle1: 130,
+    circle2: 180,
+    circle3: 216,
   }, // 25
   {
-    name: 'Gunboat',
-    url: `${repo2}Vehicles/GunboatColonial.png`,
-    shadow: '/_static/assets/arty/shadow_gunboat.png',
-    size: 200,
+    name: 'Intelligence Center', // repurposed to interactive watchtowerbunker
+    url: 'https://raw.githubusercontent.com/foxholetools/assets/master/dist/icons/structures/intelligencecenter.png',
+    //shadow: '/_static/assets/arty/shadow_gunboat.png',
+    size: 4000,
   }, // 26
   {
     name: 'Field Artillery',

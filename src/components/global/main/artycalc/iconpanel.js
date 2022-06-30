@@ -33,13 +33,13 @@ export class IconPanel extends React.Component {
     });
   }
 
-  GetIcon(index, src) {
+  GetIcon(index, src, base_repo) {
     return (
       <button
         className='map_artycontrol_btn2'
         onClick={() => this.SpawnIcon(index)}
       >
-        <img className='map_artycontrol_img' src={repo + src} />
+        <img className='map_artycontrol_img' src={base_repo + src} />
       </button>
     );
   }
@@ -49,12 +49,12 @@ export class IconPanel extends React.Component {
       <>
         <div id='map_artycontrol_dropdown' className='collapse width'>
           <div id='map_artycontrol_innerdiv'>
-            {this.GetIcon(25, 'Items/MortarItemIcon.png')}
-            {this.GetIcon(26, 'Vehicles/GunboatColonial.png')}
-            {this.GetIcon(27, 'Vehicles/ArtilleryIcon.png')}
-            {this.GetIcon(28, 'Structures/StaticArtilleryStructureIcon.png')}
-            {this.GetIcon(35, 'Structures/StaticArtilleryStructureIcon.png')}
-            {this.GetIcon(34, 'Structures/LongRangedArtilleryIcon.png')}
+            {this.GetIcon(25, 'structures/observationbunkert2item.png', 'https://raw.githubusercontent.com/foxholetools/assets/master/dist/icons/')}
+            {this.GetIcon(26, 'structures/intelligencecenter.png', 'https://raw.githubusercontent.com/foxholetools/assets/master/dist/icons/')}
+            {this.GetIcon(27, 'Vehicles/ArtilleryIcon.png', repo)}
+            {this.GetIcon(28, 'Structures/StaticArtilleryStructureIcon.png', repo)}
+            {this.GetIcon(35, 'Structures/StaticArtilleryStructureIcon.png', repo)}
+            {this.GetIcon(34, 'Structures/LongRangedArtilleryIcon.png', repo)}
           </div>
         </div>
         <button

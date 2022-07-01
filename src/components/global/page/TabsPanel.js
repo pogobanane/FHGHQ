@@ -53,19 +53,6 @@ function Tabs(props) {
       </li>
       <li
         className='nav-item'
-        id='chat'
-        onClick={() => store.dispatch(A.selectTab(7))}
-      >
-        <a className='nav-link' data-toggle='tab' href='#home'>
-          <img
-            className='nav_image'
-            src='https://cdn.glitch.com/84b19724-a86b-4caa-8e69-1e9c973e043f%2FIconFacilitiesRadioStation3.png?v=1565529795969'
-          />
-        </a>
-        {messagepill}
-      </li>
-      <li
-        className='nav-item'
         id='squad'
         onClick={() => store.dispatch(A.selectTab(1))}
       >

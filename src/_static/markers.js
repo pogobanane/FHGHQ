@@ -295,16 +295,19 @@ const MiscIconArray = [
   }, // 24
 
   {
-    name: 'Mortar',
-    url: `${repo2}Items/MortarItemIcon.png`,
+    name: 'Observation Bunker', // repurposed to interactive intel center
+    url: 'https://raw.githubusercontent.com/foxholetools/assets/master/dist/icons/structures/observationbunkert2item.png',
     shadow: '/_static/assets/arty/shadow_mortar.png',
-    size: 130,
+    size: 0,
+    circle1: 130,
+    circle2: 180,
+    circle3: 216,
   }, // 25
   {
-    name: 'Gunboat',
-    url: `${repo2}Vehicles/GunboatColonial.png`,
-    shadow: '/_static/assets/arty/shadow_gunboat.png',
-    size: 200,
+    name: 'Intelligence Center', // repurposed to interactive watchtowerbunker
+    url: 'https://raw.githubusercontent.com/foxholetools/assets/master/dist/icons/structures/intelligencecenter.png',
+    //shadow: '/_static/assets/arty/shadow_gunboat.png',
+    size: 4000,
   }, // 26
   {
     name: 'Field Artillery',
@@ -401,8 +404,11 @@ const icons = [
     c: 'Production/MapIconManufacturingColonial.png',
     w: 'Production/MapIconManufacturingWarden.png',
   }, // 17 REFINERY
-
-  'Production/MapIconShipyard.png', // 18 SHIPYARD
+  {
+    n: 'Production/MapIconShipyard.png',
+    c: 'Production/MapIconShipyardColonial.png',
+    w: 'Production/MapIconShipyardWarden.png',
+  }, // 18 SHIPYARD
   19, // 19
   'Resources/ResourceSalvage.png', // 20 SALVAGE NODE
   'Resources/ResourceComponents.png', // 21 COMPONENTS NODE
@@ -487,8 +493,16 @@ const icons = [
   48,
   49,
   50,
-  51,
-  52,
+  {
+    n: 'Production/MapIconMassProductionFactory.png',
+    c: 'Production/MapIconMassProductionFactoryColonial.png',
+    w: 'Production/MapIconMassProductionFactoryWarden.png',
+  }, // 51 MPF
+  {
+    n: 'Production/MapIconSeaport.png',
+    c: 'Production/MapIconSeaportColonial.png',
+    w: 'Production/MapIconSeaportWarden.png',
+  }, // 52 Seaport
   53,
   54,
   55,
@@ -591,34 +605,15 @@ function GenerateIcon(obj, param) {
       iconUrl = icons[10];
     }
   } else {
-    switch (obj.iconType) {
-      case 5:
-      case 6:
-      case 7:
-      case 11:
-      case 17:
-      case 27:
-      case 28:
-      case 29:
-      case 33:
-      case 34:
-      case 35:
-      case 36:
-      case 45:
-      case 46:
-      case 47:
-      case 56:
-      case 57:
-      case 58:
-        if (param == 'min') {
-          iconUrl = icons[obj.iconType].min[obj.teamId[0].toLowerCase()];
-        } else {
-          iconUrl = icons[obj.iconType][obj.teamId[0].toLowerCase()];
-        }
-        break;
-      default:
-        iconUrl = icons[obj.iconType];
-        break;
+    let element = icons[obj.iconType];
+    if (typeof element === 'string') {
+      iconUrl = element;
+    } else if (typeof element === 'object') {
+      if (param == 'min') {
+        iconUrl = element.min[obj.teamId[0].toLowerCase()];
+      } else {
+        iconUrl = element[obj.teamId[0].toLowerCase()];
+      }
     }
   }
   iconUrl = repo + iconUrl;
@@ -628,22 +623,18 @@ function GenerateIcon(obj, param) {
     case 7:
     case 27:
     case 28:
-    case 35:
+    case 33:
+    case 45:
+    case 46:
+    case 47:
+    case 52:
+    case 56:
+    case 57:
+    case 58:
       if (obj.flags & 0x02) {
         return new MapIcon({ iconUrl });
       }
       return new TownIcon({ iconUrl });
-
-    case 12:
-    case 17:
-    case 20:
-    case 23:
-    case 33:
-    case 34:
-    case 36:
-    case 37:
-    case 39:
-      return new MapIcon({ iconUrl });
     case 32:
     case 38:
     case 40:

@@ -122,33 +122,33 @@ class MiscIcon_ extends React.Component {
             center={[obj.position.y, obj.position.x]}
             color='#463027'
             weight='1'
-            fillOpacity={0}
             opacity={0.5}
+            fill={false}
             dashArray={"7, 5, 1, 4, 1, 4"}
             radius={RegionImages.ratio * circle1}
-            zIndexOffset={6000}
+            zIndexOffset={1000}
             pane='toppane'
           />
           <L.Circle
             center={[obj.position.y, obj.position.x]}
             color='#463027'
             weight='2'
-            fillOpacity={0}
             opacity={0.5}
+            fill={false}
             dashArray={"10, 7, 1, 4, 1, 4"}
             radius={RegionImages.ratio * circle2}
-            zIndexOffset={6000}
+            zIndexOffset={1000}
             pane='toppane'
           />
           <L.Circle
             center={[obj.position.y, obj.position.x]}
             color='#463027'
             weight='1'
-            fillOpacity={0}
             opacity={0.5}
+            fill={false}
             dashArray={"7, 5, 1, 4, 1, 4"}
             radius={RegionImages.ratio * circle3}
-            zIndexOffset={6000}
+            zIndexOffset={1000}
             pane='toppane'
           />
         </React.Fragment>
@@ -161,11 +161,11 @@ class MiscIcon_ extends React.Component {
             center={[obj.position.y, obj.position.x]}
             color='#463027'
             weight='1'
-            fillOpacity={0}
             opacity={0.5}
+            fill={false}
             dashArray={"10, 10, 1, 4, 1, 4"}
             radius={RegionImages.ratio * artysize / 2}
-            zIndexOffset={6000}
+            zIndexOffset={1000}
             pane='toppane'
           />
         </React.Fragment>
